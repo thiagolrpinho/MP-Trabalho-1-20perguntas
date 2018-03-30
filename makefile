@@ -1,9 +1,10 @@
-CC=g++
-CFLAGS=-I.
-DEPS = arvore.h
+CC      = g++
+CFLAGS  = -I.
+DEPS    = arvore.h
+OBJ     = testa_arvore.o arvore.o
 
 %.o: %.c  $(DEPS)
-		$(CC) -c  -o  $@  $<  $(CFLAGS)
+	$(CC) -c  -o  $@  $<  $(CFLAGS)
 
-testa_arvore: testa_arvore.cpp arvore.c
-	$(CC) -o testa_arvore testa_arvore.cpp arvore.c $(CFLAGS)
+testa_arvore: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
