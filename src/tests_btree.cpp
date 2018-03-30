@@ -9,8 +9,12 @@
 //! four test cases: Create, Read, Update and Destroy
 
 TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
-  BTree testTree;
-  //  REQUIRE( testTree != nullptr );
+  BTree * ptestTree = nullptr;
+  ptestTree = new BTree();
+
+  SECTION( "Creating a Tree and its leafs" ) {
+    REQUIRE_FALSE( ptestTree == nullptr );
+    }
 }
 
 
