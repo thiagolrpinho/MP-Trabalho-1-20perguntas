@@ -1,6 +1,6 @@
 IDIR	=./include
-CC      = g++
-CFLAGS  = -I.$(IDIR)
+CC      = g++ -std=c++11
+CFLAGS  = -I$(IDIR)
 
 ODIR	= ./src/obj
 LDIR	=./lib
@@ -8,7 +8,7 @@ SDIR	=./src
 
 LIBS	=-lm
 
-_DEPS	= arvore.h
+_DEPS	= arvore.h catch.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ = testa_arvore.o arvore.o
