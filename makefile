@@ -8,14 +8,11 @@ SDIR	=./src
 
 LIBS	=-lm
 
-_DEPS	= arvore.h catch.hpp
+_DEPS	= arvore.hpp catch.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ = testa_arvore.o arvore.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
-
-$(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
-		$(CC)	-c	-o 	$@	$<	$(CFLAGS)
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 		$(CC)	-c	-o 	$@	$<	$(CFLAGS)
