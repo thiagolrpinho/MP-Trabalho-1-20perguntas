@@ -8,16 +8,16 @@ SDIR	=./src
 
 LIBS	=-lm
 
-_DEPS	= arvore.hpp catch.hpp
+_DEPS	= btree.hpp catch.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = testa_arvore.o arvore.o
+_OBJ = tests_btree.o btree.o tests_main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 		$(CC)	-c	-o 	$@	$<	$(CFLAGS)
 
-testa_arvore: $(OBJ)
+BTree_tester: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
