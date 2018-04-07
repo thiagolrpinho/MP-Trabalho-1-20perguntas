@@ -44,7 +44,14 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
     REQUIRE(pRoot->getRightBranch()->getText().compare("É vermelho?") == Equals);
   }
 
-  SECTION( "Inserting right branch on right branch of root"){
+  SECTION( "Inserting right branch on right branch of root")
+  {
+    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    REQUIRE_FALSE( pRoot->insertBranch("É azul?") == Error);
+    StringNode* pRightBranchOfRoot = pRoot->getRightBranch();
+
+    REQUIRE_FALSE( pRightBranchOfRoot->insertBranch("É violeta?") == Error);
+    REQUIRE( pRightBranchOfRoot->getText().compare("É violeta?") == Equals);
   }
 }
 
