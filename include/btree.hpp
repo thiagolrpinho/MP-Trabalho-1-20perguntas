@@ -8,13 +8,13 @@ class BTree {
  private:
   BTree* leftBranch;
   BTree* rightBranch;
-  string text;
+  string* text;
 
  public:
   BTree();
   BTree* getleftBranch(void){ return this->leftBranch; }
   BTree* getRightBranch(void){ return this->rightBranch; }
-  string getText(void) { return this->text;}
+  string* getText(void) { return this->text;}
 
 };
 
