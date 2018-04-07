@@ -53,6 +53,35 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
     REQUIRE_FALSE( pLeftBranchOfRoot->insertBranch("É violeta?") == Error);
     REQUIRE( pLeftBranchOfRoot->getLeftBranch()->getText().compare("É violeta?") == Equals);
   }
+
+   SECTION( "Inserting right and left branch on left branch of root")
+  {
+    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    REQUIRE_FALSE( pRoot->insertBranch("É azul?") == Error);
+    StringNode* pLeftBranchOfRoot = pRoot->getLeftBranch();
+
+    REQUIRE_FALSE( pLeftBranchOfRoot->insertBranch("É violeta?") == Error);
+    REQUIRE( pLeftBranchOfRoot->getLeftBranch()->getText().compare("É violeta?") == Equals);
+    REQUIRE_FALSE( pLeftBranchOfRoot->insertBranch("É de comer?") == Error);
+    REQUIRE( pLeftBranchOfRoot->getRightBranch()->getText().compare("É de comer?") == Equals);
+  }
+
+  SECTION( "Inserting three levels deep of root")
+  {
+    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    StringNode* pLeftBranchOfRoot = pRoot->getLeftBranch();
+
+    REQUIRE_FALSE( pLeftBranchOfRoot->insertBranch("É violeta?") == Error);
+    REQUIRE( pLeftBranchOfRoot->getLeftBranch()->getText().compare("É violeta?") == Equals);
+
+    StringNode* pSecondFromRoot = pLeftBranchOfRoot->getLeftBranch();
+    REQUIRE_FALSE( pSecondFromRoot->insertBranch("É amarelo?") == Error);
+    REQUIRE( pSecondFromRoot->getLeftBranch()->getText().compare("É amarelo?") == Equals);
+
+    StringNode* pThirdFromRoot = pSecondFromRoot->getLeftBranch();
+    REQUIRE_FALSE( pThirdFromRoot->insertBranch("É dourado?") == Error);
+    REQUIRE( pThirdFromRoot->getLeftBranch()->getText().compare("É dourado?") == Equals);
+  }
 }
 
 
