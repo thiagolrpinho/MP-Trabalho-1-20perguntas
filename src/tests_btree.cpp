@@ -35,7 +35,8 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
 
   SECTION( "Inserting right branch on root")
   {
-    REQUIRE_FALSE( pNonEmptyTestTree->insertBranch("É vermelho") == Error);
+    REQUIRE_FALSE( pNonEmptyTestTree->insertBranch("É azul?") == Error);
+    REQUIRE_FALSE( pNonEmptyTestTree->insertBranch("É vermelho?") == Error);
     REQUIRE(pNonEmptyTestTree->getLeftBranch()->text.compare("É azul?") == 0);
     REQUIRE(pNonEmptyTestTree->getRightBranch()->text.compare("É vermelho?") == 0);
   }
