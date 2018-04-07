@@ -16,13 +16,13 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
     REQUIRE_FALSE( ptestTree == nullptr );
     REQUIRE( ptestTree->getLeftBranch() == nullptr );
     REQUIRE( ptestTree->getRightBranch() == nullptr);
-    REQUIRE( ptestTree->getText() == nullptr);
+    REQUIRE( ptestTree->getText().empty());
     }
 
   SECTION( "Creating a non empty tree root"){
     string initialText = "É verde?";
     BTree* pNonEmptyTestTree = new BTree(initialText);
-    REQUIRE( pNonEmptyTestTree->getText()->compare("É verde?"));
+    REQUIRE( pNonEmptyTestTree->getText().compare("É verde?") == 0);
   }
 }
 

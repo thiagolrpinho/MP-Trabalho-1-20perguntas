@@ -5,5 +5,7 @@ BTree::BTree(void){
   
 }
 
-BTree::BTree(string initialText){};
+BTree::BTree(string initialText){
+    rootNode = new StringNode(initialText);
+};
 
