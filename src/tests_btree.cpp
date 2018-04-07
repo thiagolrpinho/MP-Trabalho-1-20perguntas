@@ -8,7 +8,7 @@
 //! They'll be considered fully functional if they pass in
 //! four test cases: Create, Read, Update and Destroy
 
-TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
+TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
   string initialText = "É verde?";
 
   BTree* pEmptyTestTree = new BTree();
@@ -54,7 +54,7 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
     REQUIRE( pLeftBranchOfRoot->getLeftBranch()->getText().compare("É violeta?") == Equals);
   }
 
-   SECTION( "Inserting right and left branch on left branch of root")
+   SECTION( "Inserting right and left branch on left branch of root" )
   {
     StringNode* pRoot = pNonEmptyTestTree->getRoot();
     REQUIRE_FALSE( pRoot->insertBranch("É azul?") == Error);
@@ -66,7 +66,18 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
     REQUIRE( pLeftBranchOfRoot->getRightBranch()->getText().compare("É de comer?") == Equals);
   }
 
-  SECTION( "Inserting three levels deep of root")
+  SECTION( "Inserting third branch on same node" ) 
+  {
+    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    pRoot->insertBranch("É azul?");
+
+    StringNode* pLeftBranchOfRoot = pRoot->getLeftBranch();
+    pLeftBranchOfRoot->insertBranch("É violeta?");
+    pLeftBranchOfRoot->insertBranch("É de comer?");
+    REQUIRE( pLeftBranchOfRoot->insertBranch("É manufaturado?") == Error );
+  }
+
+  SECTION( "Inserting three levels deep of root" )
   {
     StringNode* pRoot = pNonEmptyTestTree->getRoot();
     REQUIRE_FALSE( pRoot->insertBranch("É azul?") == Error);
@@ -83,7 +94,11 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
     REQUIRE_FALSE( pThirdFromRoot->insertBranch("É dourado?") == Error);
     REQUIRE( pThirdFromRoot->getLeftBranch()->getText().compare("É dourado?") == Equals);
     
-  }
+  } 
+} //TestCase Binary Tree Create and Read
+
+TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
+  BTree* pEmptyTestTree = new BTree();
 }
 
 
