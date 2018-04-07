@@ -14,9 +14,9 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
 
   SECTION( "Creating a Tree and its leafs" ) {
     REQUIRE_FALSE( ptestTree == nullptr );
-    //REQUIRE_FALSE( testTree.getLeftBranch() == nullptr );
-    //REQUIRE_FALSE( testTree.getRightBranch() == nullptr);
-    //REQUIRE_FALSE( testTree.getText() == nullptr);
+    REQUIRE_FALSE( testTree.getLeftBranch() == nullptr );
+    REQUIRE_FALSE( testTree.getRightBranch() == nullptr);
+    REQUIRE_FALSE( testTree.getText() == nullptr);
     }
 }
 
