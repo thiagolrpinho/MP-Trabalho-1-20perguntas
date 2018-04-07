@@ -7,7 +7,8 @@
 	"settings": {
 		"files.associations": {
 			"string": "cpp",
-			"*.tcc": "cpp"
+			"*.tcc": "cpp",
+			"array": "cpp"
 		}
 	}
 }

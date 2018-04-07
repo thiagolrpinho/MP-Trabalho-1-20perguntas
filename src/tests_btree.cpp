@@ -124,8 +124,9 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
   
   SECTION( "root can be deleted" )
   {
+    REQUIRE_FALSE( pRoot->getText().empty() );
     delete(pRoot);
-    REQUIRE_THROWS( pRoot->getText());
+    REQUIRE( pRoot->getText().empty() );
   }
   
 }
