@@ -26,10 +26,18 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
     REQUIRE( pNonEmptyTestTree->getText().compare("É verde?") == 0);
   }
 
-  SECTION( "Inserting empty left branch on root")
+  SECTION( "Inserting left branch on root")
   {
-    BTreeStatus stateOfError = Error;
-    REQUIRE_FALSE( pNonEmptyTestTree->insertBranch("É azul?") == stateOfError);
+    
+    REQUIRE_FALSE( pNonEmptyTestTree->insertBranch("É azul?") == Error);
+    REQUIRE(pNonEmptyTestTree->getLeftBranch()->text.compare("É azul?") == 0);
+  }
+
+  SECTION( "Inserting right branch on root")
+  {
+    REQUIRE_FALSE( pNonEmptyTestTree->insertBranch("É vermelho") == Error);
+    REQUIRE(pNonEmptyTestTree->getLeftBranch()->text.compare("É azul?") == 0);
+    REQUIRE(pNonEmptyTestTree->getRightBranch()->text.compare("É vermelho?") == 0);
   }
 }
 
