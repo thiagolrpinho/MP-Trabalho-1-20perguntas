@@ -1,21 +1,21 @@
 #ifndef BTREE_HPP
 #define BTREE_HPP
 
-#include<string>
-using std::string;
+#include "stringnode.hpp"
 
 class BTree {
  private:
-  BTree* leftBranch;
-  BTree* rightBranch;
-  string* text;
+  StringNode* rootNode;
 
  public:
+ //Methods
   BTree();
-  BTree* getLeftBranch(void){ return this->leftBranch; }
-  BTree* getRightBranch(void){ return this->rightBranch; }
-  string* getText(void) { return this->text;}
+  StringNode* getLeftBranch(void){ return this->rootNode->leftBranch; }
+  StringNode* getRightBranch(void){ return this->rootNode->rightBranch; }
+  string* getText(void) { return this->rootNode->text;}
 
 };
+
+
 
 #endif

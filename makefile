@@ -8,10 +8,10 @@ SDIR	=./src
 
 LIBS	=-lm
 
-_DEPS	= btree.hpp catch.hpp
+_DEPS	= btree.hpp stringnode.hpp catch.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = tests_btree.o btree.o tests_main.o
+_OBJ = tests_btree.o btree.o stringnode.o tests_main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
