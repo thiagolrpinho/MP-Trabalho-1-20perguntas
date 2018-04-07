@@ -66,7 +66,7 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
     REQUIRE( pLeftBranchOfRoot->getRightBranch()->getText().compare("É de comer?") == Equals);
   }
 
-  SECTION( "Inserting third branch on same node" ) 
+  SECTION( "Inserting third branch on same node results in error" ) 
   {
     StringNode* pRoot = pNonEmptyTestTree->getRoot();
     pRoot->insertBranch("É azul?");
@@ -98,7 +98,13 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
 } //TestCase Binary Tree Create and Read
 
 TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
-  BTree* pEmptyTestTree = new BTree();
+  BTree* pNonEmptyTestTree = new BTree("É moderno?");
+
+  SECTION( "Changing root node text value" ){
+    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    REQUIRE( pRoot->setText("É clássico?") == Sucess);
+    REQUIRE( pRoot->getText().compare("É classico") == Equals);
+  }
 }
 
 
