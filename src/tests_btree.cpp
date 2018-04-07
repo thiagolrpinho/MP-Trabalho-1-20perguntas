@@ -103,7 +103,7 @@ TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
   SECTION( "Changing root node text value" ){
     StringNode* pRoot = pNonEmptyTestTree->getRoot();
     REQUIRE( pRoot->setText("É clássico?") == Sucess);
-    REQUIRE( pRoot->getText().compare("É classico") == Equals);
+    REQUIRE( pRoot->getText().compare("É clássico?") == Equals);
   }
 }
 
