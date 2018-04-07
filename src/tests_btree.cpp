@@ -9,20 +9,27 @@
 //! four test cases: Create, Read, Update and Destroy
 
 TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
-  BTree* ptestTree = nullptr;
-  ptestTree = new BTree();
+  string initialText = "É verde?";
+
+  BTree* pEmptyTestTree    = new BTree();
+  BTree* pNonEmptyTestTree = new BTree(initialText);
+
 
   SECTION( "Creating an empty tree root" ) {
-    REQUIRE_FALSE( ptestTree == nullptr );
-    REQUIRE( ptestTree->getLeftBranch() == nullptr );
-    REQUIRE( ptestTree->getRightBranch() == nullptr);
-    REQUIRE( ptestTree->getText().empty());
+    REQUIRE_FALSE( pEmptyTestTree == nullptr );
+    REQUIRE( pEmptyTestTree->getLeftBranch() == nullptr );
+    REQUIRE( pEmptyTestTree->getRightBranch() == nullptr);
+    REQUIRE( pEmptyTestTree->getText().empty());
     }
 
   SECTION( "Creating a non empty tree root"){
-    string initialText = "É verde?";
-    BTree* pNonEmptyTestTree = new BTree(initialText);
     REQUIRE( pNonEmptyTestTree->getText().compare("É verde?") == 0);
+  }
+
+  SECTION( "Inserting empty left branch on root")
+  {
+    BTreeStatus stateOfError = Error;
+    REQUIRE_FALSE( pNonEmptyTestTree->insertBranch("É azul?") == stateOfError);
   }
 }
 

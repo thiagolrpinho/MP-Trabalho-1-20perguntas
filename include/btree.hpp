@@ -2,6 +2,7 @@
 #define BTREE_HPP
 
 #include "stringnode.hpp"
+enum BTreeStatus {Error, Sucess};
 
 class BTree {
  private:
@@ -14,6 +15,8 @@ class BTree {
   StringNode* getLeftBranch(void){ return this->rootNode->leftBranch; }
   StringNode* getRightBranch(void){ return this->rootNode->rightBranch; }
   string getText(void) { return this->rootNode->text;}
+
+  int insertBranch(string initialNewBranchText);
 
 };
 
