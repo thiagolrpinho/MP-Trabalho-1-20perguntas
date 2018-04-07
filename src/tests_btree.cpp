@@ -114,8 +114,20 @@ TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
 
     StringNode* pBranch = pRoot->getLeftBranch();
     REQUIRE( pBranch->setText("Acertou!") == Sucess );
-    REQUIRE_FALSE( pBranch->getText().compare("Errou!") == Equals);
+    REQUIRE_FALSE( pBranch->getText().compare("Errou!") == Equals );
   }
+}//TestCase Binary Tree Update
+
+TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
+  BTree* pNonEmptyTestTree = new BTree("É moderno?");
+  StringNode* pRoot = pNonEmptyTestTree->getRoot();
+  
+  SECTION( "root can be deleted" )
+  {
+    delete(pRoot);
+    REQUIRE_THROWS( pRoot->getText());
+  }
+  
 }
 
 
