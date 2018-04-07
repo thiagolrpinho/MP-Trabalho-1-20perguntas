@@ -5,3 +5,5 @@ BTree::BTree(void){
   
 }
 
+BTree::BTree(string initialText){};
+

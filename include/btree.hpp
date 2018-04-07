@@ -10,6 +10,7 @@ class BTree {
  public:
  //Methods
   BTree();
+  BTree(string initialText);
   StringNode* getLeftBranch(void){ return this->rootNode->leftBranch; }
   StringNode* getRightBranch(void){ return this->rootNode->rightBranch; }
   string* getText(void) { return this->rootNode->text;}
