@@ -22,7 +22,7 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
     REQUIRE( pRoot->getLeftBranch() == nullptr );
     REQUIRE( pRoot->getRightBranch() == nullptr);
     REQUIRE( pRoot->getText().empty());
-    }
+  }
 
   SECTION( "Creating a non empty tree root"){
     REQUIRE( pNonEmptyTestTree->getRoot()->getText().compare("É verde?") == 0);
@@ -100,10 +100,21 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
 TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
   BTree* pNonEmptyTestTree = new BTree("É moderno?");
 
-  SECTION( "Changing root node text value" ){
+  SECTION( "Changing root node text value" )
+  {
     StringNode* pRoot = pNonEmptyTestTree->getRoot();
-    REQUIRE( pRoot->setText("É clássico?") == Sucess);
-    REQUIRE( pRoot->getText().compare("É clássico?") == Equals);
+    REQUIRE( pRoot->setText("É clássico?") == Sucess );
+    REQUIRE( pRoot->getText().compare("É clássico?") == Equals );
+  }
+
+  SECTION( "Changing branch node text value" )
+  {
+    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    pRoot->insertBranch("Errou!");
+
+    StringNode* pBranch = pRoot->getLeftBranch();
+    REQUIRE( pBranch->setText("Acertou!") == Sucess );
+    REQUIRE_FALSE( pBranch->getText().compare("Errou!") == Equals);
   }
 }
 
