@@ -12,7 +12,7 @@ class BTree {
 
  public:
   BTree();
-  BTree* getleftBranch(void){ return this->leftBranch; }
+  BTree* getLeftBranch(void){ return this->leftBranch; }
   BTree* getRightBranch(void){ return this->rightBranch; }
   string* getText(void) { return this->text;}
 

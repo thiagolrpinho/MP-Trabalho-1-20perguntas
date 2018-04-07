@@ -12,11 +12,11 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
   BTree* ptestTree = nullptr;
   ptestTree = new BTree();
 
-  SECTION( "Creating a Tree and its leafs" ) {
+  SECTION( "Creating an empty tree root" ) {
     REQUIRE_FALSE( ptestTree == nullptr );
-    REQUIRE_FALSE( testTree.getLeftBranch() == nullptr );
-    REQUIRE_FALSE( testTree.getRightBranch() == nullptr);
-    REQUIRE_FALSE( testTree.getText() == nullptr);
+    REQUIRE( ptestTree->getLeftBranch() == nullptr );
+    REQUIRE( ptestTree->getRightBranch() == nullptr);
+    REQUIRE( ptestTree->getText() == nullptr);
     }
 }
 
