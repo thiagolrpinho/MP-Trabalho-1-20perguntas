@@ -74,7 +74,7 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
 
     REQUIRE_FALSE( pLeftBranchOfRoot->insertBranch("É violeta?") == Error);
     REQUIRE( pLeftBranchOfRoot->getLeftBranch()->getText().compare("É violeta?") == Equals);
-    /*
+    
     StringNode* pSecondFromRoot = pLeftBranchOfRoot->getLeftBranch();
     REQUIRE_FALSE( pSecondFromRoot->insertBranch("É amarelo?") == Error);
     REQUIRE( pSecondFromRoot->getLeftBranch()->getText().compare("É amarelo?") == Equals);
@@ -82,7 +82,7 @@ TEST_CASE( "Binary Tree CRUD", "[binary_tree]" ) {
     StringNode* pThirdFromRoot = pSecondFromRoot->getLeftBranch();
     REQUIRE_FALSE( pThirdFromRoot->insertBranch("É dourado?") == Error);
     REQUIRE( pThirdFromRoot->getLeftBranch()->getText().compare("É dourado?") == Equals);
-    */
+    
   }
 }
 
