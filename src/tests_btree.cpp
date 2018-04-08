@@ -121,12 +121,23 @@ TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
 TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
   BTree* pNonEmptyTestTree = new BTree("É moderno?");
   StringNode* pRoot = pNonEmptyTestTree->getRoot();
+  pRoot->insertBranch("É novo?");
+  StringNode* pBranch = pRoot->getLeftBranch();
   
   SECTION( "root can be deleted" )
   {
     REQUIRE_FALSE( pRoot->getText().empty() );
+    REQUIRE_FALSE( pRoot->getLeftBranch() == nullptr );
     delete(pRoot);
     REQUIRE( pRoot->getText().empty() );
+    REQUIRE( pRoot->getLeftBranch() == nullptr );
+  }
+
+  SECTION( "a branch can be deleted" )
+  {
+    REQUIRE_FALSE( pBranch->getText().empty() );
+    delete(pBranch);
+    REQUIRE( pBranch->getText().empty() );
   }
   
 }
