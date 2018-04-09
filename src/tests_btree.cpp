@@ -152,9 +152,8 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
     REQUIRE_FALSE( pBranch == nullptr );
     REQUIRE_FALSE( pBelowBranch == nullptr );
 
-    pBranch.reset();
-
-    REQUIRE( pBelowBranch == nullptr );
+    pBranch.reset(pBranch, delete pBranch);
+    REQUIRE( pBelowBranch->getText() == "3" );
     REQUIRE( pBranch == nullptr );
   }
 }

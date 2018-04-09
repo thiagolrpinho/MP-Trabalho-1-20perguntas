@@ -27,13 +27,12 @@ class StringNode{
   StringNode();
   StringNode(string initialText);
 
-  //~StringNode();
+  ~StringNode();
 
   shared_ptr<StringNode> getLeftBranch(void) { return this->pLeftBranch; }
   shared_ptr<StringNode> getRightBranch(void){ return this->pRightBranch; }
   string getText(void) { return this->text; }
 
   int setText(string newText);
-
   int insertBranch(string initialNewBranchText);
 };

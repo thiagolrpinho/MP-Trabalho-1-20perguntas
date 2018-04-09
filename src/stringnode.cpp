@@ -12,15 +12,14 @@ StringNode::StringNode(string initialText)
     pRightBranch = pLeftBranch = nullptr;
     text.assign(initialText);
 }
-/*
+
 StringNode::~StringNode(){
-    delete( pRightBranch );
-    pRightBranch = nullptr;
-    delete( pLeftBranch );
-    pLeftBranch = nullptr;
+    pRightBranch.reset();
+    pLeftBranch.reset();
     text.clear();
 }
-*/
+
+
 /*
     Each node can only have two branches and inserting the third
     should result on a flag error and the third node being discarted
@@ -47,3 +46,22 @@ int StringNode::setText(string newText)
   }
   return Sucess;
 }
+
+/*
+//Reset each node after cleaning the nodes below it
+int StringNode::cutBranch(void )
+{
+    //If there's a branch, clean this branch
+    if ( this->getLeftBranch() != nullptr )
+    {
+        this->getLeftBranch()->cutBranch();
+        this->getLeftBranch().reset();
+    }
+    
+    if ( this->getRightBranch() != nullptr )
+    {
+        this->getRightBranch()->cutBranch();
+        this->getRightBranch().reset();
+    }
+}
+*/
