@@ -132,7 +132,7 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
     REQUIRE( pRoot == nullptr );
   }
 
-  SECTION( "a branch can be deleted and those above him are not affected" )
+  SECTION( "a branch can be deleted and those above it are not affected" )
   {
     shared_ptr<StringNode> pBranch = pRoot->getLeftBranch();
     REQUIRE_FALSE( pBranch->getText().empty() );
@@ -143,6 +143,20 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
     REQUIRE(pBranch == nullptr);
   }
   
+  SECTION( "a branch can be deleted and those below it are deleted too")
+  {
+    shared_ptr<StringNode> pBranch = pRoot->getLeftBranch();
+    pBranch->insertBranch("Abaixo?");
+    shared_ptr<StringNode> pBelowBranch = pBranch->getLeftBranch();
+
+    REQUIRE_FALSE( pBranch == nullptr );
+    REQUIRE_FALSE( pBelowBranch == nullptr );
+
+    pBranch.reset();
+
+    REQUIRE( pBelowBranch == nullptr );
+    REQUIRE( pBranch == nullptr );
+  }
 }
 
 
