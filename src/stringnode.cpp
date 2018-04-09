@@ -1,25 +1,26 @@
 #include "stringnode.hpp"
 
+
 StringNode::StringNode(void)
 {
-  rightBranch = leftBranch = nullptr;
+  pRightBranch = pLeftBranch = nullptr;
   text.clear();
 }
 
 StringNode::StringNode(string initialText)
 {
-    rightBranch = leftBranch = nullptr;
+    pRightBranch = pLeftBranch = nullptr;
     text.assign(initialText);
 }
-
+/*
 StringNode::~StringNode(){
-    delete( rightBranch );
-    rightBranch = nullptr;
-    delete( leftBranch );
-    leftBranch = nullptr;
+    delete( pRightBranch );
+    pRightBranch = nullptr;
+    delete( pLeftBranch );
+    pLeftBranch = nullptr;
     text.clear();
 }
-
+*/
 /*
     Each node can only have two branches and inserting the third
     should result on a flag error and the third node being discarted
@@ -27,9 +28,9 @@ StringNode::~StringNode(){
 
 int StringNode::insertBranch(string initialNewBranchText){
     if ( this->getLeftBranch() == nullptr) {
-        this->leftBranch = new StringNode(initialNewBranchText);
+        this->pLeftBranch.reset(new StringNode(initialNewBranchText));
     } else if (this->getRightBranch() == nullptr) {
-        this->rightBranch = new StringNode(initialNewBranchText);
+        this->pRightBranch.reset(new StringNode(initialNewBranchText));
     } else {
         return Error;
     }

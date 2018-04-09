@@ -10,13 +10,13 @@
 class BTree {
  //The BTree class itself will work as a header of the tree
  private:
-  StringNode* rootNode;
+  shared_ptr<StringNode> pRootNode;
 
  public:
  //Methods
   BTree();
   BTree(string initialText);
-  StringNode* getRoot(void) { return this->rootNode; };
+  shared_ptr<StringNode> getRoot(void) { return this->pRootNode; };
 
 
 

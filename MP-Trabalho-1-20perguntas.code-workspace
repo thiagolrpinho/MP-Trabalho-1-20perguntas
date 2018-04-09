@@ -9,7 +9,10 @@
 			"string": "cpp",
 			"*.tcc": "cpp",
 			"array": "cpp",
-			"system_error": "cpp"
+			"system_error": "cpp",
+			"optional": "cpp",
+			"ratio": "cpp",
+			"type_traits": "cpp"
 		}
 	}
 }

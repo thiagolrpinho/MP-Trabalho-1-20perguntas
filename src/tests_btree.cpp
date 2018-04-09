@@ -16,7 +16,7 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
 
 
   SECTION( "Creating an empty tree root" ) {
-    StringNode* pRoot = pEmptyTestTree->getRoot();
+    shared_ptr<StringNode> pRoot = pEmptyTestTree->getRoot();
 
     REQUIRE_FALSE( pEmptyTestTree == nullptr );
     REQUIRE( pRoot->getLeftBranch() == nullptr );
@@ -37,7 +37,7 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
 
   SECTION( "Inserting right branch on root")
   {
-    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    shared_ptr<StringNode> pRoot = pNonEmptyTestTree->getRoot();
     REQUIRE_FALSE( pRoot->insertBranch("É azul?") == Error);
     REQUIRE_FALSE( pRoot->insertBranch("É vermelho?") == Error);
     REQUIRE(pRoot->getLeftBranch()->getText().compare("É azul?") == Equals);
@@ -46,9 +46,9 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
 
   SECTION( "Inserting left branch on left branch of root")
   {
-    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    shared_ptr<StringNode> pRoot = pNonEmptyTestTree->getRoot();
     REQUIRE_FALSE( pRoot->insertBranch("É azul?") == Error);
-    StringNode* pLeftBranchOfRoot = pRoot->getLeftBranch();
+    shared_ptr<StringNode> pLeftBranchOfRoot = pRoot->getLeftBranch();
 
     REQUIRE_FALSE( pLeftBranchOfRoot->insertBranch("É violeta?") == Error);
     REQUIRE( pLeftBranchOfRoot->getLeftBranch()->getText().compare("É violeta?") == Equals);
@@ -56,9 +56,9 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
 
    SECTION( "Inserting right and left branch on left branch of root" )
   {
-    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    shared_ptr<StringNode> pRoot = pNonEmptyTestTree->getRoot();
     REQUIRE_FALSE( pRoot->insertBranch("É azul?") == Error);
-    StringNode* pLeftBranchOfRoot = pRoot->getLeftBranch();
+    shared_ptr<StringNode> pLeftBranchOfRoot = pRoot->getLeftBranch();
 
     REQUIRE_FALSE( pLeftBranchOfRoot->insertBranch("É violeta?") == Error);
     REQUIRE( pLeftBranchOfRoot->getLeftBranch()->getText().compare("É violeta?") == Equals);
@@ -68,10 +68,10 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
 
   SECTION( "Inserting third branch on same node results in error" ) 
   {
-    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    shared_ptr<StringNode> pRoot = pNonEmptyTestTree->getRoot();
     pRoot->insertBranch("É azul?");
 
-    StringNode* pLeftBranchOfRoot = pRoot->getLeftBranch();
+    shared_ptr<StringNode> pLeftBranchOfRoot = pRoot->getLeftBranch();
     pLeftBranchOfRoot->insertBranch("É violeta?");
     pLeftBranchOfRoot->insertBranch("É de comer?");
     REQUIRE( pLeftBranchOfRoot->insertBranch("É manufaturado?") == Error );
@@ -79,18 +79,18 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
 
   SECTION( "Inserting three levels deep of root" )
   {
-    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    shared_ptr<StringNode> pRoot = pNonEmptyTestTree->getRoot();
     REQUIRE_FALSE( pRoot->insertBranch("É azul?") == Error);
-    StringNode* pLeftBranchOfRoot = pRoot->getLeftBranch();
+    shared_ptr<StringNode> pLeftBranchOfRoot = pRoot->getLeftBranch();
 
     REQUIRE_FALSE( pLeftBranchOfRoot->insertBranch("É violeta?") == Error);
     REQUIRE( pLeftBranchOfRoot->getLeftBranch()->getText().compare("É violeta?") == Equals);
     
-    StringNode* pSecondFromRoot = pLeftBranchOfRoot->getLeftBranch();
+    shared_ptr<StringNode> pSecondFromRoot = pLeftBranchOfRoot->getLeftBranch();
     REQUIRE_FALSE( pSecondFromRoot->insertBranch("É amarelo?") == Error);
     REQUIRE( pSecondFromRoot->getLeftBranch()->getText().compare("É amarelo?") == Equals);
 
-    StringNode* pThirdFromRoot = pSecondFromRoot->getLeftBranch();
+    shared_ptr<StringNode> pThirdFromRoot = pSecondFromRoot->getLeftBranch();
     REQUIRE_FALSE( pThirdFromRoot->insertBranch("É dourado?") == Error);
     REQUIRE( pThirdFromRoot->getLeftBranch()->getText().compare("É dourado?") == Equals);
     
@@ -102,17 +102,17 @@ TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
 
   SECTION( "Changing root node text value" )
   {
-    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    shared_ptr<StringNode> pRoot = pNonEmptyTestTree->getRoot();
     REQUIRE( pRoot->setText("É clássico?") == Sucess );
     REQUIRE( pRoot->getText().compare("É clássico?") == Equals );
   }
 
   SECTION( "Changing branch node text value" )
   {
-    StringNode* pRoot = pNonEmptyTestTree->getRoot();
+    shared_ptr<StringNode> pRoot = pNonEmptyTestTree->getRoot();
     pRoot->insertBranch("Errou!");
 
-    StringNode* pBranch = pRoot->getLeftBranch();
+    shared_ptr<StringNode> pBranch = pRoot->getLeftBranch();
     REQUIRE( pBranch->setText("Acertou!") == Sucess );
     REQUIRE_FALSE( pBranch->getText().compare("Errou!") == Equals );
   }
@@ -120,15 +120,15 @@ TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
 
 TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
   BTree* pNonEmptyTestTree = new BTree("É moderno?");
-  StringNode* pRoot = pNonEmptyTestTree->getRoot();
+  shared_ptr<StringNode> pRoot = pNonEmptyTestTree->getRoot();
   pRoot->insertBranch("É novo?");
-  StringNode* pBranch = pRoot->getLeftBranch();
+  shared_ptr<StringNode> pBranch = pRoot->getLeftBranch();
   
   SECTION( "root can be deleted" )
   {
     REQUIRE_FALSE( pRoot->getText().empty() );
     REQUIRE_FALSE( pRoot->getLeftBranch() == nullptr );
-    delete(pRoot);
+    //delete(pRoot);
     REQUIRE( pRoot->getText().empty() );
     REQUIRE( pRoot->getLeftBranch() == nullptr );
   }
@@ -136,7 +136,7 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
   SECTION( "a branch can be deleted" )
   {
     REQUIRE_FALSE( pBranch->getText().empty() );
-    delete(pBranch);
+    //delete(pBranch);
     REQUIRE( pBranch->getText().empty() );
   }
   

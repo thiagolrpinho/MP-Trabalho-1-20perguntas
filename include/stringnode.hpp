@@ -1,7 +1,15 @@
-#include<string>
+#include <string>
 using std::string;
 
+#include <memory>
+using std::shared_ptr;
+
+//Node Operations can be sucessful or not, every
+//method that would simply return void will instead
+//return an Error ou Sucess.
 enum NodeOperationStatus {Error, Sucess};
+//The Compare method from the library String
+//returns 0 when Equal.
 enum StringEquivalence {Equals};
 
 class StringNode{
@@ -10,8 +18,8 @@ class StringNode{
  //the initial text value for the node
 
  private:
-  StringNode* leftBranch;
-  StringNode* rightBranch;
+  shared_ptr<StringNode> pLeftBranch;
+  shared_ptr<StringNode> pRightBranch;
   string text;
 
  public:
@@ -19,10 +27,10 @@ class StringNode{
   StringNode();
   StringNode(string initialText);
 
-  ~StringNode();
+  //~StringNode();
 
-  StringNode* getLeftBranch(void) { return this->leftBranch; }
-  StringNode* getRightBranch(void){ return this->rightBranch; }
+  shared_ptr<StringNode> getLeftBranch(void) { return this->pLeftBranch; }
+  shared_ptr<StringNode> getRightBranch(void){ return this->pRightBranch; }
   string getText(void) { return this->text; }
 
   int setText(string newText);

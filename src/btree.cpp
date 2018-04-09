@@ -3,12 +3,12 @@
 
 
 BTree::BTree(void){
-  rootNode = new StringNode();
+  pRootNode.reset(new StringNode());
   
 };
 
 BTree::BTree(string initialText){
-    rootNode = new StringNode(initialText);
+    pRootNode.reset(new StringNode(initialText));
 };
 
 
