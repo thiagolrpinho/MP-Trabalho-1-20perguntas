@@ -12,7 +12,8 @@
 			"system_error": "cpp",
 			"optional": "cpp",
 			"ratio": "cpp",
-			"type_traits": "cpp"
+			"type_traits": "cpp",
+			"bitset": "cpp"
 		}
 	}
 }

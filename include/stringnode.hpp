@@ -35,4 +35,5 @@ class StringNode{
 
   int setText(string newText);
   int insertBranch(string initialNewBranchText);
+  int cutBranch();
 };

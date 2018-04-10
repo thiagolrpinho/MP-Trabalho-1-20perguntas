@@ -47,7 +47,7 @@ int StringNode::setText(string newText)
   return Sucess;
 }
 
-/*
+
 //Reset each node after cleaning the nodes below it
 int StringNode::cutBranch(void )
 {
@@ -55,13 +55,14 @@ int StringNode::cutBranch(void )
     if ( this->getLeftBranch() != nullptr )
     {
         this->getLeftBranch()->cutBranch();
-        this->getLeftBranch().reset();
+        this->getLeftBranch() = nullptr;
     }
     
     if ( this->getRightBranch() != nullptr )
     {
         this->getRightBranch()->cutBranch();
-        this->getRightBranch().reset();
+        this->getRightBranch() = nullptr;
     }
+    
+
 }
-*/
