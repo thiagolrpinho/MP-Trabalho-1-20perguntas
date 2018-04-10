@@ -51,18 +51,24 @@ int StringNode::setText(string newText)
 //Reset each node after cleaning the nodes below it
 int StringNode::cutBranch(void )
 {
-    //If there's a branch, clean this branch
-    if ( this->getLeftBranch() != nullptr )
+    try
     {
-        this->getLeftBranch()->cutBranch();
-        this->getLeftBranch() = nullptr;
-    }
-    
-    if ( this->getRightBranch() != nullptr )
-    {
-        this->getRightBranch()->cutBranch();
-        this->getRightBranch() = nullptr;
-    }
-    
+        //If there's a branch, clean this branch
+        if ( this->pLeftBranch != nullptr )
+        {
+            this->pLeftBranch->cutBranch();
+            this->pLeftBranch.reset();
+        }
+        
+        if ( this->pRightBranch != nullptr )
+        {
+            this->pRightBranch->cutBranch();
+            this->pRightBranch.reset();
+        }
 
+        this->text.clear();
+        return Sucess;
+    } catch (int e) {
+        return Error;
+    }
 }
