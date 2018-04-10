@@ -25,14 +25,14 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
   }
 
   SECTION( "Creating a non empty tree root"){
-    REQUIRE( pNonEmptyTestTree->getRoot()->getText().compare("É verde?") == 0);
+    REQUIRE( pNonEmptyTestTree->getRoot()->getText().compare("É verde?") == Equals);
   }
 
   SECTION( "Inserting left branch on root")
   {
     
     REQUIRE_FALSE( pNonEmptyTestTree->getRoot()->insertNode("É azul?") == Error);
-    REQUIRE(pNonEmptyTestTree->getRoot()->getLeftNode()->getText().compare("É azul?") == 0);
+    REQUIRE(pNonEmptyTestTree->getRoot()->getLeftNode()->getText().compare("É azul?") == Equals);
   }
 
   SECTION( "Inserting right branch on root")
@@ -157,9 +157,25 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
     pNode->cutNode();
     
     REQUIRE( pNode->getLeftNode() == nullptr );
+    //Shared_ptr garanties that when there's no reference to the pointer, they're deallocated
   }
 
 }//TEST CASE DELETE BINARY TREE
 
-
+/*
+  THESE TESTS WILL BE FOCUSED ON THE  QUESTIONS OF 
+  THE 20_QUESTIONS GAME
+  It'll be consired fully functional if they pass on
+  four test cases:
+    Create questions, Read questions, update question
+    and delete questions
+*/
+TEST_CASE( "CREATE QUESTIONS", "[20_QUESTION_GAME_Questions]" )
+{
+  SECTION( "creating a question" )
+  {
+    shared_ptr<GameQuestion> pGameQuestion;
+    REQUIRE( true );
+  }
+}
 #endif //CATCH_H_INCLUDED
