@@ -3,19 +3,19 @@
 
 StringNode::StringNode(void)
 {
-  pRightBranch = pLeftBranch = nullptr;
+  pRightNode = pLeftNode = nullptr;
   text.clear();
 }
 
 StringNode::StringNode(string initialText)
 {
-    pRightBranch = pLeftBranch = nullptr;
+    pRightNode = pLeftNode = nullptr;
     text.assign(initialText);
 }
 
 StringNode::~StringNode(){
-    pRightBranch.reset();
-    pLeftBranch.reset();
+    pRightNode.reset();
+    pLeftNode.reset();
     text.clear();
 }
 
@@ -25,11 +25,11 @@ StringNode::~StringNode(){
     should result on a flag error and the third node being discarted
 */
 
-int StringNode::insertBranch(string initialNewBranchText){
-    if ( this->getLeftBranch() == nullptr) {
-        this->pLeftBranch.reset(new StringNode(initialNewBranchText));
-    } else if (this->getRightBranch() == nullptr) {
-        this->pRightBranch.reset(new StringNode(initialNewBranchText));
+int StringNode::insertNode(string initialNewNodeText){
+    if ( this->getLeftNode() == nullptr) {
+        this->pLeftNode.reset(new StringNode(initialNewNodeText));
+    } else if (this->getRightNode() == nullptr) {
+        this->pRightNode.reset(new StringNode(initialNewNodeText));
     } else {
         return Error;
     }
@@ -49,21 +49,21 @@ int StringNode::setText(string newText)
 
 
 //Reset each node after cleaning the nodes below it
-int StringNode::cutBranch(void )
+int StringNode::cutNode(void )
 {
     try
     {
         //If there's a branch, clean this branch
-        if ( this->getLeftBranch() != nullptr )
+        if ( this->getLeftNode() != nullptr )
         {
-            this->pLeftBranch->cutBranch();
-            this->pLeftBranch.reset();
+            this->pLeftNode->cutNode();
+            this->pLeftNode.reset();
         }
         
-        if ( this->getRightBranch() != nullptr )
+        if ( this->getRightNode() != nullptr )
         {
-            this->pRightBranch->cutBranch();
-            this->pRightBranch.reset();
+            this->pRightNode->cutNode();
+            this->pRightNode.reset();
         }
 
         this->text.clear();

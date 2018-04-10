@@ -18,8 +18,8 @@ class StringNode{
  //the initial text value for the node
 
  private:
-  shared_ptr<StringNode> pLeftBranch;
-  shared_ptr<StringNode> pRightBranch;
+  shared_ptr<StringNode> pLeftNode;
+  shared_ptr<StringNode> pRightNode;
   string text;
 
  public:
@@ -29,11 +29,11 @@ class StringNode{
 
   ~StringNode();
 
-  shared_ptr<StringNode> getLeftBranch(void) { return this->pLeftBranch; }
-  shared_ptr<StringNode> getRightBranch(void){ return this->pRightBranch; }
+  shared_ptr<StringNode> getLeftNode(void) { return this->pLeftNode; }
+  shared_ptr<StringNode> getRightNode(void){ return this->pRightNode; }
   string getText(void) { return this->text; }
 
   int setText(string newText);
-  int insertBranch(string initialNewBranchText);
-  int cutBranch();
+  int insertNode(string initialNewNodeText);
+  int cutNode();
 };
