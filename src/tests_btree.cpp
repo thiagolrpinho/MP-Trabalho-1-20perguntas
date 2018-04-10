@@ -147,20 +147,16 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
   {
     shared_ptr<StringNode> pBranch = pRoot->getLeftBranch();
     pBranch->insertBranch("Abaixo?");
-    StringNode* pBelowBranch = pBranch->getLeftBranch().get();
-    pBelowBranch->insertBranch("Abaixo do abaixo?");
+    pBranch->getLeftBranch()->insertBranch("Abaixo do abaixo?");
 
     REQUIRE_FALSE( pBranch == nullptr );
-    REQUIRE_FALSE( pBelowBranch == nullptr );
+    REQUIRE_FALSE( pBranch->getLeftBranch() == nullptr );
+    REQUIRE_FALSE( pBranch->getLeftBranch()->getLeftBranch() == nullptr );
+    REQUIRE( pBranch->getLeftBranch()->getLeftBranch()->getLeftBranch() == nullptr );
 
-    REQUIRE( pBranch->cutBranch() == Sucess ) ;
-    pBranch.reset();
-    REQUIRE( pBranch == nullptr );
-    /*
-    REQUIRE_FALSE( pBelowBranch->getText().compare("Abaixo?") == Equals );
-    REQUIRE( pBelowBranch->getLeftBranch() == nullptr );
-    REQUIRE( pBelowBranch == nullptr );
-    */
+    pBranch->cutBranch();
+    
+    REQUIRE( pBranch->getLeftBranch() == nullptr );
   }
 }
 

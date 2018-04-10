@@ -54,13 +54,13 @@ int StringNode::cutBranch(void )
     try
     {
         //If there's a branch, clean this branch
-        if ( this->pLeftBranch != nullptr )
+        if ( this->getLeftBranch() != nullptr )
         {
             this->pLeftBranch->cutBranch();
             this->pLeftBranch.reset();
         }
         
-        if ( this->pRightBranch != nullptr )
+        if ( this->getRightBranch() != nullptr )
         {
             this->pRightBranch->cutBranch();
             this->pRightBranch.reset();
