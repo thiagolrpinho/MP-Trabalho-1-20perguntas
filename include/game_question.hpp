@@ -18,8 +18,8 @@ class GameQuestion {
  GameQuestion(string initialText);
  string getThisQuestion(void){ return pBTree->getRoot()->getText(); };
 
- int newYesAnswer(){ pBTree->getRoot()->insertNode("PORRA"); return Sucess; };
- shared_ptr<StringNode> getYes(){ return pBTree->getRoot()->getLeftNode(); };
+ int newYesAnswer(void);
+ shared_ptr<StringNode> getYes(void);
 
 };
 

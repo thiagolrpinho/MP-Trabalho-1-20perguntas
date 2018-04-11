@@ -39,8 +39,9 @@ TEST_CASE( "CREATE QUESTIONS", "[20_QUESTION_GAME_Questions]" )
 
   SECTION( "creating a don't know type of question" )
   { 
-    pGameQuestion->newYesAnswer();
     REQUIRE(pGameQuestion->getYes() == nullptr);
+    pGameQuestion->newYesAnswer();
+    REQUIRE_FALSE(pGameQuestion->getYes() == nullptr);
     REQUIRE(pGameQuestion->getYes()->getText().empty());
   }
 } //TEST CASE CREATING GAME QUESTION

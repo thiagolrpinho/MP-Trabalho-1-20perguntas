@@ -37,6 +37,46 @@ int StringNode::insertNode(string initialNewNodeText){
     return Sucess;
 };
 
+
+int StringNode::insertLeftNode(){
+    if ( this->getLeftNode() == nullptr) {
+        this->pLeftNode.reset(new StringNode());
+    } else {
+        return Error;
+    }
+    return Sucess;
+};
+
+int StringNode::insertLeftNode(string initialNewNodeText){
+    if ( this->getLeftNode() == nullptr) {
+        this->pLeftNode.reset(new StringNode(initialNewNodeText));
+    } else {
+        return Error;
+    }
+    return Sucess;
+};
+
+int StringNode::insertRightNode(string initialNewNodeText){
+    if ( this->getRightNode() == nullptr) {
+        this->pRightNode.reset(new StringNode(initialNewNodeText));
+    } else {
+        return Error;
+    }
+    return Sucess;
+};
+
+int StringNode::insertRightNode( ){
+    if ( this->getRightNode() == nullptr) {
+        this->pRightNode.reset( );
+    } else {
+        return Error;
+    }
+    return Sucess;
+};
+
+
+
+
 int StringNode::setText(string newText)
 {
   try {

@@ -41,5 +41,9 @@ class StringNode{
 
   int setText(string newText);
   int insertNode(string initialNewNodeText);
+  int insertLeftNode();
+  int insertLeftNode(string initialNewNodeText);
+  int insertRightNode();
+  int insertRightNode(string initialNewNodeText);
   int cutNode();
 };
