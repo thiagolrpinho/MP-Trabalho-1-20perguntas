@@ -11,8 +11,10 @@ class GameQuestion {
  
  private:
   shared_ptr<BTree> pBTree;
+  shared_ptr<StringNode> pActualNode;
 
  public:
+ string getThisQuestion(void){ return pActualNode->getText();};
 
 
 };

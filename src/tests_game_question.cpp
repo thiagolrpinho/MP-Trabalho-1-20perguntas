@@ -12,9 +12,18 @@ THESE TESTS WILL BE FOCUSED ON THE  QUESTIONS OF
 
 TEST_CASE( "CREATE QUESTIONS", "[20_QUESTION_GAME_Questions]" )
 {
-  SECTION( "creating a question" )
+  SECTION( "creating some question" )
   {
     PGAMEQUESTION pGameQuestion(new GameQuestion());
+
     REQUIRE_FALSE( pGameQuestion == nullptr );
+  }
+
+  SECTION( "creating a empty question" )
+  { 
+    PGAMEQUESTION pEmptyGameQuestion(new GameQuestion());
+
+    REQUIRE( pEmptyGameQuestion->getThisQuestion()  == "Equals ");
+
   }
 }
