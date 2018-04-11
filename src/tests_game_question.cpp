@@ -12,6 +12,10 @@ THESE TESTS WILL BE FOCUSED ON THE  QUESTIONS OF
 
 TEST_CASE( "CREATE QUESTIONS", "[20_QUESTION_GAME_Questions]" )
 {
+  PGAMEQUESTION pGameQuestion(new GameQuestion( "Do you like cakes?" ));
+  //The're will be two types of game nodes an answer which is a leaf(both 
+  //branches are null) or a question which can have an answer or another question
+  //on their branches
   SECTION( "creating some question" )
   {
     PGAMEQUESTION pGameQuestion(new GameQuestion());
@@ -27,11 +31,16 @@ TEST_CASE( "CREATE QUESTIONS", "[20_QUESTION_GAME_Questions]" )
 
   }
 
-    SECTION( "creating an empty question" )
+  SECTION( "creating a non empty question" )
   { 
-    PGAMEQUESTION pEmptyGameQuestion(new GameQuestion( "Do you like cakes?" ));
-
-    REQUIRE_FALSE( pEmptyGameQuestion->getThisQuestion().empty());
-
+    REQUIRE_FALSE( pGameQuestion->getThisQuestion().empty());
   }
-}
+
+
+  SECTION( "creating a don't know type of question" )
+  { 
+    pGameQuestion->newYesAnswer();
+    REQUIRE(pGameQuestion->getYes() == nullptr);
+    REQUIRE(pGameQuestion->getYes()->getText().empty());
+  }
+} //TEST CASE CREATING GAME QUESTION
