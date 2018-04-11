@@ -19,11 +19,11 @@ TEST_CASE( "CREATE QUESTIONS", "[20_QUESTION_GAME_Questions]" )
     REQUIRE_FALSE( pGameQuestion == nullptr );
   }
 
-  SECTION( "creating a empty question" )
+  SECTION( "creating an empty question" )
   { 
     PGAMEQUESTION pEmptyGameQuestion(new GameQuestion());
 
-    REQUIRE( pEmptyGameQuestion->getThisQuestion()  == "Equals ");
+    REQUIRE( pEmptyGameQuestion->getThisQuestion().empty());
 
   }
 }

@@ -14,7 +14,8 @@ class GameQuestion {
   shared_ptr<StringNode> pActualNode;
 
  public:
- string getThisQuestion(void){ return pActualNode->getText();};
+ GameQuestion();
+ string getThisQuestion(void){ return pBTree->getRoot()->getText(); };
 
 
 };
