@@ -26,4 +26,12 @@ TEST_CASE( "CREATE QUESTIONS", "[20_QUESTION_GAME_Questions]" )
     REQUIRE( pEmptyGameQuestion->getThisQuestion().empty());
 
   }
+
+    SECTION( "creating an empty question" )
+  { 
+    PGAMEQUESTION pEmptyGameQuestion(new GameQuestion( "Do you like cakes?" ));
+
+    REQUIRE_FALSE( pEmptyGameQuestion->getThisQuestion().empty());
+
+  }
 }

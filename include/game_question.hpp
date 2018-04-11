@@ -15,6 +15,7 @@ class GameQuestion {
 
  public:
  GameQuestion();
+ GameQuestion(string initialText);
  string getThisQuestion(void){ return pBTree->getRoot()->getText(); };
 
 
