@@ -1,8 +1,14 @@
+#ifndef CATCH_H
+#define CATCH_H
+#include "catch.hpp"
+#endif
+
 #include <string>
 using std::string;
 
 #include <memory>
 using std::shared_ptr;
+using std::make_shared;
 
 //Node Operations can be sucessful or not, every
 //method that would simply return void will instead

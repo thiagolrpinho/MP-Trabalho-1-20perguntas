@@ -1,8 +1,4 @@
-#ifndef  MP_TRABALHO1_CATCH_H_INCLUDED   
-#define  MP_TRABALHO1_CATCH_H_INCLUDED
-#include "catch.hpp"
 #include "btree.hpp"
-
 
 //! These tests will be focused on binary trees
 //! They'll be considered fully functional if they pass in
@@ -162,20 +158,3 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
 
 }//TEST CASE DELETE BINARY TREE
 
-/*
-  THESE TESTS WILL BE FOCUSED ON THE  QUESTIONS OF 
-  THE 20_QUESTIONS GAME
-  It'll be consired fully functional if they pass on
-  four test cases:
-    Create questions, Read questions, update question
-    and delete questions
-*/
-TEST_CASE( "CREATE QUESTIONS", "[20_QUESTION_GAME_Questions]" )
-{
-  SECTION( "creating a question" )
-  {
-    shared_ptr<GameQuestion> pGameQuestion;
-    REQUIRE( true );
-  }
-}
-#endif //CATCH_H_INCLUDED
