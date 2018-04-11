@@ -4,5 +4,16 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"string": "cpp",
+			"*.tcc": "cpp",
+			"array": "cpp",
+			"system_error": "cpp",
+			"optional": "cpp",
+			"ratio": "cpp",
+			"type_traits": "cpp",
+			"bitset": "cpp"
+		}
+	}
 }
