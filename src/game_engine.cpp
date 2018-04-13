@@ -65,7 +65,12 @@ int GameEngine::newYesAnswer(string initialText)
 //DELETING METHODS
 int GameEngine::removeActualNode( void )
 {
-    return 0;
+    try {
+        getActualNode().reset();
+    } catch(int e) {
+        return Error;
+    }
+    return Sucess;
 };
 
 //YesOrNo Logic
