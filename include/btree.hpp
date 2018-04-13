@@ -3,6 +3,7 @@
 
 #include "stringnode.hpp"
 
+typedef shared_ptr<StringNode> PStringNode;
 /*
   This is library was built to structurize a binary tree of strings
 */
@@ -10,13 +11,13 @@
 class BTree {
  //The BTree class itself will work as a header of the tree
  private:
-  shared_ptr<StringNode> pRootNode;
+  PStringNode p_root_node_;
 
  public:
  //Methods
   BTree();
-  BTree(string initialText);
-  shared_ptr<StringNode> getRoot(void) { return this->pRootNode; };
+  BTree(string initial_text);
+  PStringNode getRoot(void) { return this->p_root_node_; };
 
 
 
