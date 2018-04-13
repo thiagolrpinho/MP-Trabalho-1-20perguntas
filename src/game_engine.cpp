@@ -16,6 +16,7 @@ GameEngine::GameEngine(string initialText)
     this->setActualNode(getStart());
 }
 
+//POSITIONING METHODS
  PStringNode GameEngine::getStart(void)
  { 
      return pTreeOfStatements->getRoot();
@@ -34,6 +35,7 @@ GameEngine::GameEngine(string initialText)
     return Sucess;
  };
 
+//READING AND WRITING METHODS
 string GameEngine::readActualNode( void )
 {
     return getActualNode()->getText();
@@ -60,6 +62,13 @@ int GameEngine::newYesAnswer(string initialText)
     return Sucess; 
 };
 
+//DELETING METHODS
+int GameEngine::removeActualNode( void )
+{
+    return 0;
+};
+
+//YesOrNo Logic
 int GameEngine::newYesQuestion(string initialQuestion)
 {
     PStringNode newQuestionNode;

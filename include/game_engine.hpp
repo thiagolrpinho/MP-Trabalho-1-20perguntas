@@ -38,6 +38,8 @@ class GameEngine {
  string readActualNode( void );
  int writeInActualNode( string newText );
  
+ //Remove Statements
+ int removeActualNode( void );
  //YesOrNo Logic
  int newYesAnswer(void);
  int newYesAnswer(string initialText);

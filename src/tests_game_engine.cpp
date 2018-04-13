@@ -126,3 +126,16 @@ TEST_CASE( "UPDATE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
     REQUIRE( pGameEngine->readActualNode().compare("Do you like watermellon?") == Equals );
   }
 } //TEST CASE UPDATE STATEMENTS
+
+TEST_CASE( "DELETE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
+{
+  PGameEngine PGameEngine(new GameEngine());
+
+  SECTION("A branch can be deleted")
+  { 
+    REQUIRE( PGameEngine->removeActualNode() == Sucess);
+    REQUIRE( PGameEngine->getActualNode() == nullptr);
+  }
+
+
+}
