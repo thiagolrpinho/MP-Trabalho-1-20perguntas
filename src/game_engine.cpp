@@ -7,6 +7,8 @@ GameEngine::GameEngine()
     pTreeOfStatements.reset(new BTree());
     //Initial Actual Node is the start node
     this->setActualNode(getStart());
+    this->setLastNode(getStart());
+    
 }
 
 GameEngine::GameEngine(string initialText)
@@ -14,6 +16,7 @@ GameEngine::GameEngine(string initialText)
     pTreeOfStatements.reset(new BTree(initialText));
      //Initial Actual Node is the start node
     this->setActualNode(getStart());
+    this->setLastNode(getStart());
 }
 
 //POSITIONING METHODS
@@ -25,10 +28,26 @@ GameEngine::GameEngine(string initialText)
  {
       return pActualNode; 
  };
+ 
  int GameEngine::setActualNode( PStringNode pNextNode )
  { 
     try {
         pActualNode = pNextNode;
+    } catch (int e) {
+        return Error;
+    }
+    return Sucess;
+ };
+
+  PStringNode GameEngine::getLastNode(void)
+ {
+      return pLastNode; 
+ };
+
+ int GameEngine::setLastNode( PStringNode pNextNode )
+ { 
+    try {
+        pLastNode = pNextNode;
     } catch (int e) {
         return Error;
     }
@@ -67,6 +86,7 @@ int GameEngine::removeActualNode( void )
 {
     try {
         getActualNode().reset();
+        setActualNode(nullptr);
     } catch(int e) {
         return Error;
     }

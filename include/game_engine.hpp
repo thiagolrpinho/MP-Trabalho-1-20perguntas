@@ -24,6 +24,7 @@ class GameEngine {
  private:
   shared_ptr<BTree> pTreeOfStatements;
   PStringNode pActualNode;
+  PStringNode pLastNode;  
 
  public:
  GameEngine();
@@ -32,7 +33,9 @@ class GameEngine {
  //Positioning logic
  PStringNode getStart(void);
  PStringNode getActualNode(void);
+ PStringNode getLastNode(void);
  int setActualNode( PStringNode pNextNode );
+ int setLastNode( PStringNode pNextNode );
 
  //Reading and writing values on nodes
  string readActualNode( void );

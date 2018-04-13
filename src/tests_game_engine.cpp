@@ -22,7 +22,7 @@ TEST_CASE( "CREATE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
 
   SECTION( "creating game engine" )
   {
-    PGameEngine pGameEngine(new GameEngine());
+    PGameEngine pEmptyGameEngine(new GameEngine());
 
     REQUIRE_FALSE( pGameEngine == nullptr );
   }
