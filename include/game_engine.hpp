@@ -38,7 +38,8 @@ class GameEngine {
  PStringNode getStart(void);
  PStringNode getActualNode(void);
  PStringNode popLastNode(void);
- int setActualNode( PStringNode p_next_node);
+ int setActualNode( PStringNode p_next_node );
+ int pushLastNode( void ); //If no node is passed, Actual Node will be added to last
  int pushLastNode( PStringNode p_next_node );
  int moveToYes( void );
  int moveToNo( void );

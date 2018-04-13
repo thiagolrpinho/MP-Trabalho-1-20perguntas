@@ -46,6 +46,16 @@ GameEngine::GameEngine(string initial_text)
       return pLast;
  };
 
+ int GameEngine::pushLastNode( void)
+ { 
+    try {
+        stack_of_last_nodes_.push( getActualNode() );
+    } catch (int e) {
+        return Error;
+    }
+    return Sucess;
+ };
+
  int GameEngine::pushLastNode( PStringNode p_next_node )
  { 
     try {
@@ -55,6 +65,24 @@ GameEngine::GameEngine(string initial_text)
     }
     return Sucess;
  };
+
+ int GameEngine::moveToYes( void )
+ {
+     if ( getYes() == nullptr ) return Error;
+     pushLastNode(); //Stores the last node on the stack
+     setActualNode( getYes() );   //Move to the Yes statement
+     return Sucess;
+ };
+
+/*
+ int GameEngine::moveToNo( void )
+ {
+     if ( getNo() == nullptr ) return Error;
+     pushLastNode(); //Stores the last node on the stack
+     setActualNode( getNo() );   //Move to the Yes statement
+     return Sucess;
+ };
+*/
 
 //READING AND WRITING METHODS
 string GameEngine::readActualNode( void )
