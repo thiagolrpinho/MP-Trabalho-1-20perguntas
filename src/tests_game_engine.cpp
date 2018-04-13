@@ -94,7 +94,7 @@ TEST_CASE( "READ STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
 
   SECTION( "An statement on root can be read" )
   {
-    REQUIRE( pGameEngine->readActualNode().compare( "Do you like cakes?" ) == Sucess );
+    REQUIRE( pGameEngine->readActualNode().compare( "Do you like cakes?" ) == Equals );
   }
 
   SECTION( "An statement on branch can be read")
@@ -102,7 +102,7 @@ TEST_CASE( "READ STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
     REQUIRE( pGameEngine->newYesQuestion("Do you like apples?") == Sucess );
     PStringNode pBranchStatement(pGameEngine->getYes() );
     REQUIRE( pGameEngine->setActualNode(pBranchStatement) == Sucess );
-    REQUIRE( pGameEngine->readActualNode().compare( "Do you like apples" ) == Sucess );
+    REQUIRE( pGameEngine->readActualNode().compare( "Do you like apples?" ) == Equals);
   }
 } //TEST CASE READ STATEMENTS
 
