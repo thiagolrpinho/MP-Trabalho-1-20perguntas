@@ -14,7 +14,9 @@
 			"ratio": "cpp",
 			"type_traits": "cpp",
 			"bitset": "cpp",
-			"typeinfo": "cpp"
+			"typeinfo": "cpp",
+			"list": "cpp",
+			"stack": "cpp"
 		}
 	}
 }

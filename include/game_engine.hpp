@@ -1,6 +1,9 @@
 #ifndef GAME_QUESTION_HPP
 #define GAME_QUESTION_HPP
 
+#include <stack>
+using std::stack;
+
 #include "btree.hpp"
 
 typedef shared_ptr<StringNode> PStringNode;
@@ -24,18 +27,21 @@ class GameEngine {
  private:
   shared_ptr<BTree> pTreeOfStatements;
   PStringNode pActualNode;
-  PStringNode pLastNode;  
+  stack<PStringNode> pLastNode;  
 
  public:
  GameEngine();
- GameEngine(string initialText);
+ GameEngine( string initialText );
 
  //Positioning logic
  PStringNode getStart(void);
  PStringNode getActualNode(void);
- PStringNode getLastNode(void);
+ PStringNode popLastNode(void);
  int setActualNode( PStringNode pNextNode );
- int setLastNode( PStringNode pNextNode );
+ int pushLastNode( PStringNode pNextNode );
+ int moveToYes( void );
+ int moveToNo( void );
+ int moveBack( void );
 
  //Reading and writing values on nodes
  string readActualNode( void );

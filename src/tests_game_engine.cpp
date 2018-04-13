@@ -18,11 +18,11 @@ TEST_CASE( "CREATE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
   //branches are null) or a question which can have an answer or another question
   //on their branches
 
-  PGameEngine pGameEngine(new GameEngine( "Do you like cakes?" ));
+  PGameEngine pGameEngine( new GameEngine( "Do you like cakes?" ) );
 
   SECTION( "creating game engine" )
   {
-    PGameEngine pEmptyGameEngine(new GameEngine());
+    PGameEngine pEmptyGameEngine( new GameEngine() );
 
     REQUIRE_FALSE( pGameEngine == nullptr );
   }
@@ -149,10 +149,12 @@ TEST_CASE( "DELETE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
     SECTION( "The engine will backtrace to the  statement before the one erased many times" )
     {
     PGameEngine->newYesQuestion( "É um anfíbio?" );
+    PGameEngine->pushLastNode( PGameEngine->getActualNode() );
     PGameEngine->setActualNode(PGameEngine->getYes());
 
     PGameEngine->newYesQuestion( "É venenoso?" );
-    PGameEngine->setActualNode(PGameEngine->getYes());
+    PGameEngine->pushLastNode( PGameEngine->getActualNode() );
+    PGameEngine->setActualNode( PGameEngine->getYes() );
 
     PGameEngine->removeActualNode();
     REQUIRE( PGameEngine->readActualNode().compare( "É um anfíbio?" ) == Equals );
