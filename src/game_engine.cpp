@@ -4,7 +4,7 @@ typedef shared_ptr<StringNode> PStringNode;
 
 GameEngine::GameEngine()
 {
-    p_tree_of_statements_.reset(new BTree());
+    p_tree_of_statements_.reset( new BTree() );
     //Initial Actual Node is the start node
     this->setActualNode(getStart());
     this->pushLastNode(getStart());
@@ -13,10 +13,10 @@ GameEngine::GameEngine()
 
 GameEngine::GameEngine(string initial_text)
 {
-    p_tree_of_statements_.reset(new BTree(initial_text));
+    p_tree_of_statements_.reset( new BTree(initial_text) );
      //Initial Actual Node is the start node
-    this->setActualNode(getStart());
-    this->pushLastNode(getStart());
+    this->setActualNode( getStart() );
+    this->pushLastNode( getStart() );
 }
 
 //POSITIONING METHODS

@@ -3,19 +3,19 @@
 
 StringNode::StringNode(void)
 {
-  pRightNode = pLeftNode = nullptr;
+  p_right_node_ = p_left_node_ = nullptr;
   text.clear();
 }
 
-StringNode::StringNode(string initialText)
+StringNode::StringNode(string  initial_text )
 {
-    pRightNode = pLeftNode = nullptr;
-    text.assign(initialText);
+    p_right_node_ = p_left_node_ = nullptr;
+    text.assign( initial_text );
 }
 
 StringNode::~StringNode(){
-    pRightNode.reset();
-    pLeftNode.reset();
+    p_right_node_.reset();
+    p_left_node_.reset();
     text.clear();
 }
 
@@ -25,11 +25,11 @@ StringNode::~StringNode(){
     should result on a flag error and the third node being discarted
 */
 
-int StringNode::insertNode(string initialNewNodeText){
-    if ( this->getLeftNode() == nullptr) {
-        this->pLeftNode.reset(new StringNode(initialNewNodeText));
+int StringNode::insertNode( string initial_new_node_text ){
+    if ( this->getLeftNode() == nullptr ) {
+        this->p_left_node_.reset( new StringNode(initial_new_node_text) );
     } else if (this->getRightNode() == nullptr) {
-        this->pRightNode.reset(new StringNode(initialNewNodeText));
+        this->p_right_node_.reset( new StringNode(initial_new_node_text) );
     } else {
         return Error;
     }
@@ -39,26 +39,26 @@ int StringNode::insertNode(string initialNewNodeText){
 
 
 int StringNode::insertLeftNode(){
-    if ( this->getLeftNode() == nullptr) {
-        this->pLeftNode.reset(new StringNode());
+    if ( this->getLeftNode() == nullptr ) {
+        this->p_left_node_.reset( new StringNode() );
     } else {
         return Error;
     }
     return Sucess;
 };
 
-int StringNode::insertLeftNode(string initialNewNodeText){
-    if ( this->getLeftNode() == nullptr) {
-        this->pLeftNode.reset(new StringNode(initialNewNodeText));
+int StringNode::insertLeftNode( string initial_new_node_text ){
+    if ( this->getLeftNode() == nullptr ) {
+        this->p_left_node_.reset( new StringNode(initial_new_node_text) );
     } else {
         return Error;
     }
     return Sucess;
 };
 
-int StringNode::insertRightNode(string initialNewNodeText){
-    if ( this->getRightNode() == nullptr) {
-        this->pRightNode.reset(new StringNode(initialNewNodeText));
+int StringNode::insertRightNode(string initial_new_node_text){
+    if ( this->getRightNode() == nullptr ) {
+        this->p_right_node_.reset( new StringNode(initial_new_node_text) );
     } else {
         return Error;
     }
@@ -66,8 +66,8 @@ int StringNode::insertRightNode(string initialNewNodeText){
 };
 
 int StringNode::insertRightNode( ){
-    if ( this->getRightNode() == nullptr) {
-        this->pRightNode.reset( );
+    if ( this->getRightNode() == nullptr ) {
+        this->p_right_node_.reset( );
     } else {
         return Error;
     }
@@ -96,14 +96,14 @@ int StringNode::cutNode(void )
         //If there's a branch, clean this branch
         if ( this->getLeftNode() != nullptr )
         {
-            this->pLeftNode->cutNode();
-            this->pLeftNode.reset();
+            this->p_left_node_->cutNode();
+            this->p_left_node_.reset();
         }
         
         if ( this->getRightNode() != nullptr )
         {
-            this->pRightNode->cutNode();
-            this->pRightNode.reset();
+            this->p_right_node_->cutNode();
+            this->p_right_node_.reset();
         }
 
         this->text.clear();

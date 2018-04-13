@@ -1,90 +1,91 @@
 #include "btree.hpp"
 
 typedef shared_ptr<StringNode> PStringNode;
+typedef shared_ptr<BTree> PBTree;
 
 //! These tests will be focused on binary trees
 //! They'll be considered fully functional if they pass in
 //! four test cases: Create, Read, Update and Destroy
 
 TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
-  string initialText = "É verde?";
+  string initial_text = "É verde?";
 
-  BTree* pEmptyTestTree = new BTree();
-  BTree* pNonEmptyTestTree = new BTree(initialText);
+  PBTree p_empty_test_tree( new BTree() );
+  PBTree p_non_empty_test_tree( new BTree(initial_text) );
 
 
   SECTION( "Creating an empty tree root" ) {
-    PStringNode pRoot = pEmptyTestTree->getRoot();
+    PStringNode p_root = p_empty_test_tree->getRoot();
 
-    REQUIRE_FALSE( pEmptyTestTree == nullptr );
-    REQUIRE( pRoot->getLeftNode() == nullptr );
-    REQUIRE( pRoot->getRightNode() == nullptr);
-    REQUIRE( pRoot->getText().empty());
+    REQUIRE_FALSE( p_empty_test_tree == nullptr );
+    REQUIRE( p_root->getLeftNode() == nullptr );
+    REQUIRE( p_root->getRightNode() == nullptr);
+    REQUIRE( p_root->getText().empty());
   }
 
   SECTION( "Creating a non empty tree root"){
-    REQUIRE( pNonEmptyTestTree->getRoot()->getText().compare("É verde?") == Equals);
+    REQUIRE( p_non_empty_test_tree->getRoot()->getText().compare("É verde?") == Equals);
   }
 
   SECTION( "Inserting left branch on root")
   {
     
-    REQUIRE_FALSE( pNonEmptyTestTree->getRoot()->insertNode("É azul?") == Error);
-    REQUIRE(pNonEmptyTestTree->getRoot()->getLeftNode()->getText().compare("É azul?") == Equals);
+    REQUIRE_FALSE( p_non_empty_test_tree->getRoot()->insertNode("É azul?") == Error);
+    REQUIRE(p_non_empty_test_tree->getRoot()->getLeftNode()->getText().compare("É azul?") == Equals);
   }
 
   SECTION( "Inserting right branch on root")
   {
-    PStringNode pRoot = pNonEmptyTestTree->getRoot();
-    REQUIRE_FALSE( pRoot->insertNode("É azul?") == Error);
-    REQUIRE_FALSE( pRoot->insertNode("É vermelho?") == Error);
-    REQUIRE(pRoot->getLeftNode()->getText().compare("É azul?") == Equals);
-    REQUIRE(pRoot->getRightNode()->getText().compare("É vermelho?") == Equals);
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    REQUIRE_FALSE( p_root->insertNode("É azul?") == Error);
+    REQUIRE_FALSE( p_root->insertNode("É vermelho?") == Error);
+    REQUIRE(p_root->getLeftNode()->getText().compare("É azul?") == Equals);
+    REQUIRE(p_root->getRightNode()->getText().compare("É vermelho?") == Equals);
   }
 
   SECTION( "Inserting left branch on left branch of root")
   {
-    PStringNode pRoot = pNonEmptyTestTree->getRoot();
-    REQUIRE_FALSE( pRoot->insertNode("É azul?") == Error);
-    PStringNode pLeftNodeOfRoot = pRoot->getLeftNode();
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    REQUIRE_FALSE( p_root->insertNode("É azul?") == Error);
+    PStringNode p_left_node_of_root = p_root->getLeftNode();
 
-    REQUIRE_FALSE( pLeftNodeOfRoot->insertNode("É violeta?") == Error);
-    REQUIRE( pLeftNodeOfRoot->getLeftNode()->getText().compare("É violeta?") == Equals);
+    REQUIRE_FALSE( p_left_node_of_root->insertNode("É violeta?") == Error);
+    REQUIRE( p_left_node_of_root->getLeftNode()->getText().compare("É violeta?") == Equals);
   }
 
    SECTION( "Inserting right and left branch on left branch of root" )
   {
-    PStringNode pRoot = pNonEmptyTestTree->getRoot();
-    REQUIRE_FALSE( pRoot->insertNode("É azul?") == Error);
-    PStringNode pLeftNodeOfRoot = pRoot->getLeftNode();
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    REQUIRE_FALSE( p_root->insertNode("É azul?") == Error);
+    PStringNode p_left_node_of_root = p_root->getLeftNode();
 
-    REQUIRE_FALSE( pLeftNodeOfRoot->insertNode("É violeta?") == Error);
-    REQUIRE( pLeftNodeOfRoot->getLeftNode()->getText().compare("É violeta?") == Equals);
-    REQUIRE_FALSE( pLeftNodeOfRoot->insertNode("É de comer?") == Error);
-    REQUIRE( pLeftNodeOfRoot->getRightNode()->getText().compare("É de comer?") == Equals);
+    REQUIRE_FALSE( p_left_node_of_root->insertNode("É violeta?") == Error);
+    REQUIRE( p_left_node_of_root->getLeftNode()->getText().compare("É violeta?") == Equals);
+    REQUIRE_FALSE( p_left_node_of_root->insertNode("É de comer?") == Error);
+    REQUIRE( p_left_node_of_root->getRightNode()->getText().compare("É de comer?") == Equals);
   }
 
   SECTION( "Inserting third branch on same node results in error" ) 
   {
-    PStringNode pRoot = pNonEmptyTestTree->getRoot();
-    pRoot->insertNode("É azul?");
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    p_root->insertNode("É azul?");
 
-    PStringNode pLeftNodeOfRoot = pRoot->getLeftNode();
-    pLeftNodeOfRoot->insertNode("É violeta?");
-    pLeftNodeOfRoot->insertNode("É de comer?");
-    REQUIRE( pLeftNodeOfRoot->insertNode("É manufaturado?") == Error );
+    PStringNode p_left_node_of_root = p_root->getLeftNode();
+    p_left_node_of_root->insertNode("É violeta?");
+    p_left_node_of_root->insertNode("É de comer?");
+    REQUIRE( p_left_node_of_root->insertNode("É manufaturado?") == Error );
   }
 
   SECTION( "Inserting three levels deep of root" )
   {
-    PStringNode pRoot = pNonEmptyTestTree->getRoot();
-    REQUIRE_FALSE( pRoot->insertNode("É azul?") == Error);
-    PStringNode pLeftNodeOfRoot = pRoot->getLeftNode();
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    REQUIRE_FALSE( p_root->insertNode("É azul?") == Error);
+    PStringNode p_left_node_of_root = p_root->getLeftNode();
 
-    REQUIRE_FALSE( pLeftNodeOfRoot->insertNode("É violeta?") == Error);
-    REQUIRE( pLeftNodeOfRoot->getLeftNode()->getText().compare("É violeta?") == Equals);
+    REQUIRE_FALSE( p_left_node_of_root->insertNode("É violeta?") == Error);
+    REQUIRE( p_left_node_of_root->getLeftNode()->getText().compare("É violeta?") == Equals);
     
-    PStringNode pSecondFromRoot = pLeftNodeOfRoot->getLeftNode();
+    PStringNode pSecondFromRoot = p_left_node_of_root->getLeftNode();
     REQUIRE_FALSE( pSecondFromRoot->insertNode("É amarelo?") == Error);
     REQUIRE( pSecondFromRoot->getLeftNode()->getText().compare("É amarelo?") == Equals);
 
@@ -96,54 +97,54 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) {
 } //TestCase Binary Tree Create and Read
 
 TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
-  BTree* pNonEmptyTestTree = new BTree("É moderno?");
+  PBTree p_non_empty_test_tree( new BTree("É moderno?") );
 
   SECTION( "Changing root node text value" )
   {
-    PStringNode pRoot = pNonEmptyTestTree->getRoot();
-    REQUIRE( pRoot->setText("É clássico?") == Sucess );
-    REQUIRE( pRoot->getText().compare("É clássico?") == Equals );
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    REQUIRE( p_root->setText("É clássico?") == Sucess );
+    REQUIRE( p_root->getText().compare("É clássico?") == Equals );
   }
 
   SECTION( "Changing branch node text value" )
   {
-    PStringNode pRoot = pNonEmptyTestTree->getRoot();
-    pRoot->insertNode("Errou!");
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    p_root->insertNode("Errou!");
 
-    PStringNode pNode = pRoot->getLeftNode();
+    PStringNode pNode = p_root->getLeftNode();
     REQUIRE( pNode->setText("Acertou!") == Sucess );
     REQUIRE_FALSE( pNode->getText().compare("Errou!") == Equals );
   }
 }//TestCase Binary Tree Update
 
 TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
-  BTree* pNonEmptyTestTree = new BTree("É moderno?");
-  PStringNode pRoot = pNonEmptyTestTree->getRoot();
-  pRoot->insertNode("É novo?");
+  PBTree p_non_empty_test_tree( new BTree("É moderno?") );
+  PStringNode p_root = p_non_empty_test_tree->getRoot();
+  p_root->insertNode("É novo?");
   
   
   SECTION( "root can be deleted" )
   {
-    REQUIRE_FALSE( pRoot->getText().empty() );
-    REQUIRE_FALSE( pRoot->getLeftNode() == nullptr );
-    pRoot.reset();
-    REQUIRE( pRoot == nullptr );
+    REQUIRE_FALSE( p_root->getText().empty() );
+    REQUIRE_FALSE( p_root->getLeftNode() == nullptr );
+    p_root.reset();
+    REQUIRE( p_root == nullptr );
   }
 
   SECTION( "a branch can be deleted and those above it are not affected" )
   {
-    PStringNode pNode = pRoot->getLeftNode();
+    PStringNode pNode = p_root->getLeftNode();
     REQUIRE_FALSE( pNode->getText().empty() );
 
     pNode.reset();
 
-    REQUIRE_FALSE( pRoot == nullptr );
+    REQUIRE_FALSE( p_root == nullptr );
     REQUIRE( pNode == nullptr );
   }
   
   SECTION( "a branch can be deleted and those below it are deleted too")
   {
-    PStringNode pNode = pRoot->getLeftNode();
+    PStringNode pNode = p_root->getLeftNode();
     pNode->insertNode( "Abaixo?" );
     pNode->getLeftNode()->insertNode( "Abaixo do abaixo?" );
 
