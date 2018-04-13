@@ -52,10 +52,12 @@ class GameEngine {
  //Remove Statements
  int removeActualNode( void );
  //YesOrNo Logic
- int newYesAnswer(void);
+ int newYesAnswer( void );
  int newYesAnswer(string initial_text);
+ int newNoAnswer(string initial_text);
  int newYesQuestion(string initial_question);
- PStringNode getYes(void);
+ PStringNode getYes( void );
+ PStringNode getNo( void );
 
 };
 

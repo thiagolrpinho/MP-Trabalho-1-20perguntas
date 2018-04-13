@@ -1,6 +1,6 @@
 #include "game_engine.hpp"
 
-typedef shared_ptr<StringNode> PStringNode;
+typedef PStringNode PStringNode;
 
 GameEngine::GameEngine()
 {
@@ -24,6 +24,7 @@ GameEngine::GameEngine(string initial_text)
  { 
      return p_tree_of_statements_->getRoot();
  };
+
  PStringNode GameEngine::getActualNode(void)
  {
       return p_actual_node_; 
@@ -70,19 +71,19 @@ GameEngine::GameEngine(string initial_text)
  {
      if ( getYes() == nullptr ) return Error;
      pushLastNode(); //Stores the last node on the stack
-     setActualNode( getYes() );   //Move to the Yes statement
+     if( setActualNode( getYes() ) == Error ) return Error;   //Move to the Yes statement
      return Sucess;
  };
 
-/*
+
  int GameEngine::moveToNo( void )
  {
      if ( getNo() == nullptr ) return Error;
      pushLastNode(); //Stores the last node on the stack
-     setActualNode( getNo() );   //Move to the Yes statement
+     if( setActualNode( getNo() ) == Error ) return Error;   //Move to the Yes statement
      return Sucess;
  };
-*/
+
 
 //READING AND WRITING METHODS
 string GameEngine::readActualNode( void )
@@ -101,13 +102,21 @@ int GameEngine::writeInActualNode( string new_text )
 
 int GameEngine::newYesAnswer()
 { 
-    p_tree_of_statements_->getRoot()->insertLeftNode();
+    p_tree_of_statements_->getActualNode()->insertLeftNode();
     return Sucess; 
 };
 
 int GameEngine::newYesAnswer(string initial_text)
 { 
-    p_tree_of_statements_->getRoot()->insertLeftNode( initial_text );
+    if ( getYes() != nullptr ) return Error;
+    p_tree_of_statements_->getActualNode()->insertLeftNode( initial_text );
+    return Sucess; 
+};
+
+int GameEngine::newNoAnswer(string initial_text)
+{ 
+    if ( getNo() != nullptr ) return Error;
+    p_tree_of_statements_->getActualNode()->insertRightNode( initial_text );
     return Sucess; 
 };
 
@@ -138,8 +147,13 @@ int GameEngine::newYesQuestion( string initial_question )
     return Sucess;
 };
 
-shared_ptr<StringNode> GameEngine::getYes()
+PStringNode GameEngine::getYes()
 { 
-    return p_tree_of_statements_->getRoot()->getLeftNode(); 
+    return p_tree_of_statements_->getActualNode()->getLeftNode(); 
+};
+
+PStringNode GameEngine::getNo()
+{ 
+    return p_tree_of_statements_->getActualNode()->getRightNode(); 
 };
 
