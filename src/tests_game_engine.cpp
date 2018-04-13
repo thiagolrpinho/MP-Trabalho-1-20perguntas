@@ -131,10 +131,17 @@ TEST_CASE( "DELETE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
 {
   PGameEngine PGameEngine(new GameEngine());
 
-  SECTION("A branch can be deleted")
+  SECTION( "A statament can be deleted" )
   { 
     REQUIRE( PGameEngine->removeActualNode() == Sucess);
     REQUIRE( PGameEngine->getActualNode() == nullptr);
+  }
+
+  SECTION( "The engine will backtrace to the  statement before him" ){
+    PGameEngine->newYesQuestion( "É um anfíbio?" );
+    
+    REQUIRE( PGameEngine->readActualNode().compare( "É um anfíbio?" ) == Equals);
+    REQUIRE( PGameEngine->getLastNode() == PGameEngine->getStart() );
   }
 
 

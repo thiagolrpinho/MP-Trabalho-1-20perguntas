@@ -13,7 +13,8 @@
 			"optional": "cpp",
 			"ratio": "cpp",
 			"type_traits": "cpp",
-			"bitset": "cpp"
+			"bitset": "cpp",
+			"typeinfo": "cpp"
 		}
 	}
 }
