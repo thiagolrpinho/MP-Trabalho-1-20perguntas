@@ -136,12 +136,33 @@ TEST_CASE( "DELETE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
     REQUIRE( PGameEngine->removeActualNode() == Sucess);
   }
 
-  SECTION( "The engine will backtrace to the  statement before him" ){
+  SECTION( "The engine will backtrace to the  statement before the one erased" ){
     PGameEngine->newYesQuestion( "É um anfíbio?" );
+
     PGameEngine->setActualNode(PGameEngine->getYes());
+
     PGameEngine->removeActualNode();
+
     REQUIRE( PGameEngine->getActualNode() == PGameEngine->getStart() );
   }
+
+    SECTION( "The engine will backtrace to the  statement before the one erased many times" )
+    {
+    PGameEngine->newYesQuestion( "É um anfíbio?" );
+    PGameEngine->setActualNode(PGameEngine->getYes());
+
+    PGameEngine->newYesQuestion( "É venenoso?" );
+    PGameEngine->setActualNode(PGameEngine->getYes());
+
+    PGameEngine->removeActualNode();
+    REQUIRE( PGameEngine->readActualNode().compare( "É um anfíbio?" ) == Equals );
+
+    PGameEngine->removeActualNode();
+    REQUIRE( PGameEngine->getActualNode() == PGameEngine->getStart() );
+  } //The engine will backtrace many times
+
+  
+  
 
 
 }
