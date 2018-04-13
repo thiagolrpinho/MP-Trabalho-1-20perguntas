@@ -86,7 +86,7 @@ int GameEngine::removeActualNode( void )
 {
     try {
         getActualNode().reset();
-        setActualNode(nullptr);
+        setActualNode(getLastNode());
     } catch(int e) {
         return Error;
     }
