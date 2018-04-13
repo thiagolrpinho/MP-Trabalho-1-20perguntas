@@ -26,34 +26,34 @@ typedef stack<PStringNode> StackOfStringNodes;
 class GameEngine {
  
  private:
-  shared_ptr<BTree> pTreeOfStatements;
-  PStringNode pActualNode;
-  StackOfStringNodes stack_of_last_nodes;  
+  shared_ptr<BTree> p_tree_of_statements_;
+  PStringNode p_actual_node_;
+  StackOfStringNodes stack_of_last_nodes_;  
 
  public:
  GameEngine();
- GameEngine( string initialText );
+ GameEngine( string initial_text );
 
  //Positioning logic
  PStringNode getStart(void);
  PStringNode getActualNode(void);
  PStringNode popLastNode(void);
- int setActualNode( PStringNode pNextNode );
- int pushLastNode( PStringNode pNextNode );
+ int setActualNode( PStringNode p_next_node);
+ int pushLastNode( PStringNode p_next_node );
  int moveToYes( void );
  int moveToNo( void );
  int moveBack( void );
 
  //Reading and writing values on nodes
  string readActualNode( void );
- int writeInActualNode( string newText );
+ int writeInActualNode( string new_text );
  
  //Remove Statements
  int removeActualNode( void );
  //YesOrNo Logic
  int newYesAnswer(void);
- int newYesAnswer(string initialText);
- int newYesQuestion(string initialQuestion);
+ int newYesAnswer(string initial_text);
+ int newYesQuestion(string initial_question);
  PStringNode getYes(void);
 
 };

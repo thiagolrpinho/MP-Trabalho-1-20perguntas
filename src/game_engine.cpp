@@ -4,16 +4,16 @@ typedef shared_ptr<StringNode> PStringNode;
 
 GameEngine::GameEngine()
 {
-    pTreeOfStatements.reset(new BTree());
+    p_tree_of_statements_.reset(new BTree());
     //Initial Actual Node is the start node
     this->setActualNode(getStart());
     this->pushLastNode(getStart());
     
 }
 
-GameEngine::GameEngine(string initialText)
+GameEngine::GameEngine(string initial_text)
 {
-    pTreeOfStatements.reset(new BTree(initialText));
+    p_tree_of_statements_.reset(new BTree(initial_text));
      //Initial Actual Node is the start node
     this->setActualNode(getStart());
     this->pushLastNode(getStart());
@@ -22,17 +22,17 @@ GameEngine::GameEngine(string initialText)
 //POSITIONING METHODS
  PStringNode GameEngine::getStart(void)
  { 
-     return pTreeOfStatements->getRoot();
+     return p_tree_of_statements_->getRoot();
  };
  PStringNode GameEngine::getActualNode(void)
  {
-      return pActualNode; 
+      return p_actual_node_; 
  };
  
- int GameEngine::setActualNode( PStringNode pNextNode )
+ int GameEngine::setActualNode( PStringNode p_next_node )
  { 
     try {
-        pActualNode = pNextNode;
+        p_actual_node_ = p_next_node;
     } catch (int e) {
         return Error;
     }
@@ -41,15 +41,15 @@ GameEngine::GameEngine(string initialText)
 
   PStringNode GameEngine::popLastNode(void)
  {   
-      PStringNode pLast = stack_of_last_nodes.top();
-      stack_of_last_nodes.pop(); 
+      PStringNode pLast = stack_of_last_nodes_.top();
+      stack_of_last_nodes_.pop(); 
       return pLast;
  };
 
- int GameEngine::pushLastNode( PStringNode pNextNode )
+ int GameEngine::pushLastNode( PStringNode p_next_node )
  { 
     try {
-        stack_of_last_nodes.push( pNextNode );
+        stack_of_last_nodes_.push( p_next_node );
     } catch (int e) {
         return Error;
     }
@@ -62,10 +62,10 @@ string GameEngine::readActualNode( void )
     return getActualNode()->getText();
 };
 
-int GameEngine::writeInActualNode( string newText )
+int GameEngine::writeInActualNode( string new_text )
 {
     try {
-        return getActualNode()->setText( newText );
+        return getActualNode()->setText( new_text );
     } catch(int e) {
         return Error;
     }
@@ -73,13 +73,13 @@ int GameEngine::writeInActualNode( string newText )
 
 int GameEngine::newYesAnswer()
 { 
-    pTreeOfStatements->getRoot()->insertLeftNode();
+    p_tree_of_statements_->getRoot()->insertLeftNode();
     return Sucess; 
 };
 
-int GameEngine::newYesAnswer(string initialText)
+int GameEngine::newYesAnswer(string initial_text)
 { 
-    pTreeOfStatements->getRoot()->insertLeftNode(initialText);
+    p_tree_of_statements_->getRoot()->insertLeftNode( initial_text );
     return Sucess; 
 };
 
@@ -96,11 +96,11 @@ int GameEngine::removeActualNode( void )
 };
 
 //YesOrNo Logic
-int GameEngine::newYesQuestion(string initialQuestion)
+int GameEngine::newYesQuestion( string initial_question )
 {
     PStringNode newQuestionNode;
     try{
-        newYesAnswer(initialQuestion);
+        newYesAnswer(initial_question);
         newQuestionNode = this->getYes();
         newQuestionNode->insertLeftNode();
         newQuestionNode->insertRightNode();
@@ -112,6 +112,6 @@ int GameEngine::newYesQuestion(string initialQuestion)
 
 shared_ptr<StringNode> GameEngine::getYes()
 { 
-    return pTreeOfStatements->getRoot()->getLeftNode(); 
+    return p_tree_of_statements_->getRoot()->getLeftNode(); 
 };
 
