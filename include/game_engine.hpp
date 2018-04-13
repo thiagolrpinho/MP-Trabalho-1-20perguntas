@@ -7,6 +7,7 @@ using std::stack;
 #include "btree.hpp"
 
 typedef shared_ptr<StringNode> PStringNode;
+typedef stack<PStringNode> StackOfStringNodes;
 /*
   This is library was built to abstract game engine in the game 20 questions.
   Each node represents an statement. 
@@ -27,7 +28,7 @@ class GameEngine {
  private:
   shared_ptr<BTree> pTreeOfStatements;
   PStringNode pActualNode;
-  stack<PStringNode> pLastNode;  
+  StackOfStringNodes stack_of_last_nodes;  
 
  public:
  GameEngine();

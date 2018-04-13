@@ -150,7 +150,7 @@ TEST_CASE( "DELETE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
     {
     PGameEngine->newYesQuestion( "É um anfíbio?" );
     PGameEngine->pushLastNode( PGameEngine->getActualNode() );
-    PGameEngine->setActualNode(PGameEngine->getYes());
+    PGameEngine->setActualNode( PGameEngine->getYes() );
 
     PGameEngine->newYesQuestion( "É venenoso?" );
     PGameEngine->pushLastNode( PGameEngine->getActualNode() );
@@ -162,9 +162,5 @@ TEST_CASE( "DELETE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
     PGameEngine->removeActualNode();
     REQUIRE( PGameEngine->getActualNode() == PGameEngine->getStart() );
   } //The engine will backtrace many times
-
-  
-  
-
 
 }

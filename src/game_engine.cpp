@@ -41,15 +41,15 @@ GameEngine::GameEngine(string initialText)
 
   PStringNode GameEngine::popLastNode(void)
  {   
-      PStringNode pLast = pLastNode.top();
-      pLastNode.pop(); 
+      PStringNode pLast = stack_of_last_nodes.top();
+      stack_of_last_nodes.pop(); 
       return pLast;
  };
 
  int GameEngine::pushLastNode( PStringNode pNextNode )
  { 
     try {
-        pLastNode.push( pNextNode );
+        stack_of_last_nodes.push( pNextNode );
     } catch (int e) {
         return Error;
     }
