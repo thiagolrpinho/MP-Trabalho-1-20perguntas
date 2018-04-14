@@ -84,6 +84,7 @@ GameEngine::GameEngine(string initial_text)
      return Sucess;
  };
 
+int GameEngine::restart( void ){};
 
 //READING AND WRITING METHODS
 string GameEngine::readActualNode( void )

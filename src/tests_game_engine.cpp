@@ -60,4 +60,15 @@ TEST_CASE( "GUESSING", "[20_QUESTION_GAME_ENGINE]" )
         p_new_game->moveToYes();
         REQUIRE( p_new_game->checkGuess() == Sucess );
     }
-}
+} //TEST CASE GUESSING
+
+TEST_CASE( "Restart", "[20_QUESTION_GAME_ENGINE]" )
+{
+    PGameEngine p_new_game( new GameEngine("É verde?") );
+
+    SECTION( "a game can be restarted" )
+    {
+        REQUIRE( p_new_game->restart() == Sucess);
+    }
+    
+};

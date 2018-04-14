@@ -45,7 +45,7 @@ class GameEngine {
  int moveToYes( void );
  int moveToNo( void );
  int moveBack( void );
-
+ int restart( void );
  //Reading and writing values on nodes
  string readActualNode( void );
  int writeInActualNode( string new_text );
