@@ -84,6 +84,16 @@ GameEngine::GameEngine(string initial_text)
      return Sucess;
  };
 
+ int GameEngine::moveBack( void)
+ {
+     if ( !(stack_of_last_nodes_.empty()) )
+     {
+         setActualNode( popLastNode() );
+         return Sucess;
+     }
+    return Error;
+ };
+
 int GameEngine::restart( void ){
     try {
         p_actual_node_.reset();
@@ -204,7 +214,32 @@ int GameEngine::saveGame( void )
         return Sucess;
 };
 
-int GameEngine::writeInFile( fstream* pp_file_to_write )
+int GameEngine::writeInFile( fstream &p_file_to_write )
 {
-    return Error;
+    //First the engine write the actual statement on file
+    //them check if the Yes statement exist.
+    //If not, it write an # and checks the No statement
+    //If yes, it moves to the node and do the same.
+    try {
+        p_file_to_write << readActualNode() << ";";
+
+        if ( moveToYes() == Error )
+        {
+        p_file_to_write << "#;";
+        } else {
+            writeInFile( p_file_to_write );
+            moveBack();
+        }
+
+        if ( moveToNo() == Error)
+        {
+            p_file_to_write << "#;";
+        } else {
+            writeInFile( p_file_to_write );
+            moveBack();
+        }
+    } catch (int e){
+        return Error;
+    }
+    return Sucess;
 }

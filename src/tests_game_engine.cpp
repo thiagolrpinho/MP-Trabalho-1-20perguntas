@@ -80,9 +80,9 @@ TEST_CASE( "Game can be saved on a file", "[20_QUESTION_GAME_ENGINE]")
     SECTION("Game engine can write on files already opened")
     {
         fstream p_file_to_write;
-        p_file_to_write.open("test.txt", std::fstream::in);
+        p_file_to_write.open("./test.txt", std::fstream::in);
         REQUIRE_FALSE( p_file_to_write );
-        REQUIRE( p_new_game->writeInFile(&p_file_to_write) == Sucess);
+        REQUIRE( p_new_game->writeInFile(p_file_to_write) == Sucess);
     }
 
     /*

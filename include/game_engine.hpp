@@ -69,7 +69,7 @@ class GameEngine {
  int saveGame( void );
  int loadGame( void );
  int readFile( void );
- int writeInFile( fstream* p_file_to_write );
+ int writeInFile( fstream &p_file_to_write );
 
 };
 
