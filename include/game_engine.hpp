@@ -61,7 +61,7 @@ class GameEngine {
  PStringNode getNo( void );
 
  //Question Logic
- int readQuestion( void );
+ int checkGuess( void );
 
 };
 

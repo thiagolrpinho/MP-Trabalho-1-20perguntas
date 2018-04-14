@@ -49,11 +49,15 @@ TEST_CASE( "GUESSING", "[20_QUESTION_GAME_ENGINE]" )
 
     SECTION( "Game engine can check if it's a guess" )
     {
-        REQUIRE_FALSE( p_new_game->getActualNode() == nullptr );
-        REQUIRE( p_new_game->getYes() == nullptr );
-        REQUIRE( p_new_game->getNo() == nullptr );
+        //The actual statement is a leaft, so it should be
+        //a guess
+        REQUIRE( p_new_game->checkGuess() == Sucess );
 
-        REQUIRE( p_new_game->readQuestion() == Error );
-
+        p_new_game->newYesAnswer( "É um peixe?" );
+        //Now, the actual statement is not a leaf, 
+        //so it's a question
+        REQUIRE( p_new_game->checkGuess() == Error );
+        p_new_game->moveToYes();
+        REQUIRE( p_new_game->checkGuess() == Sucess );
     }
 }

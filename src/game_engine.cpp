@@ -160,4 +160,8 @@ PStringNode GameEngine::getNo( void )
 
 //Question Logic
 
-int GameEngine::readQuestion( void ){};
+int GameEngine::checkGuess( void )
+{
+    if( getYes() == nullptr && getNo() == nullptr ) return Sucess;
+    return Error;
+};
