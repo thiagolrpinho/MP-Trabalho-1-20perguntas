@@ -5,6 +5,8 @@
 using std::stack;
 #include <fstream>
 using std::fstream;
+#include <iostream>
+using std::cin;
 
 #include "btree.hpp"
 
@@ -68,7 +70,7 @@ class GameEngine {
  //File managing
  int saveGame( void );
  int loadGame( void );
- int readFile( void );
+ int readFile( fstream &p_file_to_read );
  int writeInFile( fstream &p_file_to_write );
 
 };

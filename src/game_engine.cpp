@@ -188,7 +188,7 @@ int GameEngine::checkGuess( void )
 
 //FILE MANAGING
 
-int GameEngine::readFile( void )
+int GameEngine::loadGame( void )
 {
     fstream p_file_to_read;
     try {
@@ -204,12 +204,15 @@ int GameEngine::readFile( void )
 int GameEngine::saveGame( void )
 {
     fstream p_file_to_write;
+    pushLastNode(); //Armazena o contexto atual da árvore
+    setActualNode( getStart() ); //Começa a ler a do início da árvore
         try {
-            p_file_to_write.open("./text.txt", std::fstream::out);
+            p_file_to_write.open("./text.txt", std::fstream::out | std::fstream::trunc);
         } catch ( int e) {
             return Error;
         }
         if ( writeInFile(p_file_to_write) == Error ) return Error;
+    setActualNode( popLastNode() ); //Retorna ao contexto anterior.
         p_file_to_write.close();
         return Sucess;
 };
@@ -227,7 +230,7 @@ int GameEngine::writeInFile( fstream &p_file_to_write )
         {
         p_file_to_write << "#;";
         } else {
-            writeInFile( p_file_to_write );
+            if ( writeInFile( p_file_to_write ) == Error ) return Error;
             moveBack();
         }
 
@@ -235,7 +238,7 @@ int GameEngine::writeInFile( fstream &p_file_to_write )
         {
             p_file_to_write << "#;";
         } else {
-            writeInFile( p_file_to_write );
+            if ( writeInFile( p_file_to_write ) == Error ) return Error;
             moveBack();
         }
     } catch (int e){
@@ -243,3 +246,14 @@ int GameEngine::writeInFile( fstream &p_file_to_write )
     }
     return Sucess;
 }
+
+int GameEngine::readFile( fstream &p_file_to_read )
+{
+    string node_statement;
+    try {
+        getline(p_file_to_read, node_statement, ';');
+    } catch ( int e) {
+        return Error;
+    }
+    return Error;
+};
