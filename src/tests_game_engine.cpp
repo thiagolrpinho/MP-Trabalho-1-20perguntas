@@ -76,6 +76,9 @@ TEST_CASE( "Restart", "[20_QUESTION_GAME_ENGINE]" )
 TEST_CASE( "Game can be saved on a file", "[20_QUESTION_GAME_ENGINE]")
 {
     PGameEngine p_new_game( new GameEngine("É verde?") );
+    p_new_game->newNoAnswer( "É Azul?" );
+    p_new_game->moveToNo();
+    p_new_game->newYesAnswer( "É o céu!");
 
     SECTION("Game engine can write on files already opened")
     {
@@ -85,11 +88,10 @@ TEST_CASE( "Game can be saved on a file", "[20_QUESTION_GAME_ENGINE]")
         REQUIRE( p_new_game->writeInFile(p_file_to_write) == Sucess);
     }
 
-    /*
+    
     SECTION( "Game engine can open files to write" )
     {
         REQUIRE( p_new_game->saveGame() == Sucess );
     }
-    */
 
 }

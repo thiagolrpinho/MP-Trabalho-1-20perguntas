@@ -209,7 +209,7 @@ int GameEngine::saveGame( void )
         } catch ( int e) {
             return Error;
         }
-
+        if ( writeInFile(p_file_to_write) == Error ) return Error;
         p_file_to_write.close();
         return Sucess;
 };
