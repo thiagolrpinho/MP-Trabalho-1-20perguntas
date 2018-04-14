@@ -140,7 +140,7 @@ int GameEngine::newYesAnswer(string initial_text)
     return Sucess; 
 };
 
-int GameEngine::newNoAnswer()
+int GameEngine::newNoAnswer( void )
 { 
     if ( getNo() != nullptr ) return Error;
     getActualNode()->insertRightNode();
@@ -273,14 +273,14 @@ int GameEngine::readFile( fstream &p_file_to_read )
         if ( node_statement.compare("#") != Equals ) 
         {
             newYesAnswer();
-            moveToYes();
+            if( moveToYes() == Error) return 2;
             readFile( p_file_to_read );
             moveBack();
         }
        if( getline(p_file_to_read, node_statement, ';') ) 
        {
             newNoAnswer();
-            moveToNo();
+            if( moveToNo() == Error ) return 3;
             readFile( p_file_to_read );
             moveBack();
        }

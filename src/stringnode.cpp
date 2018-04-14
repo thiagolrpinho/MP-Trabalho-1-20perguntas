@@ -67,7 +67,7 @@ int StringNode::insertRightNode(string initial_new_node_text){
 
 int StringNode::insertRightNode( ){
     if ( this->getRightNode() == nullptr ) {
-        this->p_right_node_.reset( );
+        this->p_right_node_.reset( new StringNode() );
     } else {
         return Error;
     }
