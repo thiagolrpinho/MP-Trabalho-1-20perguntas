@@ -178,4 +178,14 @@ int GameEngine::checkGuess( void )
 
 //FILE MANAGING
 
-int GameEngine::openFile( void ) {};
+int GameEngine::readFile( void )
+{
+    fstream p_file;
+    try {
+        p_file.open("text.txt", std::fstream::in | std::fstream::out);
+    } catch ( int e) {
+        return Error;
+    }
+    p_file.close();
+    return Sucess;
+};

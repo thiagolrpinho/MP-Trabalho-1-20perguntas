@@ -78,6 +78,6 @@ TEST_CASE( "Game can be saved on a file", "[20_QUESTION_GAME_ENGINE]")
     PGameEngine p_new_game( new GameEngine("É verde?") );
     SECTION( "Game engine can open files to read" )
     {
-        REQUIRE( p_new_game->openFile() == Sucess );
+        REQUIRE( p_new_game->readFile() == Sucess );
     }
 }

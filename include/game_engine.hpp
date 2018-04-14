@@ -66,7 +66,7 @@ class GameEngine {
  int checkGuess( void );
 
  //File managing
- int openFile( void );
+ int readFile( void );
 
 };
 
