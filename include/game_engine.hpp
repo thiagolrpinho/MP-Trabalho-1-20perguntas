@@ -41,6 +41,7 @@ class GameEngine {
  int setActualNode( PStringNode p_next_node );
  int pushLastNode( void ); //If no node is passed, Actual Node will be added to last
  int pushLastNode( PStringNode p_next_node );
+
  int moveToYes( void );
  int moveToNo( void );
  int moveBack( void );
@@ -58,6 +59,9 @@ class GameEngine {
  int newYesQuestion(string initial_question);
  PStringNode getYes( void );
  PStringNode getNo( void );
+
+ //Question Logic
+ int readQuestion( void );
 
 };
 

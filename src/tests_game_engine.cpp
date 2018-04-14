@@ -41,9 +41,19 @@ TEST_CASE( "Move to Yes or No", "[20_QUESTION_GAME_ENGINE]" )
         REQUIRE_FALSE( p_new_game->getNo() == nullptr );
         REQUIRE( p_new_game->moveToNo() == Sucess );
     }
+} //TEST CASE MOVE TO YES OR NO
 
-    SECTION("") 
+TEST_CASE( "GUESSING", "[20_QUESTION_GAME_ENGINE]" )
+{
+    PGameEngine p_new_game( new GameEngine("É verde?") );
+
+    SECTION( "Game engine can check if it's a guess" )
     {
-        
+        REQUIRE_FALSE( p_new_game->getActualNode() == nullptr );
+        REQUIRE( p_new_game->getYes() == nullptr );
+        REQUIRE( p_new_game->getNo() == nullptr );
+
+        REQUIRE( p_new_game->readQuestion() == Error );
+
     }
 }

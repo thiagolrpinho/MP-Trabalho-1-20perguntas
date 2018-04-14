@@ -148,13 +148,16 @@ int GameEngine::newYesQuestion( string initial_question )
     return Sucess;
 };
 
-PStringNode GameEngine::getYes()
+PStringNode GameEngine::getYes( void )
 { 
     return getActualNode()->getLeftNode(); 
 };
 
-PStringNode GameEngine::getNo()
+PStringNode GameEngine::getNo( void )
 { 
     return getActualNode()->getRightNode(); 
 };
 
+//Question Logic
+
+int GameEngine::readQuestion( void ){};
