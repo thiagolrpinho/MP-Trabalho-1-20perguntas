@@ -59,6 +59,7 @@ class GameEngine {
  //YesOrNo Logic
  int newYesAnswer( void );
  int newYesAnswer(string initial_text);
+ int newNoAnswer( void );
  int newNoAnswer(string initial_text);
  int newYesQuestion(string initial_question);
  PStringNode getYes( void );

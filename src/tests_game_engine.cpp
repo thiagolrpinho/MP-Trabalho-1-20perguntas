@@ -79,11 +79,12 @@ TEST_CASE( "Game can be saved on a file", "[20_QUESTION_GAME_ENGINE]")
     p_new_game->newNoAnswer( "É Azul?" );
     p_new_game->moveToNo();
     p_new_game->newYesAnswer( "É o céu!");
+   
 
     SECTION("Game engine can write on files already opened")
     {
         fstream p_file_to_write;
-        p_file_to_write.open("./test.txt", std::fstream::out);
+        p_file_to_write.open("./test_write.txt", std::fstream::out);
         REQUIRE( p_file_to_write.is_open() );
         REQUIRE( p_new_game->writeInFile( p_file_to_write ) == Sucess);
         p_file_to_write.close();
@@ -100,15 +101,32 @@ TEST_CASE( "Game can be saved on a file", "[20_QUESTION_GAME_ENGINE]")
 
 TEST_CASE( "Game load", "[20_QUESTION_GAME_ENGINE]")
 {
+    
+    PGameEngine p_game_to_be_saved( new GameEngine("É verde?") );
+    p_game_to_be_saved->newNoAnswer( "É Azul?" );
+    p_game_to_be_saved->moveToNo();
+    p_game_to_be_saved->newYesAnswer( "É o céu!" );
+
+    p_game_to_be_saved->saveGame();
+
     PGameEngine p_new_game( new GameEngine() );
 
     SECTION("Game engine can read files already opened")
     {
         fstream p_file_to_read;
-        p_file_to_read.open("./text.txt", std::fstream::in);
+        p_file_to_read.open("./test_save.txt", std::fstream::in);
         REQUIRE( p_file_to_read.is_open() );
         REQUIRE( p_new_game->readFile( p_file_to_read ) == Sucess);
         p_file_to_read.close();
+
+        REQUIRE( p_new_game->getActualNode() == p_new_game->getStart() );
+        REQUIRE( p_new_game->readActualNode().compare("É verde?") == Equals );
+        REQUIRE( p_new_game->moveToYes() == Error );
+        REQUIRE( p_new_game->moveToNo() == Sucess );
+        REQUIRE( p_new_game->readActualNode().compare( "É Azul?" ) == Equals );
+        REQUIRE( p_new_game->moveToNo() == Error );
+        REQUIRE( p_new_game->moveToYes() == Sucess );
+        REQUIRE( p_new_game->readActualNode().compare( "É o céu!" ) == Equals );
     }
 
 

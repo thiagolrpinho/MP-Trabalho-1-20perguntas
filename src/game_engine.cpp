@@ -98,6 +98,10 @@ int GameEngine::restart( void ){
     try {
         p_actual_node_.reset();
         p_tree_of_statements_.reset();
+        while ( stack_of_last_nodes_.empty() == false )
+        {
+            popLastNode();
+        }
     } catch (int e){
         return Error;
     }
@@ -127,10 +131,19 @@ int GameEngine::newYesAnswer()
     return Sucess; 
 };
 
+
+
 int GameEngine::newYesAnswer(string initial_text)
 { 
     if ( getYes() != nullptr ) return Error;
     getActualNode()->insertLeftNode( initial_text );
+    return Sucess; 
+};
+
+int GameEngine::newNoAnswer()
+{ 
+    if ( getNo() != nullptr ) return Error;
+    getActualNode()->insertRightNode();
     return Sucess; 
 };
 
@@ -207,7 +220,7 @@ int GameEngine::saveGame( void )
     pushLastNode(); //Armazena o contexto atual da árvore
     setActualNode( getStart() ); //Começa a ler a do início da árvore
         try {
-            p_file_to_write.open("./text.txt", std::fstream::out | std::fstream::trunc);
+            p_file_to_write.open("./test_save.txt", std::fstream::out | std::fstream::trunc);
         } catch ( int e) {
             return Error;
         }
@@ -250,10 +263,30 @@ int GameEngine::writeInFile( fstream &p_file_to_write )
 int GameEngine::readFile( fstream &p_file_to_read )
 {
     string node_statement;
+    //restart();
     try {
         getline(p_file_to_read, node_statement, ';');
-    } catch ( int e) {
+        if ( node_statement.compare("#") == Equals ) return Error;
+        writeInActualNode( node_statement );
+
+        getline(p_file_to_read, node_statement, ';');
+        if ( node_statement.compare("#") != Equals ) 
+        {
+            newYesAnswer();
+            moveToYes();
+            readFile( p_file_to_read );
+            moveBack();
+        }
+       if( getline(p_file_to_read, node_statement, ';') ) 
+       {
+            newNoAnswer();
+            moveToNo();
+            readFile( p_file_to_read );
+            moveBack();
+       }
+    } catch ( int e ) {
         return Error;
     }
-    return Error;
+
+    return Sucess;
 };
