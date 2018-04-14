@@ -84,7 +84,16 @@ GameEngine::GameEngine(string initial_text)
      return Sucess;
  };
 
-int GameEngine::restart( void ){};
+int GameEngine::restart( void ){
+    try {
+        p_actual_node_.reset();
+        p_tree_of_statements_.reset();
+    } catch (int e){
+        return Error;
+    }
+
+    return Sucess;
+};
 
 //READING AND WRITING METHODS
 string GameEngine::readActualNode( void )
