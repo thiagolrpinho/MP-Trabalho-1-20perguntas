@@ -76,8 +76,20 @@ TEST_CASE( "Restart", "[20_QUESTION_GAME_ENGINE]" )
 TEST_CASE( "Game can be saved on a file", "[20_QUESTION_GAME_ENGINE]")
 {
     PGameEngine p_new_game( new GameEngine("É verde?") );
-    SECTION( "Game engine can open files to read" )
+
+    SECTION("Game engine can write on files already opened")
     {
-        REQUIRE( p_new_game->readFile() == Sucess );
+        fstream p_file_to_write;
+        p_file_to_write.open("test.txt", std::fstream::in);
+        REQUIRE_FALSE( p_file_to_write );
+        REQUIRE( p_new_game->writeInFile(&p_file_to_write) == Sucess);
     }
+
+    /*
+    SECTION( "Game engine can open files to write" )
+    {
+        REQUIRE( p_new_game->saveGame() == Sucess );
+    }
+    */
+
 }

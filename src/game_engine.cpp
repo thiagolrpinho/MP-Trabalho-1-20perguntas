@@ -180,12 +180,31 @@ int GameEngine::checkGuess( void )
 
 int GameEngine::readFile( void )
 {
-    fstream p_file;
+    fstream p_file_to_read;
     try {
-        p_file.open("text.txt", std::fstream::in | std::fstream::out);
+        p_file_to_read.open("./text.txt", std::fstream::in);
     } catch ( int e) {
         return Error;
     }
-    p_file.close();
+
+    p_file_to_read.close();
     return Sucess;
 };
+
+int GameEngine::saveGame( void )
+{
+    fstream p_file_to_write;
+        try {
+            p_file_to_write.open("./text.txt", std::fstream::out);
+        } catch ( int e) {
+            return Error;
+        }
+
+        p_file_to_write.close();
+        return Sucess;
+};
+
+int GameEngine::writeInFile( fstream* pp_file_to_write )
+{
+    return Error;
+}
