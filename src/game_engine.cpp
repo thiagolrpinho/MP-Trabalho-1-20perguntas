@@ -20,7 +20,7 @@ GameEngine::GameEngine(string initial_text)
 }
 
 //POSITIONING METHODS
- PStringNode GameEngine::getStart(void)
+ PStringNode GameEngine::getStart( void )
  { 
      return p_tree_of_statements_->getRoot();
  };
@@ -175,3 +175,7 @@ int GameEngine::checkGuess( void )
     if( getYes() == nullptr && getNo() == nullptr ) return Sucess;
     return Error;
 };
+
+//FILE MANAGING
+
+int GameEngine::openFile( void ) {};

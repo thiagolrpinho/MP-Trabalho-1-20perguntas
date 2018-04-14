@@ -3,6 +3,8 @@
 
 #include <stack>
 using std::stack;
+#include <fstream>
+using std::fstream;
 
 #include "btree.hpp"
 
@@ -62,6 +64,9 @@ class GameEngine {
 
  //Question Logic
  int checkGuess( void );
+
+ //File managing
+ int openFile( void );
 
 };
 
