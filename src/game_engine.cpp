@@ -102,21 +102,22 @@ int GameEngine::writeInActualNode( string new_text )
 
 int GameEngine::newYesAnswer()
 { 
-    p_tree_of_statements_->getActualNode()->insertLeftNode();
+    if ( getYes() != nullptr ) return Error;
+    getActualNode()->insertLeftNode();
     return Sucess; 
 };
 
 int GameEngine::newYesAnswer(string initial_text)
 { 
     if ( getYes() != nullptr ) return Error;
-    p_tree_of_statements_->getActualNode()->insertLeftNode( initial_text );
+    getActualNode()->insertLeftNode( initial_text );
     return Sucess; 
 };
 
 int GameEngine::newNoAnswer(string initial_text)
 { 
     if ( getNo() != nullptr ) return Error;
-    p_tree_of_statements_->getActualNode()->insertRightNode( initial_text );
+    getActualNode()->insertRightNode( initial_text );
     return Sucess; 
 };
 
@@ -149,11 +150,11 @@ int GameEngine::newYesQuestion( string initial_question )
 
 PStringNode GameEngine::getYes()
 { 
-    return p_tree_of_statements_->getActualNode()->getLeftNode(); 
+    return getActualNode()->getLeftNode(); 
 };
 
 PStringNode GameEngine::getNo()
 { 
-    return p_tree_of_statements_->getActualNode()->getRightNode(); 
+    return getActualNode()->getRightNode(); 
 };
 
