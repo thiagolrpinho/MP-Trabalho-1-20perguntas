@@ -4,163 +4,71 @@ typedef shared_ptr<GameEngine> PGameEngine;
 typedef shared_ptr<StringNode> PStringNode;
 
 /*
-THESE TESTS WILL BE FOCUSED ON THE  QUESTIONS OF 
-  THE 20_QUESTIONS GAME ENGINE STATEMENTS
-  It'll be consired fully functional if they pass on
+THESE TESTS WILL BE FOCUSED ON THE ENGINE SYSTEM OF 
+  THE 20_QUESTIONS GAME
+  It'll be consired fully functional if it pass on
   four test cases:
-    Create statements, Read statements, update statements
-    and delete statements
+    Moving to Yes or No, Guessing, learn new guess
+    and reseting.
 */
 
-TEST_CASE( "CREATE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
+
+TEST_CASE( "Move to Yes or No", "[20_QUESTION_GAME_ENGINE]" )
 {
-  //The're will be two types of game nodes an answer which is a leaf(both 
-  //branches are null) or a question which can have an answer or another question
-  //on their branches
+    PGameEngine p_new_game( new GameEngine("É verde?") );
+    SECTION("Can decide if there's no statement on Yes")
+    {   
+        REQUIRE( p_new_game->getYes() == nullptr );
+        REQUIRE( p_new_game->moveToYes() == Error );
+    }
 
-  PGameEngine pGameEngine( new GameEngine( "Do you like cakes?" ) );
-
-  SECTION( "creating game engine" )
-  {
-    PGameEngine pEmptyGameEngine( new GameEngine() );
-
-    REQUIRE_FALSE( pGameEngine == nullptr );
-  }
-
-  SECTION( "creating an empty statement" )
-  { 
-    PGameEngine pEmptyGameEngine(new GameEngine());
-
-    REQUIRE( pEmptyGameEngine->readActualNode().empty());
-
-  }
-
-  SECTION( "creating a non empty statement" )
-  { 
-    REQUIRE_FALSE( pGameEngine->readActualNode().empty());
-  }
-
-
-  SECTION( "creating an empty answer" )
-  { 
-    REQUIRE( pGameEngine->getYes() == nullptr );
-
-    pGameEngine->newYesAnswer();
-
-    REQUIRE_FALSE( pGameEngine->getYes() == nullptr );
-
-    PStringNode pEmptyAnswer( pGameEngine->getYes() );
-
-    REQUIRE( pEmptyAnswer->getText().empty() );
-    REQUIRE( pEmptyAnswer->getLeftNode() == nullptr );
-    REQUIRE( pEmptyAnswer->getRightNode() == nullptr );
-  }
-
-  SECTION( "creating a non-empty answer" )
-  { 
-    REQUIRE( pGameEngine->getYes() == nullptr );
-
-    pGameEngine->newYesAnswer("É um pônei!");
-
-    REQUIRE_FALSE( pGameEngine->getYes() == nullptr );
-
-    PStringNode pAnswer( pGameEngine->getYes() );
-
-    REQUIRE_FALSE( pAnswer->getText().empty() );
-    REQUIRE( pAnswer->getLeftNode() == nullptr );
-    REQUIRE( pAnswer->getRightNode() == nullptr );
-  }
-
-   SECTION( "creating a question" )
-  { 
-    REQUIRE( pGameEngine->getYes() == nullptr );
-     
-    pGameEngine->newYesQuestion("É um pônei?");
-
-    REQUIRE_FALSE( pGameEngine->getYes() == nullptr );
-
-    PStringNode pQuestion( pGameEngine->getYes() );
-
-    REQUIRE_FALSE( pQuestion->getText().empty() );
-    REQUIRE_FALSE( pQuestion->getLeftNode() == nullptr);
-
-  }
-
-} //TEST CASE CREATING  STATEMENTS
-
-TEST_CASE( "READ STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
-{
-  PGameEngine pGameEngine(new GameEngine( "Do you like cakes?" ));
-
-  SECTION( "An statement on root can be read" )
-  {
-    REQUIRE( pGameEngine->readActualNode().compare( "Do you like cakes?" ) == Equals );
-  }
-
-  SECTION( "An statement on branch can be read")
-  {
-    REQUIRE( pGameEngine->newYesQuestion("Do you like apples?") == Sucess );
-    PStringNode pBranchStatement(pGameEngine->getYes() );
-    REQUIRE( pGameEngine->setActualNode(pBranchStatement) == Sucess );
-    REQUIRE( pGameEngine->readActualNode().compare( "Do you like apples?" ) == Equals);
-  }
-} //TEST CASE READ STATEMENTS
-
-
-TEST_CASE( "UPDATE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
-{
-  PGameEngine pGameEngine(new GameEngine( "Do you like cakes?" ));
-
-  SECTION( "An statement on root can be updated" )
-  {
-    REQUIRE( pGameEngine->writeInActualNode("Do you like pies?") == Sucess );
-    REQUIRE( pGameEngine->readActualNode().compare("Do you like pies?") == Equals );
-  }
-
-  SECTION( "An statement on branch can be updated")
-  {
-    REQUIRE( pGameEngine->newYesQuestion("Do you like apples?") == Sucess );
-    PStringNode pBranchStatement(pGameEngine->getYes() );
-    REQUIRE( pGameEngine->setActualNode(pBranchStatement) == Sucess );
-    REQUIRE( pGameEngine->writeInActualNode("Do you like watermellon?") == Sucess );
-    REQUIRE( pGameEngine->readActualNode().compare("Do you like watermellon?") == Equals );
-  }
-} //TEST CASE UPDATE STATEMENTS
-
-TEST_CASE( "DELETE STATEMENTS", "[20_QUESTION_GAME_ENGINE]" )
-{
-  PGameEngine PGameEngine(new GameEngine());
-
-  SECTION( "A statament can be deleted" )
-  { 
-    REQUIRE( PGameEngine->removeActualNode() == Sucess);
-  }
-
-  SECTION( "The engine will backtrace to the  statement before the one erased" ){
-    PGameEngine->newYesQuestion( "É um anfíbio?" );
-
-    PGameEngine->setActualNode(PGameEngine->getYes());
-
-    PGameEngine->removeActualNode();
-
-    REQUIRE( PGameEngine->getActualNode() == PGameEngine->getStart() );
-  }
-
-    SECTION( "The engine will backtrace to the  statement before the one erased many times" )
+    SECTION("Can decide if there's no statement on NO")
+    {   
+        REQUIRE( p_new_game->getNo() == nullptr );
+        REQUIRE( p_new_game->moveToNo() == Error );
+    }
+    
+    SECTION("move to Yes if there's an statement on Yes")
     {
-    PGameEngine->newYesQuestion( "É um anfíbio?" );
-    PGameEngine->pushLastNode( PGameEngine->getActualNode() );
-    PGameEngine->setActualNode( PGameEngine->getYes() );
+        p_new_game->newYesAnswer("É o céu?");
+        REQUIRE_FALSE( p_new_game->getYes() == nullptr );
+        REQUIRE( p_new_game->moveToYes() == Sucess );
+    }
 
-    PGameEngine->newYesQuestion( "É venenoso?" );
-    PGameEngine->pushLastNode( PGameEngine->getActualNode() );
-    PGameEngine->setActualNode( PGameEngine->getYes() );
+    SECTION( "move to No if there's an statement on No" )
+    {
+        p_new_game->newNoAnswer("É o céu?");
+        REQUIRE_FALSE( p_new_game->getNo() == nullptr );
+        REQUIRE( p_new_game->moveToNo() == Sucess );
+    }
+} //TEST CASE MOVE TO YES OR NO
 
-    PGameEngine->removeActualNode();
-    REQUIRE( PGameEngine->readActualNode().compare( "É um anfíbio?" ) == Equals );
+TEST_CASE( "GUESSING", "[20_QUESTION_GAME_ENGINE]" )
+{
+    PGameEngine p_new_game( new GameEngine("É verde?") );
 
-    PGameEngine->removeActualNode();
-    REQUIRE( PGameEngine->getActualNode() == PGameEngine->getStart() );
-  } //The engine will backtrace many times
+    SECTION( "Game engine can check if it's a guess" )
+    {
+        //The actual statement is a leaft, so it should be
+        //a guess
+        REQUIRE( p_new_game->checkGuess() == Sucess );
 
-}
+        p_new_game->newYesAnswer( "É um peixe?" );
+        //Now, the actual statement is not a leaf, 
+        //so it's a question
+        REQUIRE( p_new_game->checkGuess() == Error );
+        p_new_game->moveToYes();
+        REQUIRE( p_new_game->checkGuess() == Sucess );
+    }
+} //TEST CASE GUESSING
+
+TEST_CASE( "Restart", "[20_QUESTION_GAME_ENGINE]" )
+{
+    PGameEngine p_new_game( new GameEngine("É verde?") );
+
+    SECTION( "a game can be restarted" )
+    {
+        REQUIRE( p_new_game->restart() == Sucess);
+    }
+    
+};

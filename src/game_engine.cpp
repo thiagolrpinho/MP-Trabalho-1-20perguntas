@@ -1,6 +1,6 @@
 #include "game_engine.hpp"
 
-typedef shared_ptr<StringNode> PStringNode;
+typedef PStringNode PStringNode;
 
 GameEngine::GameEngine()
 {
@@ -24,6 +24,7 @@ GameEngine::GameEngine(string initial_text)
  { 
      return p_tree_of_statements_->getRoot();
  };
+
  PStringNode GameEngine::getActualNode(void)
  {
       return p_actual_node_; 
@@ -46,6 +47,16 @@ GameEngine::GameEngine(string initial_text)
       return pLast;
  };
 
+ int GameEngine::pushLastNode( void)
+ { 
+    try {
+        stack_of_last_nodes_.push( getActualNode() );
+    } catch (int e) {
+        return Error;
+    }
+    return Sucess;
+ };
+
  int GameEngine::pushLastNode( PStringNode p_next_node )
  { 
     try {
@@ -55,6 +66,34 @@ GameEngine::GameEngine(string initial_text)
     }
     return Sucess;
  };
+
+ int GameEngine::moveToYes( void )
+ {
+     if ( getYes() == nullptr ) return Error;
+     pushLastNode(); //Stores the last node on the stack
+     if( setActualNode( getYes() ) == Error ) return Error;   //Move to the Yes statement
+     return Sucess;
+ };
+
+
+ int GameEngine::moveToNo( void )
+ {
+     if ( getNo() == nullptr ) return Error;
+     pushLastNode(); //Stores the last node on the stack
+     if( setActualNode( getNo() ) == Error ) return Error;   //Move to the Yes statement
+     return Sucess;
+ };
+
+int GameEngine::restart( void ){
+    try {
+        p_actual_node_.reset();
+        p_tree_of_statements_.reset();
+    } catch (int e){
+        return Error;
+    }
+
+    return Sucess;
+};
 
 //READING AND WRITING METHODS
 string GameEngine::readActualNode( void )
@@ -73,13 +112,22 @@ int GameEngine::writeInActualNode( string new_text )
 
 int GameEngine::newYesAnswer()
 { 
-    p_tree_of_statements_->getRoot()->insertLeftNode();
+    if ( getYes() != nullptr ) return Error;
+    getActualNode()->insertLeftNode();
     return Sucess; 
 };
 
 int GameEngine::newYesAnswer(string initial_text)
 { 
-    p_tree_of_statements_->getRoot()->insertLeftNode( initial_text );
+    if ( getYes() != nullptr ) return Error;
+    getActualNode()->insertLeftNode( initial_text );
+    return Sucess; 
+};
+
+int GameEngine::newNoAnswer(string initial_text)
+{ 
+    if ( getNo() != nullptr ) return Error;
+    getActualNode()->insertRightNode( initial_text );
     return Sucess; 
 };
 
@@ -110,8 +158,20 @@ int GameEngine::newYesQuestion( string initial_question )
     return Sucess;
 };
 
-shared_ptr<StringNode> GameEngine::getYes()
+PStringNode GameEngine::getYes( void )
 { 
-    return p_tree_of_statements_->getRoot()->getLeftNode(); 
+    return getActualNode()->getLeftNode(); 
 };
 
+PStringNode GameEngine::getNo( void )
+{ 
+    return getActualNode()->getRightNode(); 
+};
+
+//Question Logic
+
+int GameEngine::checkGuess( void )
+{
+    if( getYes() == nullptr && getNo() == nullptr ) return Sucess;
+    return Error;
+};

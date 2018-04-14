@@ -38,12 +38,14 @@ class GameEngine {
  PStringNode getStart(void);
  PStringNode getActualNode(void);
  PStringNode popLastNode(void);
- int setActualNode( PStringNode p_next_node);
+ int setActualNode( PStringNode p_next_node );
+ int pushLastNode( void ); //If no node is passed, Actual Node will be added to last
  int pushLastNode( PStringNode p_next_node );
+
  int moveToYes( void );
  int moveToNo( void );
  int moveBack( void );
-
+ int restart( void );
  //Reading and writing values on nodes
  string readActualNode( void );
  int writeInActualNode( string new_text );
@@ -51,10 +53,15 @@ class GameEngine {
  //Remove Statements
  int removeActualNode( void );
  //YesOrNo Logic
- int newYesAnswer(void);
+ int newYesAnswer( void );
  int newYesAnswer(string initial_text);
+ int newNoAnswer(string initial_text);
  int newYesQuestion(string initial_question);
- PStringNode getYes(void);
+ PStringNode getYes( void );
+ PStringNode getNo( void );
+
+ //Question Logic
+ int checkGuess( void );
 
 };
 
