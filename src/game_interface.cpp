@@ -43,12 +43,11 @@ int GameInterface::doRound( void )
 
 /*
   MENU will be able to start a new game, load a saved game, 
-  save the actual game, exit the game or call the gaming routine.
+  save the actual game, exit the game or call the playing routine.
 */
 int GameInterface::openMenu( void )
 {
   unsigned short int code_to_next_action;
-  unsigned short int status_of_the_operation;
 
   cout << "\n Welcome to the 20 games questions game. Version 0.8 \n";
   cout << " Made by Thiago Luis as a project for one of Univesity \n";
@@ -72,12 +71,12 @@ int GameInterface::openMenu( void )
     {
       case 1: 
         if ( startNewGame() == Error ) return Error;
-        
+       return playingRoutine();
       break;
 
       case 2:
         if ( loadSavedGame() == Error ) return Error;
-        doRound();
+        return playingRoutine();
       break;
 
       case 3:
@@ -94,7 +93,7 @@ int GameInterface::openMenu( void )
 
     } //END OF SWITCH CASE
 
-  } while( code_to_next_action != kEndGameCode );
+  } while( true );
   return Sucess;
 }
 
@@ -127,7 +126,7 @@ int GameInterface::loadSavedGame( void )
   } while( getEngine()->loadGame(user_input_game_to_be_load) == Error );
 
   return Sucess;
-}
+} //LOAD SAVED GAME
 
 
 /*
@@ -144,12 +143,12 @@ int GameInterface::saveActualGame( void )
 
   return Sucess;
 
-}
+}//SAVE ACTUAL GAME
 
 int GameInterface::playingRoutine( void )
 {
-  return Error;
-}
+  return doRound();
+}//Playing Routine
 
 int GameInterface::exitGame( void )
 {   

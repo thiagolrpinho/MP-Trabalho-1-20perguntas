@@ -101,7 +101,7 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
     }
     */
 
-    SECTION("has a playingRoutine")
+    SECTION("has a playing routine")
     {
         REQUIRE(p_interface_with_menu->playingRoutine() == Sucess );
     }
