@@ -70,7 +70,9 @@ class GameEngine {
 
  //File managing
  int saveGame( void );
+ int saveGame( string file_name );
  int loadGame( void );
+ int loadGame( string file_name );
  int readFile( fstream &p_file_to_read );
  int writeInFile( fstream &p_file_to_write );
 

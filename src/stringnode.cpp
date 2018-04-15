@@ -130,5 +130,6 @@ int StringNode::clearRight( void )
     } catch ( int e) {
         return Error;
     }
+    
     return Sucess;
 }

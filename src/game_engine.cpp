@@ -214,9 +214,15 @@ int GameEngine::checkGuess( void )
 
 int GameEngine::loadGame( void )
 {
+    return loadGame("autosave");
+};
+
+int GameEngine::loadGame( string file_name )
+{
     fstream p_file_to_read;
     try {
-        p_file_to_read.open("./test_load.txt", std::fstream::in);
+        p_file_to_read.open("./saved_games/" + file_name + ".txt", std::fstream::in);
+        if(!p_file_to_read.is_open()) return Error;
     } catch ( int e) {
         return Error;
     }
@@ -229,11 +235,17 @@ int GameEngine::loadGame( void )
 
 int GameEngine::saveGame( void )
 {
+    return saveGame("autosave");
+};
+
+int GameEngine::saveGame( string file_name )
+{
     fstream p_file_to_write;
     pushLastNode(); //Armazena o contexto atual da árvore
     setActualNode( getStart() ); //Começa a ler a do início da árvore
         try {
-            p_file_to_write.open("./test_load.txt", std::fstream::out | std::fstream::trunc);
+            p_file_to_write.open("./saved_games/" + file_name + ".txt", std::fstream::out | std::fstream::trunc);
+            if(!p_file_to_write.is_open()) return Error;
         } catch ( int e) {
             return Error;
         }
@@ -279,6 +291,7 @@ int GameEngine::readFile( fstream &p_file_to_read )
     string node_statement;
     try {
         getline(p_file_to_read, node_statement, ';');
+        if( p_file_to_read.eof() ) return Error;
         if ( node_statement.compare("#") == Equals ) return Error;
         writeInActualNode( node_statement );
 
