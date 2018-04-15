@@ -61,7 +61,7 @@ int GameInterface::gotAnswer( void )
   cout << " Answer: ";
   cout << getEngine()->readActualNode();
   cout <<"\n";
-  cout << " Is this correct? ";
+  cout << "  Is this correct? ";
   cout << " Write Yes if and only if it's correct. \n";
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
@@ -112,7 +112,7 @@ int GameInterface::gotQuestion( void )
   cout << " Question: ";
   cout << getEngine()->readActualNode();
   cout <<"\n";
-  cout << " Is this correct? ";
+  cout << "  Is this correct? ";
   cout << " Write Yes if and only if it's correct. \n";
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
@@ -120,7 +120,11 @@ int GameInterface::gotQuestion( void )
   if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
   {
     //If move results in Error, it's a don't know
-    if( getEngine()->moveToYes() == Sucess ) return Sucess;
+    if( getEngine()->moveToYes() == Sucess ) 
+    {
+      doRound();
+      return Sucess;
+    } 
     //If it doesn't know, the game learns and stores it.
     cout << "\n Then I don't know what is the answer. \n";
     cout << "\n What is the right answer? \n";
@@ -135,7 +139,11 @@ int GameInterface::gotQuestion( void )
     //finishGame();
 
   } else { 
-    if( getEngine()->moveToNo() == Sucess ) return Sucess;
+    if( getEngine()->moveToNo() == Sucess )
+    { 
+      doRound();
+      return Sucess;
+    }
     //If it doesn't know, the game learns and stores it.
     cout << "\n Then I don't know what is the answer. \n";
     cout << "\n What is the right answer? \n";

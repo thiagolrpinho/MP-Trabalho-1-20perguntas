@@ -32,18 +32,44 @@ TEST_CASE( "Exists: ", "[20_QUESTION_GAME_INTERFACE]" )
 TEST_CASE( "Round ", "[20_QUESTION_GAME_INTERFACE]" )
 {   
     PGameInterface p_new_interface(new GameInterface());
+    //SET GAME STATE TO SECOND SECTION
+    p_new_interface->getEngine()->writeInActualNode("É o céu!");
+    p_new_interface->getEngine()->saveGame("test_final_answer");
 
     SECTION("It can perform a final round with answer")
-    {   
-     p_new_interface->getEngine()->writeInActualNode("É o céu!");
-    CHECK( p_new_interface->doRound( ) == Sucess );
+    { 
+      p_new_interface->getEngine()->loadGame("test_final_answer");
+      CHECK( p_new_interface->doRound( ) == Sucess );
     }
+
+
+    //SET GAME STATE TO SECOND SECTION
+    p_new_interface->getEngine()->writeInActualNode("É verde?");
+    p_new_interface->getEngine()->newYesAnswer("É um sapo!");
+    p_new_interface->getEngine()->saveGame("test_final_dont_know");
+    p_new_interface->getEngine()->moveToYes();
+    p_new_interface->getEngine()->removeActualNode();
 
     SECTION("It can perform a final round with don't know")
     {
-       p_new_interface->getEngine()->writeInActualNode("É verde?");
-       p_new_interface->getEngine()->newYesAnswer("É um sapo!");
-       CHECK( p_new_interface->doRound( ) == Sucess );
+      p_new_interface->getEngine()->loadGame("test_final_dont_know");
+      CHECK( p_new_interface->doRound( ) == Sucess );
+    }
+
+
+    //SET GAME STATE TO THIRD SECTION
+    p_new_interface->getEngine()->newYesAnswer("É um anfíbio?");
+    p_new_interface->getEngine()->moveToYes();
+    p_new_interface->getEngine()->newYesAnswer("Ele coacha?");
+    p_new_interface->getEngine()->moveToYes();
+    p_new_interface->getEngine()->newYesAnswer("É um sapo!");
+    p_new_interface->getEngine()->saveGame("test_multiple_rounds");
+
+    SECTION("It can perform multiple rounds")
+    {
+      p_new_interface->getEngine()->loadGame("test_multiple_rounds");
+      
+      CHECK( p_new_interface->doRound( ) == Sucess );
     }
 
 }//TEST CASE EXISTS
