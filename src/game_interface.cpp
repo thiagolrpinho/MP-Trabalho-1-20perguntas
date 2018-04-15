@@ -48,6 +48,8 @@ int GameInterface::startNewGame( void )
   getline(cin, user_input_first_answer_of_the_game );
   return getEngine()->writeInActualNode(user_input_first_answer_of_the_game);
 }
+
+
 /*
   This method can load last game or load another game of the user's choice.
 */
@@ -68,6 +70,17 @@ int GameInterface::loadSavedGame( void )
   } while( getEngine()->loadGame(user_input_game_to_be_load) == Error );
 
   return Sucess;
+}
+
+
+/*
+  This method can save the actual game as the last_game in a txt file of the users choice.
+*/
+
+int GameInterface::saveActualGame( void )
+{
+  return Error;
+
 }
 
 /*

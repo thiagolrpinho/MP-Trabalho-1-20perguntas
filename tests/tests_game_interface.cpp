@@ -89,6 +89,11 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
     {
         REQUIRE( p_interface_with_menu->loadSavedGame() == Sucess );
     }
+
+    SECTION("can save the actual game")
+    {
+        REQUIRE( p_interface_with_menu->saveActualGame() == Sucess );
+    }
     /*
     SECTION("Has a menu")
     {

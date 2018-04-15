@@ -39,6 +39,7 @@ class GameInterface {
     int doRound( void );
     int startNewGame( void );
     int loadSavedGame( void );
+    int saveActualGame( void );
 
 
     int gotAnswer( void );
