@@ -32,12 +32,18 @@ TEST_CASE( "Exists: ", "[20_QUESTION_GAME_INTERFACE]" )
 TEST_CASE( "Round ", "[20_QUESTION_GAME_INTERFACE]" )
 {   
     PGameInterface p_new_interface(new GameInterface());
-    p_new_interface->getEngine()->writeInActualNode("É o céu!");
 
-    SECTION("It can perform a round")
+    SECTION("It can perform a final round with answer")
     {   
-        
-       CHECK( p_new_interface->doRound( void ) == Sucess );
+     p_new_interface->getEngine()->writeInActualNode("É o céu!");
+    CHECK( p_new_interface->doRound( ) == Sucess );
+    }
+
+    SECTION("It can perform a final round with don't know")
+    {
+       p_new_interface->getEngine()->writeInActualNode("É verde?");
+       p_new_interface->getEngine()->newYesAnswer("É um sapo!");
+       CHECK( p_new_interface->doRound( ) == Sucess );
     }
 
 }//TEST CASE EXISTS
