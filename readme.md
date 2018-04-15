@@ -44,10 +44,10 @@ Or jus run it using
 ./all_tester 
 ```
 *Warning
-    The all_tester is not fully automatized because I'm new to catch library of tests and don't know how to automatize input and output on terminal tests.
+    The all_tester is not fully automatized because I'm new to catch library and don't know how to automatize input and output on terminal tests.
     This happens only with tests_game_interface.cpp*
 
-###Running other tests
+### Running other tests
 To run other tests just go to the main folder of the project:
 To test only the Binary Tree used on the game.
 ```
