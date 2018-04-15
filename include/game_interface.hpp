@@ -41,6 +41,7 @@ class GameInterface {
 
     int validYesInput( string user_input );
     int gotAnswer( void );
+    int gotQuestion( void );
 
 };
 
