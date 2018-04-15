@@ -41,9 +41,59 @@ int GameInterface::doRound( void )
   return Error;
 }
 
+/*
+  MENU will be able to start a new game, load a saved game, 
+  save the actual game, exit the game or call the gaming routine.
+*/
 int GameInterface::openMenu( void )
 {
-  return Error;
+  unsigned short int code_to_next_action;
+  unsigned short int status_of_the_operation;
+
+  cout << "\n Welcome to the 20 games questions game. Version 0.8 \n";
+  cout << " Made by Thiago Luis as a project for one of Univesity \n";
+  cout << " of Brasilia classes. Date: April 2018. \n";
+  cout << " The game will try to guess what object you're thinking.\n";
+  cout << " Using only yes or no questions. \n";
+  cout << " Warning: This version is limited to 20 questions only. \n";
+  
+  do
+  {
+    cout << "\n Write: \n";
+    cout << " 1 - To start new game. \n";
+    cout << " 2 - To load a game. \n";
+    cout << " 3 - To save the actual game. \n";
+    cout << " 4 - To exit the game. \n \n";
+    
+    cin >> code_to_next_action;
+    cin.ignore();
+    
+    switch(code_to_next_action)
+    {
+      case 1: 
+        if ( startNewGame() == Error ) return Error;
+      break;
+
+      case 2:
+        if ( loadSavedGame() == Error ) return Error;
+      break;
+
+      case 3:
+        if ( saveActualGame() == Error) return Error;
+      break;
+
+      case 4:
+        if ( exitGame() == kEndGameCode ) return Sucess;
+      break;
+
+      default:
+        cout << "\n Invalid choice, please try again. \n";
+        continue;
+
+    } //END OF SWITCH CASE
+
+  } while( code_to_next_action != kEndGameCode );
+  return Sucess;
 }
 
 int GameInterface::startNewGame( void )
