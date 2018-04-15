@@ -33,7 +33,6 @@ PGameEngine GameInterface::getEngine( void )
 int GameInterface::doRound( void )
 {
   string actual_statement;
-
   
   //If it's an answer:
   if( getEngine()->checkGuess() == Sucess ) return gotAnswer();
@@ -41,8 +40,6 @@ int GameInterface::doRound( void )
   
   return Error;
 }
-
-
 
 
 
@@ -67,9 +64,7 @@ int GameInterface::gotAnswer( void )
   cin.ignore(); //Ignores ENTER input
   if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
   {
-    return Sucess;
-    //TODO FINISH GAME METHOD
-    //finishGame();
+    return finishGame();
   }
 
 
@@ -90,9 +85,7 @@ int GameInterface::gotAnswer( void )
     return Error;
   }
 
-  return Sucess;
-  //TODO FINISH GAME METHOD
-  //finishGame();
+  return finishGame();
   
 };//GOT ANSWER
 
@@ -122,8 +115,8 @@ int GameInterface::gotQuestion( void )
     //If move results in Error, it's a don't know
     if( getEngine()->moveToYes() == Sucess ) 
     {
-      doRound();
-      return Sucess;
+      
+      return doRound();
     } 
     //If it doesn't know, the game learns and stores it.
     cout << "\n Then I don't know what is the answer. \n";
@@ -134,15 +127,13 @@ int GameInterface::gotQuestion( void )
       return Error;
     }
 
-    return Sucess;
-    //TODO FINISH GAME METHOD
-    //finishGame();
+    return finishGame();
 
   } else { 
     if( getEngine()->moveToNo() == Sucess )
     { 
-      doRound();
-      return Sucess;
+      
+      return doRound();
     }
     //If it doesn't know, the game learns and stores it.
     cout << "\n Then I don't know what is the answer. \n";
@@ -153,9 +144,7 @@ int GameInterface::gotQuestion( void )
       return Error;
     }
 
-    return Sucess;
-    //TODO FINISH GAME METHOD
-    //finishGame();
+    return finishGame();
 
   } //IF VALID YES INPUT
 
@@ -167,3 +156,13 @@ int GameInterface::validYesInput( string user_input )
    if ( user_input.compare("Yes") == Equals ) return Sucess;
    return Error;
 };
+
+int GameInterface::finishGame( void )
+{
+  cout << "\n Thank you for playing the 20 questions game.\n \n";
+  if ( getEngine()->saveGame("last_game") == Error ) return Error;
+  if ( getEngine()->restart() == Error ) return Error;
+
+  return Sucess;
+  
+}

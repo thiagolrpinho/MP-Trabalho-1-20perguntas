@@ -39,10 +39,10 @@ class GameInterface {
     int doRound( void );
 
 
-    int validYesInput( string user_input );
     int gotAnswer( void );
     int gotQuestion( void );
-
+    int validYesInput( string user_input );
+    int finishGame( void );
 };
 
 #endif
