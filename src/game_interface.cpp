@@ -26,11 +26,10 @@ int GameInterface::openMenu( void )
   unsigned short int code_to_next_action;
 
   cout << "\n Welcome to the 20 games questions game. Version 0.8 \n";
-  cout << " Made by Thiago Luis as a project for one of Univesity \n";
-  cout << " of Brasilia classes. Date: April 2018. \n";
+  cout << " Made by Thiago Luis as a project for an Univesity \n";
+  cout << " of Brasilia's class. Date: April 2018. \n";
   cout << " The game will try to guess what object you're thinking.\n";
   cout << " Using only yes or no questions. \n";
-  cout << " Warning: This version is limited to 20 questions only. \n";
   
   do
   {
@@ -38,7 +37,8 @@ int GameInterface::openMenu( void )
     cout << " 1 - To start new game. \n";
     cout << " 2 - To load a game or continue last game. \n";
     cout << " 3 - To save the actual game. \n";
-    cout << " 4 - To exit the game. \n \n";
+    cout << " 4 - To edit the actual game. \n";
+    cout << " 5 - To exit the game. \n \n";
     
     cin >> code_to_next_action;
     cin.ignore();
@@ -60,6 +60,10 @@ int GameInterface::openMenu( void )
       break;
 
       case 4:
+        if ( editRoutine() == Error) return Error;
+      break;
+
+      case 5:
         if ( exitGame() == kEndGameCode ) return Sucess;
       break;
 
@@ -180,9 +184,9 @@ int GameInterface::doEditRound( void )
   string user_input_yes_or_something_else;
   string user_new_statement;
 
-  cout << "Actual statement is: \n";
+  cout << "\n Actual statement is: \n";
   cout << getEngine()->readActualNode() << " \n";
-  cout << " Wanna erase this statement and those bellow it? \n ";
+  cout << " Wanna erase this statement and those bellow it? \n";
   cout << " Write Yes if and only if it's correct. \n";
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input

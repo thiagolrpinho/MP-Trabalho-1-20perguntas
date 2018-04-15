@@ -29,7 +29,7 @@ TEST_CASE( "Exists: ", "[20_QUESTION_GAME_INTERFACE]" )
 }//TEST CASE EXISTS
 
 
-/*TEST_CASE( "Round ", "[20_QUESTION_GAME_INTERFACE]" )
+TEST_CASE( "Round ", "[20_QUESTION_GAME_INTERFACE]" )
 {   
     PGameInterface p_new_interface(new GameInterface());
     //SET GAME STATE TO SECOND SECTION
@@ -73,13 +73,11 @@ TEST_CASE( "Exists: ", "[20_QUESTION_GAME_INTERFACE]" )
     }
 
 }//TEST CASE EXISTS
-*/
 
 
 TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
 {   
     PGameInterface p_interface_with_menu( new GameInterface());
-    /*
     SECTION("can start new game")
     {
         REQUIRE( p_interface_with_menu->startNewGame() == Sucess );
@@ -110,8 +108,7 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
         p_interface_with_menu->getEngine()->loadGame("test_multiple_rounds");
         REQUIRE(p_interface_with_menu->editRoutine() == Sucess );
     }
-    */
-   
+
     SECTION("Has a menu")
     {
         REQUIRE( p_interface_with_menu->openMenu() == Sucess );
