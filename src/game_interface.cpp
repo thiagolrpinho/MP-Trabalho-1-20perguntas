@@ -90,8 +90,16 @@ int GameInterface::saveActualGame( void )
 }
 
 int GameInterface::exitGame( void )
-{
-  return Error;
+{   
+  string user_input_yes_or_something_else;
+  cout << "\n Are you sure? \n";
+  cout << " Write Yes if and only if you want. \n";
+  cin >> user_input_yes_or_something_else;
+  cin.ignore(); //Ignores ENTER input
+
+  if ( validYesInput( user_input_yes_or_something_else ) == Error ) return Sucess;
+  cout << "\n Right then. See you soon. \n";
+  return kEndGameCode;
 }
 
 /*

@@ -7,6 +7,7 @@ using std::cout;
 using std::cin;
 using std::getline;
 
+const static unsigned short int kEndGameCode = 27182;
 
 typedef shared_ptr<GameEngine> PGameEngine;
 
@@ -37,12 +38,15 @@ class GameInterface {
 
     PGameEngine getEngine( void );
     int doRound( void );
+    int openMenu( void );
+
+  //Menu Methods
     int startNewGame( void );
     int loadSavedGame( void );
     int saveActualGame( void );
     int exitGame(void);
 
-
+  //Auxiliary methods
     int gotAnswer( void );
     int gotQuestion( void );
     int validYesInput( string user_input );

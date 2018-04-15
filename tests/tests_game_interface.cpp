@@ -79,7 +79,7 @@ TEST_CASE( "Exists: ", "[20_QUESTION_GAME_INTERFACE]" )
 TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
 {   
     PGameInterface p_interface_with_menu( new GameInterface());
-    
+    /*
     SECTION("can start new game")
     {
         REQUIRE( p_interface_with_menu->startNewGame() == Sucess );
@@ -97,12 +97,12 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
 
     SECTION("can exit the game")
     {
-        REQUIRE( p_interface_with_menu->exitGame() == Sucess );
-    }
-    /*
-    SECTION("Has a menu")
-    {
-        REQUIRE()
+        REQUIRE( p_interface_with_menu->exitGame() == kEndGameCode );
     }
     */
+    SECTION("Has a menu")
+    {
+        REQUIRE( p_interface_with_menu->openMenu() == Sucess );
+    }
+    
 } //TEST CASE 
