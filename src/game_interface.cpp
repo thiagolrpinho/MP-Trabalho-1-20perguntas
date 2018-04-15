@@ -60,7 +60,7 @@ int GameInterface::openMenu( void )
   {
     cout << "\n Write: \n";
     cout << " 1 - To start new game. \n";
-    cout << " 2 - To load a game. \n";
+    cout << " 2 - To load a game or continue last game. \n";
     cout << " 3 - To save the actual game. \n";
     cout << " 4 - To exit the game. \n \n";
     
@@ -71,12 +71,12 @@ int GameInterface::openMenu( void )
     {
       case 1: 
         if ( startNewGame() == Error ) return Error;
-       return playingRoutine();
+        if ( playingRoutine() == Error ) return Error;
       break;
 
       case 2:
         if ( loadSavedGame() == Error ) return Error;
-        return playingRoutine();
+        if ( playingRoutine() == Error ) return Error;
       break;
 
       case 3:
@@ -102,6 +102,7 @@ int GameInterface::startNewGame( void )
   string user_input_first_answer_of_the_game;
   cout << "\n What's the initial answer of your game? \n";
   getline(cin, user_input_first_answer_of_the_game );
+  if ( getEngine()->restart() == Error ) return Error;
   return getEngine()->writeInActualNode(user_input_first_answer_of_the_game);
 }
 
@@ -114,7 +115,7 @@ int GameInterface::loadSavedGame( void )
   string user_input_game_to_be_load;
   string user_input_yes_or_something_else;
 
-  cout << "\n Would you like to load your last game? \n";
+  cout << "\n Would you like to continue your last game? \n";
   cout << " Write Yes if and only if you want. \n";
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
@@ -147,8 +148,14 @@ int GameInterface::saveActualGame( void )
 
 int GameInterface::playingRoutine( void )
 {
+  cout << "\n";
   return doRound();
 }//Playing Routine
+
+int GameInterface::editRoutine( void )
+{
+  return Error;
+}
 
 int GameInterface::exitGame( void )
 {   
@@ -274,6 +281,14 @@ int GameInterface::gotQuestion( void )
 int GameInterface::validYesInput( string user_input )
 {
    if ( user_input.compare("Yes") == Equals ) return Sucess;
+   if ( user_input.compare("YES") == Equals ) return Sucess;
+   if ( user_input.compare("yES") == Equals ) return Sucess;
+   if ( user_input.compare("Y") == Equals ) return Sucess;
+   if ( user_input.compare("y") == Equals ) return Sucess;
+
+   if ( user_input.compare("Sim") == Equals ) return Sucess;
+   if ( user_input.compare("sim") == Equals ) return Sucess;
+   if ( user_input.compare("s") == Equals ) return Sucess;
    return Error;
 };
 
@@ -281,7 +296,6 @@ int GameInterface::finishGame( void )
 {
   cout << "\n Thank you for playing the 20 questions game.\n \n";
   if ( getEngine()->saveGame("last_game") == Error ) return Error;
-  if ( getEngine()->restart() == Error ) return Error;
 
   return Sucess;
   

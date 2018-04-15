@@ -9,10 +9,13 @@ TDIR	=./tests
 
 LIBS	=-lm
 
-_DEPS	= btree.hpp stringnode.hpp catch.hpp
+_DEPS	= game_interface.hpp game_engine.hpp btree.hpp stringnode.hpp catch.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = game_interface.o game_engine.o stringnode.o tests_main.o tests_btree.o tests_game_statement.o tests_game_engine.o btree.o tests_game_interface.o 
+_TOBJ = game_interface.o game_engine.o btree.o stringnode.o tests_main.o tests_btree.o tests_game_statement.o tests_game_engine.o tests_game_interface.o 
+TOBJ = $(patsubst %,$(ODIR)/%,$(_TOBJ))
+
+_OBJ = game_interface.o game_engine.o btree.o stringnode.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
@@ -21,8 +24,12 @@ $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 $(ODIR)/%.o: $(TDIR)/%.cpp $(DEPS)
 	$(CC)	-c	-o 	$@	$<	$(CFLAGS)
 
-all_tester: $(OBJ)
+all_tester: $(TOBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+main: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
 
 .PHONY: clean
 

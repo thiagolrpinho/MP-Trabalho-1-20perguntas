@@ -240,50 +240,50 @@ int GameEngine::saveGame( void )
 
 int GameEngine::saveGame( string file_name )
 {
-    fstream p_file_to_write;
-    pushLastNode(); //Armazena o contexto atual da árvore
-    setActualNode( getStart() ); //Começa a ler a do início da árvore
-        try {
-            p_file_to_write.open("./saved_games/" + file_name + ".txt", std::fstream::out | std::fstream::trunc);
-            if(!p_file_to_write.is_open()) return Error;
-        } catch ( int e) {
-            return Error;
-        }
-        if ( writeInFile(p_file_to_write) == Error ) return Error;
-    setActualNode( popLastNode() ); //Retorna ao contexto anterior.
-        p_file_to_write.close();
+  fstream p_file_to_write;
+  pushLastNode(); //Armazena o contexto atual da árvore
+  setActualNode( getStart() ); //Começa a ler a do início da árvore
+  try {
+    p_file_to_write.open("./saved_games/" + file_name + ".txt", std::fstream::out | std::fstream::trunc);
+    if(!p_file_to_write.is_open()) return Error;
+  } catch ( int e) {
+    return Error;
+  }
+  if ( writeInFile(p_file_to_write) == Error ) return Error;
+  setActualNode( popLastNode() ); //Retorna ao contexto anterior.
+    p_file_to_write.close();
 
-        return Sucess;
+    return Sucess;
 };
 
 int GameEngine::writeInFile( fstream &p_file_to_write )
 {
-    //First the engine write the actual statement on file
-    //them check if the Yes statement exist.
-    //If not, it write an # and checks the No statement
-    //If yes, it moves to the node and do the same.
-    try {
-        p_file_to_write << readActualNode() << ";";
+  //First the engine write the actual statement on file
+  //them check if the Yes statement exist.
+  //If not, it write an # and checks the No statement
+  //If yes, it moves to the node and do the same.
+  try {
+      p_file_to_write << readActualNode() << ";";
 
-        if ( moveToYes() == Error )
-        {
-        p_file_to_write << "#;";
-        } else {
-            if ( writeInFile( p_file_to_write ) == Error ) return Error;
-            moveBack();
-        }
+      if ( moveToYes() == Error )
+      {
+      p_file_to_write << "#;";
+      } else {
+          if ( writeInFile( p_file_to_write ) == Error ) return Error;
+          moveBack();
+      }
 
-        if ( moveToNo() == Error)
-        {
-            p_file_to_write << "#;";
-        } else {
-            if ( writeInFile( p_file_to_write ) == Error ) return Error;
-            moveBack();
-        }
-    } catch (int e){
-        return Error;
-    }
-    return Sucess;
+      if ( moveToNo() == Error)
+      {
+          p_file_to_write << "#;";
+      } else {
+          if ( writeInFile( p_file_to_write ) == Error ) return Error;
+          moveBack();
+      }
+  } catch (int e){
+      return Error;
+  }
+  return Sucess;
 }
 
 int GameEngine::readFile( fstream &p_file_to_read )
