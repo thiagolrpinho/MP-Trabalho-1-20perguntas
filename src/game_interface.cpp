@@ -76,10 +76,16 @@ int GameInterface::loadSavedGame( void )
 /*
   This method can save the actual game as the last_game in a txt file of the users choice.
 */
-
 int GameInterface::saveActualGame( void )
 {
-  return Error;
+  string user_input_file_name_to_be_saved;
+
+  do{
+    cout << "\n Please write the a valid txt filename to you save on. \n";
+    getline(cin, user_input_file_name_to_be_saved );
+  } while( getEngine()->saveGame(user_input_file_name_to_be_saved) == Error );
+
+  return Sucess;
 
 }
 
