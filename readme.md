@@ -63,7 +63,13 @@ If you want to test too the game engine:
 ```
 make game_engine_tester
 ```
-
+## More information
+There's a folder created with doxygen that contains an interactive way to see the classes and methods useds in the game.
+Also there's an pdf on the main folder named:
+```
+metodos.pdf
+```
+With each method used, what it does(in portuguese) and a list of the tests used to validate each one of them.
 ## Built With
 
 * [Catch](http://catch-lib.net/) - The test library used
