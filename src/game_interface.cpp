@@ -44,14 +44,30 @@ int GameInterface::doRound( void )
 int GameInterface::startNewGame( void )
 {
   string user_input_first_answer_of_the_game;
-  cout << "\n Qual será resposta inicial do seu jogo? \n";
+  cout << "\n What's the initial answer of your game? \n";
   getline(cin, user_input_first_answer_of_the_game );
   return getEngine()->writeInActualNode(user_input_first_answer_of_the_game);
 }
-
+/*
+  This method can load last game or load another game of the user's choice.
+*/
 int GameInterface::loadSavedGame( void )
 {
-  return Error;
+  string user_input_game_to_be_load;
+  string user_input_yes_or_something_else;
+
+  cout << "\n Would you like to load your last game? \n";
+  cout << " Write Yes if and only if you want. \n";
+  cin >> user_input_yes_or_something_else;
+  cin.ignore(); //Ignores ENTER input
+
+  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) return getEngine()->loadGame("last_game");
+  do{
+    cout << "\n Please write the a valid txt filename that you want to load. \n";
+    getline(cin, user_input_game_to_be_load );
+  } while( getEngine()->loadGame(user_input_game_to_be_load) == Error );
+
+  return Sucess;
 }
 
 /*
