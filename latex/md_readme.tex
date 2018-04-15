@@ -1,0 +1,89 @@
+The game consists of a series of Yes or No questions until it get on an answer. If the answer and what the user thought at the start of the game are equal, the program wins. If they differ, the game will ask the player for the right answer and which question answering yes would lead to this right answer. The game will get more questions and right answer after more plays. It\textquotesingle{}s possible to save a game, load an anterior game, to start a new game or to edit an already loaded one.
+
+\subsection*{How to play}
+
+First clone this repository.
+
+\subsubsection*{Prerequisites}
+
+You need g++ installed which is native from ubuntu.
+
+\subsubsection*{Installing}
+
+After extracting it, enter on the folder using your terminal and write 
+\begin{DoxyCode}
+1 make
+\end{DoxyCode}
+
+
+\subsubsection*{Play it}
+
+After that, write on your console\+: 
+\begin{DoxyCode}
+1 ./play\_game
+\end{DoxyCode}
+
+
+\subsection*{Running the tests}
+
+On the folder you installed your Game of 20 Questions, write in the terminal\+: To make a program to run all the tests\+: 
+\begin{DoxyCode}
+1 make all\_tester
+\end{DoxyCode}
+ If you want to see the tests before running it, write\+: 
+\begin{DoxyCode}
+1 ./all\_tester --list-tests
+\end{DoxyCode}
+ Or jus run it using 
+\begin{DoxyCode}
+1 ./all\_tester 
+\end{DoxyCode}
+ {\itshape Warning The all\+\_\+tester is not fully automatized because I\textquotesingle{}m new to catch library and don\textquotesingle{}t know how to automatize input and output on terminal tests. This happens only with tests\+\_\+game\+\_\+interface.\+cpp}
+
+\subsubsection*{Running other tests}
+
+To run other tests just go to the main folder of the project\+: To test only the Binary Tree used on the game. 
+\begin{DoxyCode}
+1 make btree\_tester
+\end{DoxyCode}
+
+
+Beside the previous tests, if you want to test too the game statements of the game\+: 
+\begin{DoxyCode}
+1 make game\_statement\_tester
+\end{DoxyCode}
+
+
+If you want to test too the game engine\+: 
+\begin{DoxyCode}
+1 make game\_engine\_tester
+\end{DoxyCode}
+ \subsection*{More information}
+
+There\textquotesingle{}s a folder created with doxygen that contains an interactive way to see the classes and methods useds in the game. Also there\textquotesingle{}s an pdf on the main folder named\+: 
+\begin{DoxyCode}
+1 metodos.pdf
+\end{DoxyCode}
+ With each method used, what it does(in portuguese) and a list of the tests used to validate each one of them. \subsection*{Built With}
+
+
+\begin{DoxyItemize}
+\item \href{http://catch-lib.net/}{\tt Catch} -\/ The test library used
+\end{DoxyItemize}
+
+\subsection*{Author}
+
+
+\begin{DoxyItemize}
+\item {\bfseries Thiago Luis Rodrigue Pinho} -\/ {\itshape Game of 20 Questions} -\/ \href{https://github.com/thiagolrpinho}{\tt Thiago Luis}
+\end{DoxyItemize}
+
+\subsection*{Acknowledgments}
+
+
+\begin{DoxyItemize}
+\item It was my first time developing using T\+TD method. I learned a lot and am grateful for the experience.
+\item It think this was a bit too complex for a two weeks project.
+\item I wish I could have organized more my code. Thanks for reading until here.
+\item Sorry for English and programation mistakes. Please correct me and I\textquotesingle{}ll fix it. 
+\end{DoxyItemize}
