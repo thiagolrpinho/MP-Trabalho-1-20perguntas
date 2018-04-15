@@ -1,5 +1,5 @@
-#ifndef GAME_QUESTION_HPP
-#define GAME_QUESTION_HPP
+#ifndef GAME_ENGINE_HPP
+#define GAME_ENGINE_HPP
 
 #include <stack>
 using std::stack;
@@ -23,7 +23,7 @@ typedef stack<PStringNode> StackOfStringNodes;
   lead to the right answer.
   A question is a node that is not null or have it's branches null.
   The game engine have two pointers, one to the start of the game and another
-  to the actual node. 
+  to the actual node. It also have a stack of pointers to the anterior nodes.
 
 */
 
