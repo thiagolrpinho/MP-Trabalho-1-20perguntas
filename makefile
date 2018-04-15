@@ -12,7 +12,7 @@ LIBS	=-lm
 _DEPS	= game_interface.hpp game_engine.hpp btree.hpp stringnode.hpp catch.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_TOBJ = game_interface.o game_engine.o btree.o stringnode.o tests_main.o tests_btree.o tests_game_statement.o tests_game_engine.o tests_game_interface.o 
+_TOBJ = game_interface.o game_engine.o btree.o stringnode.o tests_main.o tests_btree.o 
 TOBJ = $(patsubst %,$(ODIR)/%,$(_TOBJ))
 
 _OBJ = game_interface.o game_engine.o btree.o stringnode.o main.o
@@ -24,12 +24,33 @@ $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 $(ODIR)/%.o: $(TDIR)/%.cpp $(DEPS)
 	$(CC)	-c	-o 	$@	$<	$(CFLAGS)
 
-all_tester: $(TOBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
-
 main: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
+
+btree_tester:$(TOBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+_TOBJ += tests_game_statement.o 
+TOBJ = $(patsubst %,$(ODIR)/%,$(_TOBJ))
+
+game_statement_tester:$(TOBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+_TOBJ += tests_game_engine.o 
+TOBJ = $(patsubst %,$(ODIR)/%,$(_TOBJ))
+
+game_engine_tester:$(TOBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+_TOBJ += tests_game_interface.o 
+TOBJ = $(patsubst %,$(ODIR)/%,$(_TOBJ))
+
+game_interface_tester:$(TOBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+all_tester: $(TOBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
 
