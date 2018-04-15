@@ -12,7 +12,9 @@ using std::cin;
 
 typedef shared_ptr<StringNode> PStringNode;
 typedef stack<PStringNode> StackOfStringNodes;
+
 /*
+/////////////////////////////////////////////////////////////////////////////////
   This is library was built to abstract game engine in the game 20 questions.
   Each node represents an statement. 
   Trying to acess nullpointer is considered a don't know. The game should return
@@ -24,7 +26,7 @@ typedef stack<PStringNode> StackOfStringNodes;
   A question is a node that is not null or have it's branches null.
   The game engine have two pointers, one to the start of the game and another
   to the actual node. It also have a stack of pointers to the anterior nodes.
-
+/////////////////////////////////////////////////////////////////////////////////
 */
 
 class GameEngine {
