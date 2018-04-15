@@ -3,6 +3,10 @@
 
 #include <stack>
 using std::stack;
+#include <fstream>
+using std::fstream;
+#include <iostream>
+using std::cin;
 
 #include "btree.hpp"
 
@@ -55,6 +59,7 @@ class GameEngine {
  //YesOrNo Logic
  int newYesAnswer( void );
  int newYesAnswer(string initial_text);
+ int newNoAnswer( void );
  int newNoAnswer(string initial_text);
  int newYesQuestion(string initial_question);
  PStringNode getYes( void );
@@ -62,6 +67,14 @@ class GameEngine {
 
  //Question Logic
  int checkGuess( void );
+
+ //File managing
+ int saveGame( void );
+ int saveGame( string file_name );
+ int loadGame( void );
+ int loadGame( string file_name );
+ int readFile( fstream &p_file_to_read );
+ int writeInFile( fstream &p_file_to_write );
 
 };
 

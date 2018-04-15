@@ -46,4 +46,6 @@ class StringNode{
   int insertRightNode();
   int insertRightNode(string initial_new_node_text);
   int cutNode();
+  int clearLeft( void );
+  int clearRight( void );
 };
