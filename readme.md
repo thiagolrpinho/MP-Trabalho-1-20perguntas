@@ -30,11 +30,11 @@ After that, write on your console:
 
 ## Running the tests
 
-On the folder you installed your Game of 20 Questions, write:
+On the folder you installed your Game of 20 Questions, write in the terminal:
+To make a program to run all the tests:
 ```
 make all_tester
 ```
-To make and all_testers program.
 If you want to see the tests before running it, write:
 ```
 ./all_tester --list-tests
@@ -43,9 +43,9 @@ Or jus run it using
 ```
 ./all_tester 
 ```
-####Warning
+*Warning
     The all_tester is not fully automatized because I'm new to catch library of tests and don't know how to automatize input and output on terminal tests.
-    This happens only with tests_game_interface.cpp
+    This happens only with tests_game_interface.cpp*
 
 ###Running other tests
 To run other tests just go to the main folder of the project:
@@ -82,4 +82,3 @@ the experience.
 * I wish I could have organized more my code. Thanks for reading until here.
 * Sorry for English and programation mistakes. Please correct me and I'll fix it.
 
-###
