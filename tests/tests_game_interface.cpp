@@ -100,10 +100,15 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
         REQUIRE( p_interface_with_menu->exitGame() == kEndGameCode );
     }
     */
-    
+
+    SECTION("has a playingRoutine")
+    {
+        REQUIRE(p_interface_with_menu->playingRoutine() == Sucess );
+    }
+/* 
     SECTION("Has a menu")
     {
         REQUIRE( p_interface_with_menu->openMenu() == Sucess );
     }
-    
+*/   
 } //TEST CASE 

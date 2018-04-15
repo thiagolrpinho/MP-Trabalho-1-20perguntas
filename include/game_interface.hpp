@@ -44,6 +44,7 @@ class GameInterface {
     int startNewGame( void );
     int loadSavedGame( void );
     int saveActualGame( void );
+    int playingRoutine( void );
     int exitGame(void);
 
   //Auxiliary methods

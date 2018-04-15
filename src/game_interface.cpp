@@ -67,15 +67,17 @@ int GameInterface::openMenu( void )
     
     cin >> code_to_next_action;
     cin.ignore();
-    
+
     switch(code_to_next_action)
     {
       case 1: 
         if ( startNewGame() == Error ) return Error;
+        
       break;
 
       case 2:
         if ( loadSavedGame() == Error ) return Error;
+        doRound();
       break;
 
       case 3:
@@ -142,6 +144,11 @@ int GameInterface::saveActualGame( void )
 
   return Sucess;
 
+}
+
+int GameInterface::playingRoutine( void )
+{
+  return Error;
 }
 
 int GameInterface::exitGame( void )
