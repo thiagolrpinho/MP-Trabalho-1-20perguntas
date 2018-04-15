@@ -96,12 +96,15 @@ GameEngine::GameEngine(string initial_text)
 
 int GameEngine::restart( void ){
     try {
-        p_actual_node_.reset();
-        p_tree_of_statements_.reset();
-        while ( stack_of_last_nodes_.empty() == false )
+        p_tree_of_statements_.reset( new BTree() );
+        setActualNode(getStart());
+    
+        while ( !stack_of_last_nodes_.empty())
         {
             popLastNode();
         }
+
+        pushLastNode(getStart());
     } catch (int e){
         return Error;
     }
@@ -213,10 +216,12 @@ int GameEngine::loadGame( void )
 {
     fstream p_file_to_read;
     try {
-        p_file_to_read.open("./text.txt", std::fstream::in);
+        p_file_to_read.open("./test_load.txt", std::fstream::in);
     } catch ( int e) {
         return Error;
     }
+    restart();
+    if ( readFile( p_file_to_read ) == Error ) return Error;
 
     p_file_to_read.close();
     return Sucess;
@@ -228,13 +233,14 @@ int GameEngine::saveGame( void )
     pushLastNode(); //Armazena o contexto atual da árvore
     setActualNode( getStart() ); //Começa a ler a do início da árvore
         try {
-            p_file_to_write.open("./test_save.txt", std::fstream::out | std::fstream::trunc);
+            p_file_to_write.open("./test_load.txt", std::fstream::out | std::fstream::trunc);
         } catch ( int e) {
             return Error;
         }
         if ( writeInFile(p_file_to_write) == Error ) return Error;
     setActualNode( popLastNode() ); //Retorna ao contexto anterior.
         p_file_to_write.close();
+
         return Sucess;
 };
 
@@ -271,7 +277,6 @@ int GameEngine::writeInFile( fstream &p_file_to_write )
 int GameEngine::readFile( fstream &p_file_to_read )
 {
     string node_statement;
-    //restart();
     try {
         getline(p_file_to_read, node_statement, ';');
         if ( node_statement.compare("#") == Equals ) return Error;

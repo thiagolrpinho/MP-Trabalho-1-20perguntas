@@ -8,8 +8,7 @@ THESE TESTS WILL BE FOCUSED ON THE ENGINE SYSTEM OF
   THE 20_QUESTIONS GAME
   It'll be consired fully functional if it pass on
   four test cases:
-    Moving to Yes or No, Guessing, learn new guess
-    and reseting.
+    Moving to Yes or No, Guessing, saving, loading and restarting.
 */
 
 
@@ -118,9 +117,9 @@ TEST_CASE( "Game load", "[20_QUESTION_GAME_ENGINE]")
         REQUIRE( p_new_game->readFile( p_file_to_read ) == Sucess);
         p_file_to_read.close();
 
-        REQUIRE( p_new_game->getActualNode() == p_new_game->getStart() );
+        CHECK( p_new_game->getActualNode() == p_new_game->getStart() );
         REQUIRE( p_new_game->readActualNode().compare("É verde?") == Equals );
-        CHECK( p_new_game->moveToYes() == Error );
+        REQUIRE( p_new_game->moveToYes() == Error );
         REQUIRE( p_new_game->moveToNo() == Sucess );
         CHECK( p_new_game->readActualNode().compare( "É Azul?" ) == Equals );
         REQUIRE( p_new_game->moveToNo() == Error );
@@ -128,4 +127,8 @@ TEST_CASE( "Game load", "[20_QUESTION_GAME_ENGINE]")
         CHECK( p_new_game->readActualNode().compare( "É o céu!" ) == Equals );
     }
 
+    SECTION( "Game engine can load games" )
+    {
+        REQUIRE( p_new_game->loadGame() == Sucess );
+    }
 }
