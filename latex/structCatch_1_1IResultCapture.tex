@@ -1,0 +1,67 @@
+\hypertarget{structCatch_1_1IResultCapture}{}\section{Catch\+:\+:I\+Result\+Capture Struct Reference}
+\label{structCatch_1_1IResultCapture}\index{Catch\+::\+I\+Result\+Capture@{Catch\+::\+I\+Result\+Capture}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries section\+Started} (\hyperlink{structCatch_1_1SectionInfo}{Section\+Info} const \&section\+Info, \hyperlink{structCatch_1_1Counts}{Counts} \&assertions)=0\hypertarget{structCatch_1_1IResultCapture_a5b76ed52badcb64cf374202e12b81a03}{}\label{structCatch_1_1IResultCapture_a5b76ed52badcb64cf374202e12b81a03}
+
+\item 
+virtual void {\bfseries section\+Ended} (\hyperlink{structCatch_1_1SectionEndInfo}{Section\+End\+Info} const \&end\+Info)=0\hypertarget{structCatch_1_1IResultCapture_a4e152bc43dc0933684e31fa67a58195d}{}\label{structCatch_1_1IResultCapture_a4e152bc43dc0933684e31fa67a58195d}
+
+\item 
+virtual void {\bfseries section\+Ended\+Early} (\hyperlink{structCatch_1_1SectionEndInfo}{Section\+End\+Info} const \&end\+Info)=0\hypertarget{structCatch_1_1IResultCapture_afcc71eef8ca821ae132cced4a2be6988}{}\label{structCatch_1_1IResultCapture_afcc71eef8ca821ae132cced4a2be6988}
+
+\item 
+virtual void {\bfseries benchmark\+Starting} (Benchmark\+Info const \&info)=0\hypertarget{structCatch_1_1IResultCapture_a264ae12330c74b2daae41715a30d51bf}{}\label{structCatch_1_1IResultCapture_a264ae12330c74b2daae41715a30d51bf}
+
+\item 
+virtual void {\bfseries benchmark\+Ended} (Benchmark\+Stats const \&stats)=0\hypertarget{structCatch_1_1IResultCapture_a6e5e64f9d94211a888249012ab6cc7fb}{}\label{structCatch_1_1IResultCapture_a6e5e64f9d94211a888249012ab6cc7fb}
+
+\item 
+virtual void {\bfseries push\+Scoped\+Message} (\hyperlink{structCatch_1_1MessageInfo}{Message\+Info} const \&message)=0\hypertarget{structCatch_1_1IResultCapture_a91d154c1e087e383dcde5aad95cb6a05}{}\label{structCatch_1_1IResultCapture_a91d154c1e087e383dcde5aad95cb6a05}
+
+\item 
+virtual void {\bfseries pop\+Scoped\+Message} (\hyperlink{structCatch_1_1MessageInfo}{Message\+Info} const \&message)=0\hypertarget{structCatch_1_1IResultCapture_a42bcb13276706bf8c3ce081ce16d37fd}{}\label{structCatch_1_1IResultCapture_a42bcb13276706bf8c3ce081ce16d37fd}
+
+\item 
+virtual void {\bfseries handle\+Fatal\+Error\+Condition} (\hyperlink{classCatch_1_1StringRef}{String\+Ref} message)=0\hypertarget{structCatch_1_1IResultCapture_a48559e6598ba9474b903697b69c769b2}{}\label{structCatch_1_1IResultCapture_a48559e6598ba9474b903697b69c769b2}
+
+\item 
+virtual void {\bfseries handle\+Expr} (\hyperlink{structCatch_1_1AssertionInfo}{Assertion\+Info} const \&info, \hyperlink{structCatch_1_1ITransientExpression}{I\+Transient\+Expression} const \&expr, \hyperlink{structCatch_1_1AssertionReaction}{Assertion\+Reaction} \&reaction)=0\hypertarget{structCatch_1_1IResultCapture_a59a2b05391e464954575d2afb6d5d607}{}\label{structCatch_1_1IResultCapture_a59a2b05391e464954575d2afb6d5d607}
+
+\item 
+virtual void {\bfseries handle\+Message} (\hyperlink{structCatch_1_1AssertionInfo}{Assertion\+Info} const \&info, Result\+Was\+::\+Of\+Type result\+Type, \hyperlink{classCatch_1_1StringRef}{String\+Ref} const \&message, \hyperlink{structCatch_1_1AssertionReaction}{Assertion\+Reaction} \&reaction)=0\hypertarget{structCatch_1_1IResultCapture_a21788ebc64571abf322b80c8cc51794d}{}\label{structCatch_1_1IResultCapture_a21788ebc64571abf322b80c8cc51794d}
+
+\item 
+virtual void {\bfseries handle\+Unexpected\+Exception\+Not\+Thrown} (\hyperlink{structCatch_1_1AssertionInfo}{Assertion\+Info} const \&info, \hyperlink{structCatch_1_1AssertionReaction}{Assertion\+Reaction} \&reaction)=0\hypertarget{structCatch_1_1IResultCapture_a6382ed20486e2d9a020da971c6d5c53d}{}\label{structCatch_1_1IResultCapture_a6382ed20486e2d9a020da971c6d5c53d}
+
+\item 
+virtual void {\bfseries handle\+Unexpected\+Inflight\+Exception} (\hyperlink{structCatch_1_1AssertionInfo}{Assertion\+Info} const \&info, std\+::string const \&message, \hyperlink{structCatch_1_1AssertionReaction}{Assertion\+Reaction} \&reaction)=0\hypertarget{structCatch_1_1IResultCapture_afc97bc69829185222f955ebeef97adfe}{}\label{structCatch_1_1IResultCapture_afc97bc69829185222f955ebeef97adfe}
+
+\item 
+virtual void {\bfseries handle\+Incomplete} (\hyperlink{structCatch_1_1AssertionInfo}{Assertion\+Info} const \&info)=0\hypertarget{structCatch_1_1IResultCapture_a89b89372eb09cc44f8dcad363de6157d}{}\label{structCatch_1_1IResultCapture_a89b89372eb09cc44f8dcad363de6157d}
+
+\item 
+virtual void {\bfseries handle\+Non\+Expr} (\hyperlink{structCatch_1_1AssertionInfo}{Assertion\+Info} const \&info, Result\+Was\+::\+Of\+Type result\+Type, \hyperlink{structCatch_1_1AssertionReaction}{Assertion\+Reaction} \&reaction)=0\hypertarget{structCatch_1_1IResultCapture_ab7dbdf8aa28427119583e24dbb302c63}{}\label{structCatch_1_1IResultCapture_ab7dbdf8aa28427119583e24dbb302c63}
+
+\item 
+virtual bool {\bfseries last\+Assertion\+Passed} ()=0\hypertarget{structCatch_1_1IResultCapture_a973435fbdcb2f6f07a0ec5719a01e956}{}\label{structCatch_1_1IResultCapture_a973435fbdcb2f6f07a0ec5719a01e956}
+
+\item 
+virtual void {\bfseries assertion\+Passed} ()=0\hypertarget{structCatch_1_1IResultCapture_a9b0ef2cb071e9a9dc6ec1b533026aea7}{}\label{structCatch_1_1IResultCapture_a9b0ef2cb071e9a9dc6ec1b533026aea7}
+
+\item 
+virtual std\+::string {\bfseries get\+Current\+Test\+Name} () const =0\hypertarget{structCatch_1_1IResultCapture_aea1617f4a84cc648246aa3ed6918b5bf}{}\label{structCatch_1_1IResultCapture_aea1617f4a84cc648246aa3ed6918b5bf}
+
+\item 
+virtual const Assertion\+Result $\ast$ {\bfseries get\+Last\+Result} () const =0\hypertarget{structCatch_1_1IResultCapture_ab18872c89fab97405a56e9c6a4919736}{}\label{structCatch_1_1IResultCapture_ab18872c89fab97405a56e9c6a4919736}
+
+\item 
+virtual void {\bfseries exception\+Early\+Reported} ()=0\hypertarget{structCatch_1_1IResultCapture_ae63ecec95db4c236c63ecf616f483810}{}\label{structCatch_1_1IResultCapture_ae63ecec95db4c236c63ecf616f483810}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/catch.\+hpp\end{DoxyCompactItemize}
