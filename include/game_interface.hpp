@@ -37,6 +37,7 @@ class GameInterface {
 
     PGameEngine getEngine( void );
     int doRound( void );
+    int startNewGame( void );
 
 
     int gotAnswer( void );

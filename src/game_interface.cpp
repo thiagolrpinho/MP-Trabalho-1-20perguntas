@@ -41,6 +41,10 @@ int GameInterface::doRound( void )
   return Error;
 }
 
+int GameInterface::startNewGame( void )
+{
+  return Error;
+}
 
 
 /*
