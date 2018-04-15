@@ -67,7 +67,7 @@ int StringNode::insertRightNode(string initial_new_node_text){
 
 int StringNode::insertRightNode( ){
     if ( this->getRightNode() == nullptr ) {
-        this->p_right_node_.reset( );
+        this->p_right_node_.reset( new StringNode() );
     } else {
         return Error;
     }
@@ -111,4 +111,25 @@ int StringNode::cutNode(void )
     } catch (int e) {
         return Error;
     }
+}
+
+int StringNode::clearLeft( void )
+{
+    try {
+        this->p_left_node_.reset();
+    } catch ( int e) {
+        return Error;
+    }
+    return Sucess;
+}
+
+int StringNode::clearRight( void )
+{
+    try {
+        this->p_right_node_.reset();
+    } catch ( int e) {
+        return Error;
+    }
+    
+    return Sucess;
 }

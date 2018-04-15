@@ -3,6 +3,10 @@
 
 #include <stack>
 using std::stack;
+#include <fstream>
+using std::fstream;
+#include <iostream>
+using std::cin;
 
 #include "btree.hpp"
 
@@ -38,12 +42,14 @@ class GameEngine {
  PStringNode getStart(void);
  PStringNode getActualNode(void);
  PStringNode popLastNode(void);
- int setActualNode( PStringNode p_next_node);
+ int setActualNode( PStringNode p_next_node );
+ int pushLastNode( void ); //If no node is passed, Actual Node will be added to last
  int pushLastNode( PStringNode p_next_node );
+
  int moveToYes( void );
  int moveToNo( void );
  int moveBack( void );
-
+ int restart( void );
  //Reading and writing values on nodes
  string readActualNode( void );
  int writeInActualNode( string new_text );
@@ -51,10 +57,24 @@ class GameEngine {
  //Remove Statements
  int removeActualNode( void );
  //YesOrNo Logic
- int newYesAnswer(void);
+ int newYesAnswer( void );
  int newYesAnswer(string initial_text);
+ int newNoAnswer( void );
+ int newNoAnswer(string initial_text);
  int newYesQuestion(string initial_question);
- PStringNode getYes(void);
+ PStringNode getYes( void );
+ PStringNode getNo( void );
+
+ //Question Logic
+ int checkGuess( void );
+
+ //File managing
+ int saveGame( void );
+ int saveGame( string file_name );
+ int loadGame( void );
+ int loadGame( string file_name );
+ int readFile( fstream &p_file_to_read );
+ int writeInFile( fstream &p_file_to_write );
 
 };
 
