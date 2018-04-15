@@ -41,6 +41,11 @@ int GameInterface::doRound( void )
   return Error;
 }
 
+int GameInterface::openMenu( void )
+{
+  return Error;
+}
+
 int GameInterface::startNewGame( void )
 {
   string user_input_first_answer_of_the_game;
