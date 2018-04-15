@@ -40,6 +40,7 @@ class GameInterface {
     int startNewGame( void );
     int loadSavedGame( void );
     int saveActualGame( void );
+    int exitGame(void);
 
 
     int gotAnswer( void );

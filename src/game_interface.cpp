@@ -89,6 +89,11 @@ int GameInterface::saveActualGame( void )
 
 }
 
+int GameInterface::exitGame( void )
+{
+  return Error;
+}
+
 /*
   if it's an answer, show it an wait to know if it's right.
   In case it's right, just finish the game. Case not, ask the

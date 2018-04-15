@@ -94,6 +94,11 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
     {
         REQUIRE( p_interface_with_menu->saveActualGame() == Sucess );
     }
+
+    SECTION("can exit the game")
+    {
+        REQUIRE( p_interface_with_menu->exitGame() == Sucess );
+    }
     /*
     SECTION("Has a menu")
     {
