@@ -15,31 +15,7 @@ PGameEngine GameInterface::getEngine( void )
   return this->p_game_engine_;
 }
 
-/*
- Each round should consist of:
-    1)Read the statement.
-    2) 
-      if it's an answer, show it an wait to know if it's right.
-    In case it's right, just finish the game. Case not, ask the
-    user for a question that would lead to the right answer and
-    the right answer on the Yes branch.
-      If it's a question, ask it and wait for an answer.
-    Verify if the answer statement is a "don't know". If it is,
-    then ask the user what should be the right answer and write it
-    there. If not, follow to step 3.
-    3)Repeat until answer or a "don't know".
-*/
 
-int GameInterface::doRound( void )
-{
-  string actual_statement;
-  
-  //If it's an answer:
-  if( getEngine()->checkGuess() == Sucess ) return gotAnswer();
-  return gotQuestion();
-  
-  return Error;
-}
 
 /*
   MENU will be able to start a new game, load a saved game, 
@@ -154,7 +130,10 @@ int GameInterface::playingRoutine( void )
 
 int GameInterface::editRoutine( void )
 {
-  return Error;
+  cout << "\n Welcome to the edit routine. \n";
+  cout << " Here you can visit each statement and decide to edit or delete it \n";
+  if ( doEditRound() == Error ) return Error;
+  return finishGame();
 }
 
 int GameInterface::exitGame( void )
@@ -168,7 +147,115 @@ int GameInterface::exitGame( void )
   if ( validYesInput( user_input_yes_or_something_else ) == Error ) return Sucess;
   cout << "\n Right then. See you soon. \n";
   return kEndGameCode;
-}
+} //EXIT GAME
+
+
+/*
+ Each round should consist of:
+    1)Read the statement.
+    2) 
+      if it's an answer, show it an wait to know if it's right.
+    In case it's right, just finish the game. Case not, ask the
+    user for a question that would lead to the right answer and
+    the right answer on the Yes branch.
+      If it's a question, ask it and wait for an answer.
+    Verify if the answer statement is a "don't know". If it is,
+    then ask the user what should be the right answer and write it
+    there. If not, follow to step 3.
+    3)Repeat until answer or a "don't know".
+*/
+
+int GameInterface::doRound( void )
+{
+  
+  //If it's an answer:
+  if( getEngine()->checkGuess() == Sucess ) return gotAnswer();
+  return gotQuestion();
+  
+  return Error;
+} //DO Round
+
+int GameInterface::doEditRound( void )
+{
+  string user_input_yes_or_something_else;
+  string user_new_statement;
+
+  cout << "Actual statement is: \n";
+  cout << getEngine()->readActualNode() << " \n";
+  cout << " Wanna erase this statement and those bellow it? \n ";
+  cout << " Write Yes if and only if it's correct. \n";
+  cin >> user_input_yes_or_something_else;
+  cin.ignore(); //Ignores ENTER input
+  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  {
+    if ( getEngine()->removeActualNode() == Error) return Error;
+    return doEditRound();
+  }
+
+  cout << " Wanna edit it's text? \n";
+  cout << " Write Yes if and only if it's correct. \n";
+  cin >> user_input_yes_or_something_else;
+  cin.ignore(); //Ignores ENTER input
+  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  {
+    do {
+     getline(cin,user_new_statement);
+    } while ( getEngine()->writeInActualNode(user_new_statement) == Error );
+  }
+
+  cout << " Want to edit one of it's branchs? \n";
+  cout << " Write Yes to if and only if you want. \n";
+  cin >> user_input_yes_or_something_else;
+  cin.ignore(); //Ignores ENTER input
+  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  {
+    cout << " The Yes branch? \n";
+    cout << " Write Yes if and only if it's correct. \n";
+    cin >> user_input_yes_or_something_else;
+    cin.ignore(); //Ignores ENTER input
+    if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+    {
+      if ( getEngine()->moveToYes() == Error )
+      {
+        cout << " Sorry, there's no statement on Yes. \n";
+        cout << " Please, try again. \n";
+        
+      } 
+      return doEditRound();
+    }
+
+    cout << " The No statement? \n ";
+    cout << " Write Yes if and only if it's correct. \n";
+    cin >> user_input_yes_or_something_else;
+    cin.ignore(); //Ignores ENTER input
+    if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+    {
+      if ( getEngine()->moveToNo() == Error )
+      {
+        cout << " Sorry, there's no statement on No. \n";
+        cout << " Please, try again. \n";
+      } 
+      return doEditRound();
+    }
+  }
+
+  cout << " Wanna go back to the previous statement? \n ";
+  cout << " Write Yes if and only if it's correct. \n";
+  cin >> user_input_yes_or_something_else;
+  cin.ignore(); //Ignores ENTER input
+  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  {
+    if ( getEngine()->moveBack() == Error )
+    {
+      cout << " Sorry, there's no statement before this one \n";
+      cout << " Please, try again. \n";
+    } 
+    return doEditRound();
+  }
+
+  return Sucess;
+} //Do edit round
+
 
 /*
   if it's an answer, show it an wait to know if it's right.

@@ -96,7 +96,7 @@ GameEngine::GameEngine(string initial_text)
 
 int GameEngine::restart( void ){
     try {
-        p_tree_of_statements_.reset( new BTree() );
+        p_tree_of_statements_.reset( new BTree("New game") );
         setActualNode(getStart());
     
         while ( !stack_of_last_nodes_.empty())
@@ -162,6 +162,7 @@ int GameEngine::removeActualNode( void )
 {
     try {
         PStringNode p_node_to_be_deleted = getActualNode();
+        if( p_node_to_be_deleted == getStart()) return restart();
         setActualNode( popLastNode() );
         if ( p_node_to_be_deleted == getYes() )
         {

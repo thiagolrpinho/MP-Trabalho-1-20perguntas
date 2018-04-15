@@ -37,7 +37,6 @@ class GameInterface {
     GameInterface( void );
 
     PGameEngine getEngine( void );
-    int doRound( void );
     int openMenu( void );
 
   //Menu Methods
@@ -49,6 +48,8 @@ class GameInterface {
     int exitGame(void);
 
   //Auxiliary methods
+    int doRound( void );
+    int doEditRound( void ); 
     int gotAnswer( void );
     int gotQuestion( void );
     int validYesInput( string user_input );

@@ -104,16 +104,16 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
     {
         REQUIRE(p_interface_with_menu->playingRoutine() == Sucess );
     }
-    */
 
     SECTION("has a edit routine")
     {
+        p_interface_with_menu->getEngine()->loadGame("test_multiple_rounds");
         REQUIRE(p_interface_with_menu->editRoutine() == Sucess );
     }
-    /*
+    */
+   
     SECTION("Has a menu")
     {
         REQUIRE( p_interface_with_menu->openMenu() == Sucess );
     }
-     */
-} //TEST CASE 
+} //TEST CASE MENU
