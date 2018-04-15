@@ -43,9 +43,16 @@ int GameInterface::doRound( void )
 
 int GameInterface::startNewGame( void )
 {
-  return Error;
+  string user_input_first_answer_of_the_game;
+  cout << "\n Qual será resposta inicial do seu jogo? \n";
+  getline(cin, user_input_first_answer_of_the_game );
+  return getEngine()->writeInActualNode(user_input_first_answer_of_the_game);
 }
 
+int GameInterface::loadSavedGame( void )
+{
+  return Error;
+}
 
 /*
   if it's an answer, show it an wait to know if it's right.

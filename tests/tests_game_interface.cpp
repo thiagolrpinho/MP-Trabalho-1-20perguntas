@@ -80,10 +80,12 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
 {   
     PGameInterface p_interface_with_menu( new GameInterface());
     
-    SECTION("menu can start new game")
+    SECTION("can start new game")
     {
         REQUIRE( p_interface_with_menu->startNewGame() == Sucess );
     }
+
+
     /*
     SECTION("Has a menu")
     {
