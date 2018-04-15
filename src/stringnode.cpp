@@ -112,3 +112,23 @@ int StringNode::cutNode(void )
         return Error;
     }
 }
+
+int StringNode::clearLeft( void )
+{
+    try {
+        this->p_left_node_.reset();
+    } catch ( int e) {
+        return Error;
+    }
+    return Sucess;
+}
+
+int StringNode::clearRight( void )
+{
+    try {
+        this->p_right_node_.reset();
+    } catch ( int e) {
+        return Error;
+    }
+    return Sucess;
+}

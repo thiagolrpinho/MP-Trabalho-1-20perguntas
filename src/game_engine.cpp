@@ -158,8 +158,16 @@ int GameEngine::newNoAnswer(string initial_text)
 int GameEngine::removeActualNode( void )
 {
     try {
-        getActualNode().reset();
+        PStringNode p_node_to_be_deleted = getActualNode();
         setActualNode( popLastNode() );
+        if ( p_node_to_be_deleted == getYes() )
+        {
+            getActualNode()->clearLeft();
+        } else if ( p_node_to_be_deleted == getNo() ) 
+        {
+            getActualNode()->clearRight();
+        } 
+            p_node_to_be_deleted.reset();
     } catch(int e) {
         return Error;
     }
@@ -269,21 +277,24 @@ int GameEngine::readFile( fstream &p_file_to_read )
         if ( node_statement.compare("#") == Equals ) return Error;
         writeInActualNode( node_statement );
 
-        getline(p_file_to_read, node_statement, ';');
-        if ( node_statement.compare("#") != Equals ) 
+        newYesAnswer();
+        if( moveToYes() == Error) return Error;
+        if( readFile( p_file_to_read ) == Error )
         {
-            newYesAnswer();
-            if( moveToYes() == Error) return 2;
-            readFile( p_file_to_read );
+            removeActualNode();
+        } else { 
             moveBack();
         }
-       if( getline(p_file_to_read, node_statement, ';') ) 
-       {
-            newNoAnswer();
-            if( moveToNo() == Error ) return 3;
-            readFile( p_file_to_read );
+
+        newNoAnswer();
+        if( moveToNo() == Error ) return Error;
+        if( readFile( p_file_to_read ) == Error )
+        {
+            removeActualNode();
+        } else { 
             moveBack();
-       }
+        }
+    
     } catch ( int e ) {
         return Error;
     }

@@ -159,5 +159,25 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
     //Shared_ptr garanties that when there's no reference to the pointer, they're deallocated
   }
 
+  SECTION("A node can have it's left branch deleted")
+  {
+    PStringNode pNode = p_root->getLeftNode();
+    pNode->insertNode( "Abaixo?" );
+    pNode->getLeftNode()->insertNode( "Abaixo do abaixo?" );
+
+    REQUIRE( pNode->clearLeft() == Sucess);
+    REQUIRE( pNode->getLeftNode() == nullptr );
+  }
+
+  SECTION("A node can have it's right branch deleted")
+  {
+    PStringNode pNode = p_root->getLeftNode();
+    pNode->insertRightNode( "Abaixo?" );
+    pNode->getRightNode()->insertRightNode( "Abaixo do abaixo?" );
+
+    REQUIRE( pNode->clearRight() == Sucess);
+    REQUIRE( pNode->getRightNode() == nullptr );
+  }
+
 }//TEST CASE DELETE BINARY TREE
 

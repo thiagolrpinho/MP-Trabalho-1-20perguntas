@@ -98,7 +98,6 @@ TEST_CASE( "Game can be saved on a file", "[20_QUESTION_GAME_ENGINE]")
 
 }//TEST_CASE GAME SAVE
 
-
 TEST_CASE( "Game load", "[20_QUESTION_GAME_ENGINE]")
 {
     
@@ -121,13 +120,12 @@ TEST_CASE( "Game load", "[20_QUESTION_GAME_ENGINE]")
 
         REQUIRE( p_new_game->getActualNode() == p_new_game->getStart() );
         REQUIRE( p_new_game->readActualNode().compare("É verde?") == Equals );
-        REQUIRE( p_new_game->moveToYes() == Error );
+        CHECK( p_new_game->moveToYes() == Error );
         REQUIRE( p_new_game->moveToNo() == Sucess );
         CHECK( p_new_game->readActualNode().compare( "É Azul?" ) == Equals );
         REQUIRE( p_new_game->moveToNo() == Error );
         REQUIRE( p_new_game->moveToYes() == Sucess );
         CHECK( p_new_game->readActualNode().compare( "É o céu!" ) == Equals );
     }
-
 
 }
