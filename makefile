@@ -24,7 +24,7 @@ $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 $(ODIR)/%.o: $(TDIR)/%.cpp $(DEPS)
 	$(CC)	-c	-o 	$@	$<	$(CFLAGS)
 
-main: $(OBJ)
+play_game: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 
