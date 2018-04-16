@@ -1,6 +1,7 @@
 IDIR	=./include
 CC      = g++ -std=c++11
-CFLAGS  = -Wall -g -I$(IDIR)
+CFLAGS  = -Wall -g -I$(IDIR) 
+GCOVFLAGS = $(CFLAGS) -ftest-coverage -fprofile-arcs -fPIC  -O0
 
 ODIR	= ./src/obj
 LDIR	=./lib
@@ -52,6 +53,12 @@ game_interface_tester:$(TOBJ)
 all_tester: $(TOBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
+gcov_tester: $(TOBJ)
+	$(CC) -o $@ $^ $(GCOVFLAGS) $(LIBS)
+
+gcovr_htmls:
+	gcovr -r . --html --html-details -o ./tests/gcov/tests-detailts.html
+	
 .PHONY: clean
 
 clean:

@@ -63,6 +63,24 @@ If you want to test too the game engine:
 ```
 make game_engine_tester
 ```
+
+### Gcov Test
+If you gcov and gcovr installed you can run
+```
+make gcov_tester
+```
+And then:
+```
+./gcov_tester
+```
+After this you can type:
+```
+make gcovr_html
+```
+To generate a graphical representantion of how much the code is abranged by the tests.
+
+*I must warn that Gcov is not associating all my tests to the code it's protect. I'm not sure why. But when I found I'll fix it. My first concern was to make tests that work and later to make tests that gcov would undestand.*
+
 ## More information
 There's a folder created with doxygen that contains an interactive way to see the classes and methods useds in the game.
 Also there's an pdf on the main folder named:
