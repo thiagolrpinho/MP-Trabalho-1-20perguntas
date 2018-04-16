@@ -39,7 +39,7 @@ If you want to see the tests before running it, write:
 ```
 ./all_tester --list-tests
 ```
-Or jus run it using
+Or just run it using
 ```
 ./all_tester 
 ```
@@ -65,7 +65,7 @@ make game_engine_tester
 ```
 
 ### Gcov Test
-If you gcov and gcovr installed you can run
+If you have gcov and gcovr installed you can run
 ```
 make gcov_tester
 ```
