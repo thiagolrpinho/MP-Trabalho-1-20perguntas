@@ -79,7 +79,7 @@ make gcovr_html
 ```
 To generate a graphical representantion of how much the code is abranged by the tests.
 
-*I must warn that Gcov is not associating all my tests to the code its protect. I'm not sure why. But when I found I'll fix it. My first concern was to make tests that work and later to make tests that gcov would undestand.*
+*I must warn that Gcov is not associating all my tests to the code its protect. I'm not sure why. But when I found I'll fix it. *
 
 ## More information
 There's a folder created with doxygen that contains an interactive way to see the classes and methods useds in the game.
