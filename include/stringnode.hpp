@@ -10,17 +10,17 @@ using std::string;
 using std::shared_ptr;
 using std::make_shared;
 
-//Node Operations can be sucessful or not, every
+//Node Operations can be Successful or not, every
 //method that would simply return void will instead
-//return an Error ou Sucess.
-enum NodeOperationStatus {Error, Sucess};
+//return an Error ou Success.
+enum NodeOperationStatus {Error, Success};
 //The Compare method from the library String
 //returns 0 when Equal.
 enum StringEquivalence {Equals};
 
 class StringNode{
  //Each string node is initialized with an empty text variable(nullptr)
- //and two empty branches, unless specified by the client wich can define
+ //and two empty branches, unless specified by the client which can define
  //the initial text value for the node
 
  private:

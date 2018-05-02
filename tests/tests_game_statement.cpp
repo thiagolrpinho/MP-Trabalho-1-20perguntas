@@ -100,9 +100,9 @@ TEST_CASE( "READ STATEMENTS", "[20_QUESTION_GAME_STATEMENT]" )
 
   SECTION( "An statement on branch can be read")
   {
-    REQUIRE( pGameEngine->newYesQuestion("Do you like apples?") == Sucess );
+    REQUIRE( pGameEngine->newYesQuestion("Do you like apples?") == Success );
     PStringNode pBranchStatement(pGameEngine->getYes() );
-    REQUIRE( pGameEngine->setActualNode(pBranchStatement) == Sucess );
+    REQUIRE( pGameEngine->setActualNode(pBranchStatement) == Success );
     REQUIRE( pGameEngine->readActualNode().compare( "Do you like apples?" ) == Equals);
   }
 } //TEST CASE READ STATEMENTS
@@ -114,16 +114,16 @@ TEST_CASE( "UPDATE STATEMENTS", "[20_QUESTION_GAME_STATEMENT]" )
 
   SECTION( "An statement on root can be updated" )
   {
-    REQUIRE( pGameEngine->writeInActualNode("Do you like pies?") == Sucess );
+    REQUIRE( pGameEngine->writeInActualNode("Do you like pies?") == Success );
     REQUIRE( pGameEngine->readActualNode().compare("Do you like pies?") == Equals );
   }
 
   SECTION( "An statement on branch can be updated")
   {
-    REQUIRE( pGameEngine->newYesQuestion("Do you like apples?") == Sucess );
+    REQUIRE( pGameEngine->newYesQuestion("Do you like apples?") == Success );
     PStringNode pBranchStatement(pGameEngine->getYes() );
-    REQUIRE( pGameEngine->setActualNode(pBranchStatement) == Sucess );
-    REQUIRE( pGameEngine->writeInActualNode("Do you like watermellon?") == Sucess );
+    REQUIRE( pGameEngine->setActualNode(pBranchStatement) == Success );
+    REQUIRE( pGameEngine->writeInActualNode("Do you like watermellon?") == Success );
     REQUIRE( pGameEngine->readActualNode().compare("Do you like watermellon?") == Equals );
   }
 } //TEST CASE UPDATE STATEMENTS
@@ -134,7 +134,7 @@ TEST_CASE( "DELETE STATEMENTS", "[20_QUESTION_GAME_STATEMENT]" )
 
   SECTION( "A statament can be deleted" )
   { 
-    REQUIRE( PGameEngine->removeActualNode() == Sucess);
+    REQUIRE( PGameEngine->removeActualNode() == Success);
   }
 
   SECTION( "The engine will backtrace to the  statement before the one erased" ){

@@ -37,7 +37,7 @@ GameEngine::GameEngine(string initial_text)
     } catch (int e) {
         return Error;
     }
-    return Sucess;
+    return Success;
  };
 
   PStringNode GameEngine::popLastNode(void)
@@ -54,7 +54,7 @@ GameEngine::GameEngine(string initial_text)
     } catch (int e) {
         return Error;
     }
-    return Sucess;
+    return Success;
  };
 
  int GameEngine::pushLastNode( PStringNode p_next_node )
@@ -64,7 +64,7 @@ GameEngine::GameEngine(string initial_text)
     } catch (int e) {
         return Error;
     }
-    return Sucess;
+    return Success;
  };
 
  int GameEngine::moveToYes( void )
@@ -72,7 +72,7 @@ GameEngine::GameEngine(string initial_text)
      if ( getYes() == nullptr ) return Error;
      pushLastNode(); //Stores the last node on the stack
      if( setActualNode( getYes() ) == Error ) return Error;   //Move to the Yes statement
-     return Sucess;
+     return Success;
  };
 
 
@@ -81,7 +81,7 @@ GameEngine::GameEngine(string initial_text)
      if ( getNo() == nullptr ) return Error;
      pushLastNode(); //Stores the last node on the stack
      if( setActualNode( getNo() ) == Error ) return Error;   //Move to the Yes statement
-     return Sucess;
+     return Success;
  };
 
  int GameEngine::moveBack( void)
@@ -89,7 +89,7 @@ GameEngine::GameEngine(string initial_text)
      if ( !(stack_of_last_nodes_.empty()) )
      {
          setActualNode( popLastNode() );
-         return Sucess;
+         return Success;
      }
     return Error;
  };
@@ -109,7 +109,7 @@ int GameEngine::restart( void ){
         return Error;
     }
 
-    return Sucess;
+    return Success;
 };
 
 //READING AND WRITING METHODS
@@ -131,7 +131,7 @@ int GameEngine::newYesAnswer()
 { 
     if ( getYes() != nullptr ) return Error;
     getActualNode()->insertLeftNode();
-    return Sucess; 
+    return Success; 
 };
 
 
@@ -140,21 +140,21 @@ int GameEngine::newYesAnswer(string initial_text)
 { 
     if ( getYes() != nullptr ) return Error;
     getActualNode()->insertLeftNode( initial_text );
-    return Sucess; 
+    return Success; 
 };
 
 int GameEngine::newNoAnswer( void )
 { 
     if ( getNo() != nullptr ) return Error;
     getActualNode()->insertRightNode();
-    return Sucess; 
+    return Success; 
 };
 
 int GameEngine::newNoAnswer(string initial_text)
 { 
     if ( getNo() != nullptr ) return Error;
     getActualNode()->insertRightNode( initial_text );
-    return Sucess; 
+    return Success; 
 };
 
 //DELETING METHODS
@@ -175,7 +175,7 @@ int GameEngine::removeActualNode( void )
     } catch(int e) {
         return Error;
     }
-    return Sucess;
+    return Success;
 };
 
 //YesOrNo Logic
@@ -190,7 +190,7 @@ int GameEngine::newYesQuestion( string initial_question )
     } catch (int e){
         return Error;
     }
-    return Sucess;
+    return Success;
 };
 
 PStringNode GameEngine::getYes( void )
@@ -207,7 +207,7 @@ PStringNode GameEngine::getNo( void )
 
 int GameEngine::checkGuess( void )
 {
-    if( getYes() == nullptr && getNo() == nullptr ) return Sucess;
+    if( getYes() == nullptr && getNo() == nullptr ) return Success;
     return Error;
 };
 
@@ -231,7 +231,7 @@ int GameEngine::loadGame( string file_name )
     if ( readFile( p_file_to_read ) == Error ) return Error;
 
     p_file_to_read.close();
-    return Sucess;
+    return Success;
 };
 
 int GameEngine::saveGame( void )
@@ -254,7 +254,7 @@ int GameEngine::saveGame( string file_name )
   setActualNode( popLastNode() ); //Retorna ao contexto anterior.
     p_file_to_write.close();
 
-    return Sucess;
+    return Success;
 };
 
 int GameEngine::writeInFile( fstream &p_file_to_write )
@@ -284,7 +284,7 @@ int GameEngine::writeInFile( fstream &p_file_to_write )
   } catch (int e){
       return Error;
   }
-  return Sucess;
+  return Success;
 }
 
 int GameEngine::readFile( fstream &p_file_to_read )
@@ -318,5 +318,5 @@ int GameEngine::readFile( fstream &p_file_to_read )
         return Error;
     }
 
-    return Sucess;
+    return Success;
 };

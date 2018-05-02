@@ -102,7 +102,7 @@ TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
   SECTION( "Changing root node text value" )
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
-    REQUIRE( p_root->setText("É clássico?") == Sucess );
+    REQUIRE( p_root->setText("É clássico?") == Success );
     REQUIRE( p_root->getText().compare("É clássico?") == Equals );
   }
 
@@ -112,7 +112,7 @@ TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
     p_root->insertNode("Errou!");
 
     PStringNode p_node = p_root->getLeftNode();
-    REQUIRE( p_node->setText("Acertou!") == Sucess );
+    REQUIRE( p_node->setText("Acertou!") == Success );
     REQUIRE_FALSE( p_node->getText().compare("Errou!") == Equals );
   }
 }//TestCase Binary Tree Update
@@ -165,7 +165,7 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
     p_node->insertNode( "Abaixo?" );
     p_node->getLeftNode()->insertNode( "Abaixo do abaixo?" );
 
-    REQUIRE( p_node->clearLeft() == Sucess);
+    REQUIRE( p_node->clearLeft() == Success);
     REQUIRE( p_node->getLeftNode() == nullptr );
   }
 
@@ -175,7 +175,7 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
     p_node->insertRightNode( "Abaixo?" );
     p_node->getRightNode()->insertRightNode( "Abaixo do abaixo?" );
 
-    REQUIRE( p_node->clearRight() == Sucess);
+    REQUIRE( p_node->clearRight() == Success);
     REQUIRE( p_node->getRightNode() == nullptr );
   }
 

@@ -26,7 +26,7 @@ int GameInterface::openMenu( void )
   unsigned short int code_to_next_action;
 
   cout << "\n Welcome to the 20 games questions game. Version 0.8 \n";
-  cout << " Made by Thiago Luis as a project for an Univesity \n";
+  cout << " Made by Thiago Luis as a project for an University \n";
   cout << " of Brasilia's class. Date: April 2018. \n";
   cout << " The game will try to guess what object you're thinking.\n";
   cout << " Using only yes or no questions. \n";
@@ -64,7 +64,7 @@ int GameInterface::openMenu( void )
       break;
 
       case 5:
-        if ( exitGame() == kEndGameCode ) return Sucess;
+        if ( exitGame() == kEndGameCode ) return Success;
       break;
 
       default:
@@ -74,7 +74,7 @@ int GameInterface::openMenu( void )
     } //END OF SWITCH CASE
 
   } while( true );
-  return Sucess;
+  return Success;
 }
 
 int GameInterface::startNewGame( void )
@@ -100,13 +100,13 @@ int GameInterface::loadSavedGame( void )
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
 
-  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) return getEngine()->loadGame("last_game");
+  if ( validYesInput( user_input_yes_or_something_else ) == Success ) return getEngine()->loadGame("last_game");
   do{
     cout << "\n Please write the a valid txt filename that you want to load. \n";
     getline(cin, user_input_game_to_be_load );
   } while( getEngine()->loadGame(user_input_game_to_be_load) == Error );
 
-  return Sucess;
+  return Success;
 } //LOAD SAVED GAME
 
 
@@ -122,7 +122,7 @@ int GameInterface::saveActualGame( void )
     getline(cin, user_input_file_name_to_be_saved );
   } while( getEngine()->saveGame(user_input_file_name_to_be_saved) == Error );
 
-  return Sucess;
+  return Success;
 
 }//SAVE ACTUAL GAME
 
@@ -148,7 +148,7 @@ int GameInterface::exitGame( void )
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
 
-  if ( validYesInput( user_input_yes_or_something_else ) == Error ) return Sucess;
+  if ( validYesInput( user_input_yes_or_something_else ) == Error ) return Success;
   cout << "\n Right then. See you soon. \n";
   return kEndGameCode;
 } //EXIT GAME
@@ -173,7 +173,7 @@ int GameInterface::doRound( void )
 {
   
   //If it's an answer:
-  if( getEngine()->checkGuess() == Sucess ) return gotAnswer();
+  if( getEngine()->checkGuess() == Success ) return gotAnswer();
   return gotQuestion();
   
   return Error;
@@ -190,7 +190,7 @@ int GameInterface::doEditRound( void )
   cout << " Write Yes if and only if it's correct. \n";
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
-  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  if ( validYesInput( user_input_yes_or_something_else ) == Success ) 
   {
     if ( getEngine()->removeActualNode() == Error) return Error;
     return doEditRound();
@@ -200,7 +200,7 @@ int GameInterface::doEditRound( void )
   cout << " Write Yes if and only if it's correct. \n";
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
-  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  if ( validYesInput( user_input_yes_or_something_else ) == Success ) 
   {
     do {
      getline(cin,user_new_statement);
@@ -211,13 +211,13 @@ int GameInterface::doEditRound( void )
   cout << " Write Yes to if and only if you want. \n";
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
-  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  if ( validYesInput( user_input_yes_or_something_else ) == Success ) 
   {
     cout << " The Yes branch? \n";
     cout << " Write Yes if and only if it's correct. \n";
     cin >> user_input_yes_or_something_else;
     cin.ignore(); //Ignores ENTER input
-    if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+    if ( validYesInput( user_input_yes_or_something_else ) == Success ) 
     {
       if ( getEngine()->moveToYes() == Error )
       {
@@ -232,7 +232,7 @@ int GameInterface::doEditRound( void )
     cout << " Write Yes if and only if it's correct. \n";
     cin >> user_input_yes_or_something_else;
     cin.ignore(); //Ignores ENTER input
-    if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+    if ( validYesInput( user_input_yes_or_something_else ) == Success ) 
     {
       if ( getEngine()->moveToNo() == Error )
       {
@@ -247,7 +247,7 @@ int GameInterface::doEditRound( void )
   cout << " Write Yes if and only if it's correct. \n";
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
-  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  if ( validYesInput( user_input_yes_or_something_else ) == Success ) 
   {
     if ( getEngine()->moveBack() == Error )
     {
@@ -257,7 +257,7 @@ int GameInterface::doEditRound( void )
     return doEditRound();
   }
 
-  return Sucess;
+  return Success;
 } //Do edit round
 
 
@@ -280,7 +280,7 @@ int GameInterface::gotAnswer( void )
   cout << " Write Yes if and only if it's correct. \n";
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
-  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  if ( validYesInput( user_input_yes_or_something_else ) == Success ) 
   {
     return finishGame();
   }
@@ -328,10 +328,10 @@ int GameInterface::gotQuestion( void )
   cin >> user_input_yes_or_something_else;
   cin.ignore(); //Ignores ENTER input
 
-  if ( validYesInput( user_input_yes_or_something_else ) == Sucess ) 
+  if ( validYesInput( user_input_yes_or_something_else ) == Success ) 
   {
     //If move results in Error, it's a don't know
-    if( getEngine()->moveToYes() == Sucess ) 
+    if( getEngine()->moveToYes() == Success ) 
     {
       
       return doRound();
@@ -348,7 +348,7 @@ int GameInterface::gotQuestion( void )
     return finishGame();
 
   } else { 
-    if( getEngine()->moveToNo() == Sucess )
+    if( getEngine()->moveToNo() == Success )
     { 
       
       return doRound();
@@ -371,15 +371,15 @@ int GameInterface::gotQuestion( void )
 
 int GameInterface::validYesInput( string user_input )
 {
-   if ( user_input.compare("Yes") == Equals ) return Sucess;
-   if ( user_input.compare("YES") == Equals ) return Sucess;
-   if ( user_input.compare("yES") == Equals ) return Sucess;
-   if ( user_input.compare("Y") == Equals ) return Sucess;
-   if ( user_input.compare("y") == Equals ) return Sucess;
+   if ( user_input.compare("Yes") == Equals ) return Success;
+   if ( user_input.compare("YES") == Equals ) return Success;
+   if ( user_input.compare("yES") == Equals ) return Success;
+   if ( user_input.compare("Y") == Equals ) return Success;
+   if ( user_input.compare("y") == Equals ) return Success;
 
-   if ( user_input.compare("Sim") == Equals ) return Sucess;
-   if ( user_input.compare("sim") == Equals ) return Sucess;
-   if ( user_input.compare("s") == Equals ) return Sucess;
+   if ( user_input.compare("Sim") == Equals ) return Success;
+   if ( user_input.compare("sim") == Equals ) return Success;
+   if ( user_input.compare("s") == Equals ) return Success;
    return Error;
 };
 
@@ -388,6 +388,6 @@ int GameInterface::finishGame( void )
   cout << "\n Thank you for playing the 20 questions game.\n \n";
   if ( getEngine()->saveGame("last_game") == Error ) return Error;
 
-  return Sucess;
+  return Success;
   
 }
