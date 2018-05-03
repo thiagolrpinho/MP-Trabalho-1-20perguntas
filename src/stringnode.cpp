@@ -1,32 +1,39 @@
 #include "stringnode.hpp"
 
 /*! \file stringnode.cpp
-    \brief Module which contains the methods of the object stringnode.
+    \brief Module which contains the methods of the class stringnode..
 */
 
+//! A constructor that creates a node with empty value.
+    /*!
+        \Description Creates a new node with left,
+        right branches and value empties.
+    */
 StringNode::StringNode(void)
 {
   p_right_node_ = p_left_node_ = nullptr;
   text.clear();
 }
 
+//! A constructor that creates a node with a string value
+    /*!
+        \Description Creates a new node with left
+        and right branches empty. 
+        Sets the value to the string given as param.
+        \param An already existent string.
+    */
 StringNode::StringNode(string  initial_text )
 {
     p_right_node_ = p_left_node_ = nullptr;
     text.assign( initial_text );
 }
 
+//! A destructor that cleans all pointers.
 StringNode::~StringNode(){
     p_right_node_.reset();
     p_left_node_.reset();
     text.clear();
 }
-
-
-/*
-    Each node can only have two branches and inserting the third
-    should result on a flag error and the third node being discarted
-*/
 
 //! A method that create a new node with an initial string chosen
     /*!
@@ -150,8 +157,24 @@ int StringNode::setText(string newText)
   return Success;
 }
 
-
-//Reset each node after cleaning the nodes below it
+//! A method that reset each node after cleaning the nodes below it
+    /*!
+        \Description Try to :
+        check if left node is null
+        if it's not, nothing is done. If it's not null, 
+        then call a recursion of this method for that 
+        node and then resets the left node to null.
+        Then it does the same verification and action
+        to right node.
+        After this, the value of the actual node is 
+        cleared. Then return Success(enum 1). 
+        If it fails to verify any of them, it returns 
+        an Error.(enum 0).
+        Note: The actual node it's not deallocated.
+        Just cleared of value.
+        \param None.
+        \return An int 0 for Error or 1 for Success
+    */
 int StringNode::cutNode(void )
 {
     try
@@ -176,6 +199,14 @@ int StringNode::cutNode(void )
     }
 }
 
+//! A method that resets the left node to null.
+    /*!
+        \Description Try to reset the left node
+        If it fails returns an Error(Integer 0)
+        else it returns a Success(Integer 1).
+        \param None.
+        \return An int 0 for Error or 1 for Success
+    */
 int StringNode::clearLeft( void )
 {
     try {
@@ -186,6 +217,14 @@ int StringNode::clearLeft( void )
     return Success;
 }
 
+//! A method that resets the right node to null.
+    /*!
+        \Description Try to reset the left node
+        If it fails returns an Error(Integer 0)
+        else it returns a Success(Integer 1).
+        \param None.
+        \return An int 0 for Error or 1 for Success
+    */
 int StringNode::clearRight( void )
 {
     try {

@@ -2,6 +2,20 @@
 
 typedef PStringNode PStringNode;
 
+/*! \file game_engine.cpp
+    \brief Module which contains the methods of the class game_engine
+*/
+
+//! A constructor that creates a game engine with a tree of statements.
+    /*!
+        \Description Creates a new game engine
+        and creates a binary tree to be it's tree
+        of statements.
+        The root value of the binary tree is empty.
+        It also sets the value pointed by the actual
+        node to the root of the tree and pushs the 
+        root in the stack of last nodes.
+    */
 GameEngine::GameEngine()
 {
     p_tree_of_statements_.reset( new BTree() );
@@ -11,6 +25,18 @@ GameEngine::GameEngine()
     
 }
 
+//! A constructor that creates a game engine with a tree of statements with a setted root.
+    /*!
+        \Description Creates a new game engine
+        and creates a binary tree to be it's tree
+        of statements.
+        The root value of the binary tree is given
+        by the param.
+        It also sets the value pointed by the actual
+        node to the root of the tree and pushs the 
+        root in the stack of last nodes.
+        \param An already created String.
+    */
 GameEngine::GameEngine(string initial_text)
 {
     p_tree_of_statements_.reset( new BTree(initial_text) );
@@ -19,17 +45,36 @@ GameEngine::GameEngine(string initial_text)
     this->pushLastNode( getStart() );
 }
 
-//POSITIONING METHODS
+//!POSITIONING METHODS
+//! A method that returns the start of the tree of statements.
+    /*!
+        \return a shared pointer to the root of the tree 
+        of the statements.
+    */
  PStringNode GameEngine::getStart( void )
  { 
      return p_tree_of_statements_->getRoot();
  };
 
+//! A method that returns the actual node.
+    /*!
+        \return a shared pointer to the node pointed
+        by the actual node of the game engine.
+    */
  PStringNode GameEngine::getActualNode(void)
  {
       return p_actual_node_; 
  };
- 
+
+ //! A method sets the actual node to the value passed as param.
+    /*!
+        \description Try to set the actual node pointer
+        to the pointer passed as a param.
+        If it didn't succeeds returns Error(enum 0).
+        Else it return Success.
+        \param An already existent shared pointer of stringNode.
+        \return An integer 0 for Error or 1 for Success.
+    */
  int GameEngine::setActualNode( PStringNode p_next_node )
  { 
     try {
@@ -40,6 +85,14 @@ GameEngine::GameEngine(string initial_text)
     return Success;
  };
 
+ //! A method that pops out the last shared pointer stored by the stack of last nodes.
+    /*!
+        \description Gets the last shared pointer at the stack,
+        stores it with a new variable and removes it from the stack. 
+        Then returns the new variable.
+        \param None.
+        \return The shared pointer of the last node.
+    */
   PStringNode GameEngine::popLastNode(void)
  {   
       PStringNode pLast = stack_of_last_nodes_.top();
@@ -47,6 +100,13 @@ GameEngine::GameEngine(string initial_text)
       return pLast;
  };
 
+  //! A method that pushes the actual node to the stack of last nodes.
+    /*!
+        \description Tries to push the actual node to the
+        stack. If it succeeds return Success(enum 1). 
+        If not, return Error(enum 0).
+        \return The integer 1(Success) or 0(Error)
+    */
  int GameEngine::pushLastNode( void)
  { 
     try {
@@ -57,6 +117,14 @@ GameEngine::GameEngine(string initial_text)
     return Success;
  };
 
+  //! A method that pushes a given node to the stack of last nodes.
+    /*!
+        \description Tries to push the node given 
+        by the param to the stack. If it succeeds
+        return Success(enum 1). 
+        If not, return Error(enum 0).
+        \return The integer 1(Success) or 0(Error)
+    */
  int GameEngine::pushLastNode( PStringNode p_next_node )
  { 
     try {
@@ -67,6 +135,17 @@ GameEngine::GameEngine(string initial_text)
     return Success;
  };
 
+  //! A method that changes the actual node to his left node and stores the last node.
+    /*!
+        \description Verifies if the left node exists.
+        If not, return Error(enum 0) else it pushes 
+        the actual node to the stack of last nodes.
+        Then it verifies if the actual node could be
+        setted to be to the left node. If it fails
+        return an Error.
+        If it succeeds  return Success(enum 1). 
+        \return The integer 1(Success) or 0(Error)
+    */
  int GameEngine::moveToYes( void )
  {
      if ( getYes() == nullptr ) return Error;
@@ -75,7 +154,17 @@ GameEngine::GameEngine(string initial_text)
      return Success;
  };
 
-
+  //! A method that changes the actual node to his right node and stores the last node.
+    /*!
+        \description Verifies if the right node exists.
+        If not, return Error(enum 0) else it pushes 
+        the actual node to the stack of last nodes.
+        Then it verifies if the actual node could be
+        setted to be to the right node. If it fails
+        return an Error.
+        If it succeeds  return Success(enum 1). 
+        \return The integer 1(Success) or 0(Error)
+    */
  int GameEngine::moveToNo( void )
  {
      if ( getNo() == nullptr ) return Error;
@@ -84,6 +173,17 @@ GameEngine::GameEngine(string initial_text)
      return Success;
  };
 
+   //! A method that changes the actual node to the last node visited.
+    /*!
+        \description Verifies if the stack of node 
+        is not empty.
+        If it is return an Error(enum 0).
+        If not, it sets the actual node to the value
+        of the last node visited by popping it out
+        from the last node stack. 
+        Then it return a Success(enum 1). 
+        \return The integer 1(Success) or 0(Error)
+    */
  int GameEngine::moveBack( void)
  {
      if ( !(stack_of_last_nodes_.empty()) )
