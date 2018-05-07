@@ -482,6 +482,28 @@ int GameEngine::loadGame(void)
     return loadGame("autosave");
 };
 
+//! A method that loads a game engine state with a given name
+/*!     
+    \Description
+    try to:
+    Open a file with the given name that is inside the the 
+    folder saved_games that should be a subdirectory of the
+    folder that the programs is running. The file_name
+    should not be passed with a file extension. It'll be 
+    put by the algorithm.
+    If it fails at any point, the method will return an Error
+    (integer 0);
+    If this Succeeds then the game engine will be restarted.
+    After this, the algorithm calls a method readFile() and 
+    verifies if it will return an Error(integer 0) if so
+    loadGame() return a Error(integer 0).
+     If not the file pointeris freed and returns a 
+     Success(Integer 1).
+    \param An already existent string of a file
+     name(without extension)that was already created inside 
+     the folder ./saved_games/
+    \return The integer 1(Success) or 0(Error)
+*/
 int GameEngine::loadGame(string file_name)
 {
     fstream p_file_to_read;
@@ -512,6 +534,27 @@ int GameEngine::saveGame(void)
     return saveGame("autosave");
 };
 
+//! A method that saves a game engine state with a given name
+/*!     
+    \Description
+    try to:
+    Open or creates(if not existent)a file with the given
+    name that is inside the the folder saved_games that 
+    will be a subdirectory of the folder that the 
+    programs is running. 
+    The file_name should not be passed with a file extension.
+     It'll be put by the algorithm.
+    If it fails at any point, the method will return an Error
+    (integer 0);
+    If this Succeeds the algorithm calls a method writeInFile()
+    and verifies if it will return an Error(integer 0) if so
+    saveGame() returns a Error(integer 0). 
+    If not the game engine returns to the state before by poping
+    last state node and seting it to be the actual node then file
+     pointer is freed and it returns a Success(Integer 1).
+    \param An already existent string.
+    \return The integer 1(Success) or 0(Error)
+*/
 int GameEngine::saveGame(string file_name)
 {
     fstream p_file_to_write;
@@ -535,6 +578,25 @@ int GameEngine::saveGame(string file_name)
     return Success;
 };
 
+//! A method that writes on a file the tree of statements of game engine.
+/*!     
+    \Description
+    try to:
+    write in the file the actual node value followed 
+    by the separator ';'then it checks if it's possible 
+    to move to the left branch. If it's not, then it's 
+    an empty branch so it writes '#;' on the file. If it 
+    can move to the left branch. The method calls itself
+    recursively. If the recursion return an Error(integer 0)
+    the actual method also return an Error(integer 0). Else
+    it moves back to the node that was read before calling the
+    recursion and does the same to the right branch.
+    If any of this fails, the method returns an Error(integer 0).
+    If everything Succeeds, it return a Success(integer 1).
+
+    \param An already existent pointer to a file already opened.
+    \return The integer 1(Success) or 0(Error)
+*/
 int GameEngine::writeInFile(fstream &p_file_to_write)
 {
     //First the engine write the actual statement on file
@@ -574,6 +636,37 @@ int GameEngine::writeInFile(fstream &p_file_to_write)
     return Success;
 }
 
+//! A method that reads a file and writes on the tree of statements of a game engine.
+/*!     
+    \Description
+    Game engine should have been restarted before calling
+    this method.
+    try to:
+    Read the line pointed by the file pointer until 
+    the separator ';' is found and stores it on the
+    string node_statement.
+    Verifies if it's already on the end of the file.
+    If it's, returns a Error(integer 0).
+    This occurs because the first read should be followed
+    by two more separators.
+    Else the method checks if the read string is 
+    '#', if it is returns a Error(integer 0).
+    This occurs because the first read should be a valid
+    node.
+    Else it writes the read string on the actual node.
+    Then it creates a new left node, verifies if the
+    creation was successfull(if not returns a Error(integer 0))
+    and then calls itself recursively. If the recursion 
+    returns an Error(integer 0) the new branch is undone.
+    Else it moves back to the previous state where actual
+    node was the first node wrote by this method.
+    The it creates a right node of the actual node and does
+    the same behaviour.
+    If any of this fails, it returns an Error(integer 0).
+    Else it returns a Success(integer 1).
+    \param An already existent pointer to a file already opened.
+    \return The integer 1(Success) or 0(Error)
+*/
 int GameEngine::readFile(fstream &p_file_to_read)
 {
     string node_statement;
