@@ -66,14 +66,14 @@ PStringNode GameEngine::getActualNode(void)
 };
 
 //! A method sets the actual node to the value passed as param.
-/*!
+  /*!
     \description Try to set the actual node pointer
     to the pointer passed as a param.
     If it didn't succeeds returns Error(enum 0).
     Else it return Success.
     \param An already existent shared pointer of stringNode.
     \return An integer 0 for Error or 1 for Success.
-*/
+  */
 int GameEngine::setActualNode(PStringNode p_next_node)
 {
     try
@@ -88,13 +88,13 @@ int GameEngine::setActualNode(PStringNode p_next_node)
 };
 
 //! A method that pops out the last shared pointer stored by the stack of last nodes.
-/*!
+  /*!
     \description Gets the last shared pointer at the stack,
     stores it with a new variable and removes it from the stack. 
     Then returns the new variable.
     \param None.
     \return The shared pointer of the last node.
-*/
+  */
 PStringNode GameEngine::popLastNode(void)
 {
     PStringNode pLast = stack_of_last_nodes_.top();
@@ -103,12 +103,12 @@ PStringNode GameEngine::popLastNode(void)
 };
 
 //! A method that pushes the actual node to the stack of last nodes.
-/*!
+  /*!
     \description Tries to push the actual node to the
     stack. If it succeeds return Success(enum 1). 
     If not, return Error(enum 0).
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::pushLastNode(void)
 {
     try
@@ -123,13 +123,13 @@ int GameEngine::pushLastNode(void)
 };
 
 //! A method that pushes a given node to the stack of last nodes.
-/*!
+  /*!
     \description Tries to push the node given 
     by the param to the stack. If it succeeds
     return Success(enum 1). 
     If not, return Error(enum 0).
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::pushLastNode(PStringNode p_next_node)
 {
     try
@@ -144,7 +144,7 @@ int GameEngine::pushLastNode(PStringNode p_next_node)
 };
 
 //! A method that changes the actual node to his left node and stores the last node.
-/*!
+  /*!
     \description Verifies if the left node exists.
     If not, return Error(enum 0) else it pushes 
     the actual node to the stack of last nodes.
@@ -153,7 +153,7 @@ int GameEngine::pushLastNode(PStringNode p_next_node)
     return an Error.
     If it succeeds  return Success(enum 1). 
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::moveToYes(void)
 {
     if (getYes() == nullptr)
@@ -165,7 +165,7 @@ int GameEngine::moveToYes(void)
 };
 
 //! A method that changes the actual node to his right node and stores the last node.
-/*!
+  /*!
     \description Verifies if the right node exists.
     If not, return Error(enum 0) else it pushes 
     the actual node to the stack of last nodes.
@@ -186,7 +186,7 @@ int GameEngine::moveToNo(void)
 };
 
 //! A method that changes the actual node to the last node visited.
-/*!
+  /*!
     \description Verifies if the stack of node 
     is not empty.
     If it is return an Error(enum 0).
@@ -195,7 +195,7 @@ int GameEngine::moveToNo(void)
     from the last node stack. 
     Then it return a Success(enum 1). 
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::moveBack(void)
 {
     if (!(stack_of_last_nodes_.empty()))
@@ -207,7 +207,7 @@ int GameEngine::moveBack(void)
 };
 
 //! A method that sets the game engine to an initial state.
-/*!
+  /*!
     \description  Tries to:
     Reset the tree of statements to a new binary tree 
     with root valued as "New Game".
@@ -217,7 +217,7 @@ int GameEngine::moveBack(void)
     If it fails return an Error(enum 0).
     If not, it return a Success(enum 1). 
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::restart(void)
 {
     try
@@ -242,17 +242,17 @@ int GameEngine::restart(void)
 
 ///!READING AND WRITING METHODS
 //! A method that returns the value of the actual node.
-/*!
+  /*!
     \return a string copy of the text inside
     actual node.
-*/
+  */
 string GameEngine::readActualNode(void)
 {
     return getActualNode()->getText();
 };
 
 //! A method to that sets the value of the actual node.
-/*!
+  /*!
     \description 
     Try to change the text of the actual node
     with the given string passed as param.
@@ -260,7 +260,7 @@ string GameEngine::readActualNode(void)
     If not, return a Success(enum 1).
     \param An already created string.
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::writeInActualNode(string new_text)
 {
     try
@@ -274,7 +274,7 @@ int GameEngine::writeInActualNode(string new_text)
 };
 
 //! A method that creates a new node with empty text at left of the actual node.
-/*!
+  /*!
     \description 
     Verifies if there's already a node in
     the left branch of the actual node.
@@ -283,7 +283,7 @@ int GameEngine::writeInActualNode(string new_text)
     value and sets left branch to point
     to it then return a Success(enum 1).
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::newYesAnswer()
 {
     if (getYes() != nullptr)
@@ -293,7 +293,7 @@ int GameEngine::newYesAnswer()
 };
 
 //! A method that creates a new node with a given value at left of the actual node.
-/*!
+  /*!
     \description 
     Verifies if there's already a node in
     the left branch of the actual node.
@@ -304,7 +304,7 @@ int GameEngine::newYesAnswer()
     then return a Success(enum 1).
     \param An already created string.
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::newYesAnswer(string initial_text)
 {
     if (getYes() != nullptr)
@@ -314,7 +314,7 @@ int GameEngine::newYesAnswer(string initial_text)
 };
 
 //! A method that creates a new node with empty text at right of the actual node.
-/*!
+  /*!
     \description 
     Verifies if there's already a node in
     the right branch of the actual node.
@@ -323,7 +323,7 @@ int GameEngine::newYesAnswer(string initial_text)
     value and sets right branch to point
     to it then return a Success(enum 1).
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::newNoAnswer(void)
 {
     if (getNo() != nullptr)
@@ -333,7 +333,7 @@ int GameEngine::newNoAnswer(void)
 };
 
 //! A method that creates a new node with a given value at right of the actual node.
-/*!
+  /*!
     \description 
     Verifies if there's already a node in
     the right branch of the actual node.
@@ -345,7 +345,7 @@ int GameEngine::newNoAnswer(void)
 
     \param An already created string.
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::newNoAnswer(string initial_text)
 {
     if (getNo() != nullptr)
@@ -356,7 +356,7 @@ int GameEngine::newNoAnswer(string initial_text)
 
 ///! DELETING METHODS
 //! A method that deletes the actual node and those bellow it.
-/*!
+  /*!
     \description Tries to:
     Stores the actual node pointer temporalily 
     as the node to be deleted.
@@ -378,7 +378,7 @@ int GameEngine::newNoAnswer(string initial_text)
     Else it return a Success(enum 1).
 
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::removeActualNode(void)
 {
     try
@@ -406,7 +406,7 @@ int GameEngine::removeActualNode(void)
 
 ///! YesOrNo Logic
 //! A method creates a new Question with a given value as the left branch of the actual node.
-/*!
+  /*!
     \description Tries to:
     Create a newYesAnswer with the given
     param value as the initial text.
@@ -419,7 +419,7 @@ int GameEngine::removeActualNode(void)
     Else it returns Success(enum 1).
     \param An already created string to be the initial value.
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::newYesQuestion(string initial_question)
 {
     PStringNode newQuestionNode;
@@ -448,10 +448,10 @@ PStringNode GameEngine::getYes(void)
 };
 
 //! A method that returns the right node of the actual node.
-/*!
+  /*!
     \return a shared pointer of the right node of the 
     actual node.
-*/
+  */
 PStringNode GameEngine::getNo(void)
 {
     return getActualNode()->getRightNode();
@@ -459,12 +459,12 @@ PStringNode GameEngine::getNo(void)
 
 ///! Question Logic
 //! A method that checks if the node has branches.
-/*!     
+  /*!     
     \description Return a Success(enum 1) 
     if there's no branches. Otherwise 
     returns an Error(enum 0). 
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::checkGuess(void)
 {
     if (getYes() == nullptr && getNo() == nullptr)
@@ -474,16 +474,16 @@ int GameEngine::checkGuess(void)
 
 ///!FILE MANAGING
 //! A method that loads a game engine state that was saved as "autosave"
-/*!     
+  /*!     
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::loadGame(void)
 {
     return loadGame("autosave");
 };
 
 //! A method that loads a game engine state with a given name
-/*!     
+  /*!     
     \Description
     try to:
     Open a file with the given name that is inside the the 
@@ -497,13 +497,13 @@ int GameEngine::loadGame(void)
     After this, the algorithm calls a method readFile() and 
     verifies if it will return an Error(integer 0) if so
     loadGame() return a Error(integer 0).
-     If not the file pointeris freed and returns a 
-     Success(Integer 1).
+      If not the file pointeris freed and returns a 
+      Success(Integer 1).
     \param An already existent string of a file
-     name(without extension)that was already created inside 
-     the folder ./saved_games/
+      name(without extension)that was already created inside 
+      the folder ./saved_games/
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::loadGame(string file_name)
 {
     fstream p_file_to_read;
@@ -526,16 +526,16 @@ int GameEngine::loadGame(string file_name)
 };
 
 //! A method that save a game engine state as "autosave"
-/*!     
+  /*!     
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::saveGame(void)
 {
     return saveGame("autosave");
 };
 
 //! A method that saves a game engine state with a given name
-/*!     
+  /*!     
     \Description
     try to:
     Open or creates(if not existent)a file with the given
@@ -543,7 +543,7 @@ int GameEngine::saveGame(void)
     will be a subdirectory of the folder that the 
     programs is running. 
     The file_name should not be passed with a file extension.
-     It'll be put by the algorithm.
+      It'll be put by the algorithm.
     If it fails at any point, the method will return an Error
     (integer 0);
     If this Succeeds the algorithm calls a method writeInFile()
@@ -551,10 +551,10 @@ int GameEngine::saveGame(void)
     saveGame() returns a Error(integer 0). 
     If not the game engine returns to the state before by poping
     last state node and seting it to be the actual node then file
-     pointer is freed and it returns a Success(Integer 1).
+      pointer is freed and it returns a Success(Integer 1).
     \param An already existent string.
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::saveGame(string file_name)
 {
     fstream p_file_to_write;
@@ -579,7 +579,7 @@ int GameEngine::saveGame(string file_name)
 };
 
 //! A method that writes on a file the tree of statements of game engine.
-/*!     
+  /*!     
     \Description
     try to:
     write in the file the actual node value followed 
@@ -596,7 +596,7 @@ int GameEngine::saveGame(string file_name)
 
     \param An already existent pointer to a file already opened.
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::writeInFile(fstream &p_file_to_write)
 {
     //First the engine write the actual statement on file
@@ -637,7 +637,7 @@ int GameEngine::writeInFile(fstream &p_file_to_write)
 }
 
 //! A method that reads a file and writes on the tree of statements of a game engine.
-/*!     
+  /*!     
     \Description
     Game engine should have been restarted before calling
     this method.
@@ -666,7 +666,7 @@ int GameEngine::writeInFile(fstream &p_file_to_write)
     Else it returns a Success(integer 1).
     \param An already existent pointer to a file already opened.
     \return The integer 1(Success) or 0(Error)
-*/
+  */
 int GameEngine::readFile(fstream &p_file_to_read)
 {
     string node_statement;

@@ -1,6 +1,15 @@
 #include "game_interface.hpp"
 
+/*! \file game_interface.cpp
+    \brief Module which contains the methods of the class game_interface.cpp
+*/
 
+//! A constructor that creates a game interface with an empty game engine.
+  /*!
+    \Description Creates a game interface
+    and creates a new game engine with
+    an empty tree of statements.
+  */
 GameInterface::GameInterface( void )
 {
   p_game_engine_.reset( new GameEngine());
@@ -9,7 +18,11 @@ GameInterface::GameInterface( void )
 
 
 
-
+//! A method that returns a pointer to the game engine.
+  /*!
+    \return A shared pointer for the game engine of
+    the game interface
+  */
 PGameEngine GameInterface::getEngine( void )
 {
   return this->p_game_engine_;
@@ -17,17 +30,58 @@ PGameEngine GameInterface::getEngine( void )
 
 
 
-/*
-  MENU will be able to start a new game, load a saved game, 
-  save the actual game, exit the game or call the playing routine.
-*/
+
+//! A method that calls a Menu
+  /*!
+    \brief MENU will be able to start a new game, load a saved game, 
+    save the actual game, exit the game or call the playing routine.
+    
+    \Description 
+    First it shows to the user a brief description
+    of the game. 
+    Then it enters in a loop:
+    Shows a menu of options and then capture the input 
+    of the user keyboard.
+    Then it switches between the options. 
+
+    1 - Start New game
+    Calls startNewGame() and verifies if there was 
+    an Error(Integer 0).
+    Then it calls playingRoutine() and verifies if there
+    was an Error(Integer 0). If any Error is verified,
+    the method stops and returns an Error.
+
+    2 - Load game or continue last game
+    Calls loadSavedGame() method and verifies if 
+    there was an Error(Integer 0) then it calls
+    playingRoutine() and verifies too. If there was
+    an Error(Integer 0) the method stops and returns an Error.
+
+    3 - Save the actual game
+    Calls saveActualGame() and verifies if there
+    was an Error(Integer 0) if so the method stops
+    and return an Error(Integer 0).
+
+    4 - Edit actual 
+    Calls editRoutine() and verifies if there
+    was an Error(Integer 0) if so the method
+    stops and return an Error(Integer 0).
+    
+    5 - Exit game
+    Calls exitGame() and verifies if it is
+    equal to the code to end the game. If so
+    the method return a Success(Integer 1).
+
+    default - Just ask the user to write 
+    \return An integer 0 for Error or 1 for Success.
+  */
 int GameInterface::openMenu( void )
 {
   unsigned short int code_to_next_action;
 
-  cout << "\n Welcome to the 20 games questions game. Version 0.8 \n";
+  cout << "\n Welcome to the 20 games questions game. Version 0.9 \n";
   cout << " Made by Thiago Luis as a project for an University \n";
-  cout << " of Brasilia's class. Date: April 2018. \n";
+  cout << " of Brasilia's class. Date: April 2018. Last Update May 2018. \n";
   cout << " The game will try to guess what object you're thinking.\n";
   cout << " Using only yes or no questions. \n";
   
@@ -77,6 +131,19 @@ int GameInterface::openMenu( void )
   return Success;
 }
 
+//! A method that starts a new game.
+  /*!
+    \Description The method asks the user for
+    an input from keyboard that should be the
+    first initial answer of the tree of statements.
+    Then it calls restart() and verifies if there
+    was an Error(Integer 0) if so the method returns
+    an Error(Integer 0).
+    If not, it calls writeInActualNode() and returns
+    what it returns. An Error(Integer 0) or a 
+    Success(Integer 1).
+    \return An integer 0 for Error or 1 for Success.
+  */
 int GameInterface::startNewGame( void )
 {
   string user_input_first_answer_of_the_game;
@@ -87,9 +154,11 @@ int GameInterface::startNewGame( void )
 }
 
 
-/*
-  This method can load last game or load another game of the user's choice.
-*/
+//! A method that can load last game or load another game of the user's choice.
+  /*!
+    \Description The method asks the user if 
+    \return An integer 0 for Error or 1 for Success.
+  */
 int GameInterface::loadSavedGame( void )
 {
   string user_input_game_to_be_load;
