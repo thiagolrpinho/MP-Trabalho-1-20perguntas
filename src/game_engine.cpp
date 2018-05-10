@@ -71,7 +71,7 @@ PStringNode GameEngine::getActualNode(void)
     to the pointer passed as a param.
     If it didn't succeeds returns Error(enum 0).
     Else it return Success.
-    \param An already existent shared pointer of stringNode.
+    \param (The only explict interface)  A valid and already allocated shared pointer of stringNode.
     \return An integer 0 for Error or 1 for Success.
   */
 int GameEngine::setActualNode(PStringNode p_next_node)
@@ -483,7 +483,9 @@ int GameEngine::loadGame(void)
 };
 
 //! A method that loads a game engine state with a given name
-  /*!     
+  /*!
+    \Brief There are two explicits interfaces: The string as
+    param and the file to be open.     
     \Description
     try to:
     Open a file with the given name that is inside the the 
@@ -499,7 +501,7 @@ int GameEngine::loadGame(void)
     loadGame() return a Error(integer 0).
       If not the file pointeris freed and returns a 
       Success(Integer 1).
-    \param An already existent string of a file
+    \param (The only explict interface)  A valid and already allocated string of a file
       name(without extension)that was already created inside 
       the folder ./saved_games/
     \return The integer 1(Success) or 0(Error)
@@ -536,6 +538,8 @@ int GameEngine::saveGame(void)
 
 //! A method that saves a game engine state with a given name
   /*!     
+    \Brief There are two explicits interfaces: The string as
+    param and the file to be open.
     \Description
     try to:
     Open or creates(if not existent)a file with the given
@@ -552,7 +556,7 @@ int GameEngine::saveGame(void)
     If not the game engine returns to the state before by poping
     last state node and seting it to be the actual node then file
       pointer is freed and it returns a Success(Integer 1).
-    \param An already existent string.
+    \param (The only explict interface)  A valid and already allocated string.
     \return The integer 1(Success) or 0(Error)
   */
 int GameEngine::saveGame(string file_name)
@@ -594,7 +598,7 @@ int GameEngine::saveGame(string file_name)
     If any of this fails, the method returns an Error(integer 0).
     If everything Succeeds, it return a Success(integer 1).
 
-    \param An already existent pointer to a file already opened.
+    \param (The only explict interface)  A valid and already allocated pointer to a file already opened.
     \return The integer 1(Success) or 0(Error)
   */
 int GameEngine::writeInFile(fstream &p_file_to_write)
@@ -664,7 +668,7 @@ int GameEngine::writeInFile(fstream &p_file_to_write)
     the same behaviour.
     If any of this fails, it returns an Error(integer 0).
     Else it returns a Success(integer 1).
-    \param An already existent pointer to a file already opened.
+    \param (The only explict interface)  A valid and already allocated pointer to a file already opened.
     \return The integer 1(Success) or 0(Error)
   */
 int GameEngine::readFile(fstream &p_file_to_read)

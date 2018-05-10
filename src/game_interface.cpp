@@ -572,7 +572,7 @@ int GameInterface::gotQuestion( void )
     If the string passed as param is a "Yes, yEs, yEs, y, Y
     Sim, sim or a S" it return a Success(Integer 1).
     If not, returns an Error(Integer 0).
-    \param  An already created string.
+    \param (The only explicit interface)  A valid and already allocated string.
     \return Success(integer 1) or an Error(Integer 0).
   */
 int GameInterface::validYesInput( string user_input )

@@ -20,7 +20,7 @@ BTree::BTree(void){
     \Description Creates a new binary tree 
     and creates a new node to be it's root.
     The root value is given as param.
-    \param An already created string.
+    \param (The only explicit interface) A valid and already allocated string.
   */
 BTree::BTree(string initialText){
     p_root_node_.reset( new StringNode(initialText) );

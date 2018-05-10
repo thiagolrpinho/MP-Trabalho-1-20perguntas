@@ -20,7 +20,7 @@ StringNode::StringNode(void)
         \Description Creates a new node with left
         and right branches empty. 
         Sets the value to the string given as param.
-        \param An already existent string.
+        \param (The only explicit interface) A valid and already allocated string.
     */
 StringNode::StringNode(string  initial_text )
 {
@@ -47,7 +47,7 @@ StringNode::~StringNode(){
       a Success which is an enum with value 1.
     If neither are empty, nothing is done and the method return an 
     Error which is an enum with value 0.
-    \param An already existent string which will be the value of
+    \param (The only explicit interface) A valid and already allocated string which will be the value of
     the new node.
     \return An int 0 for Error or 1 for Success
   */
@@ -70,7 +70,7 @@ int StringNode::insertNode( string initial_new_node_text ){
         returns an Error(Integer 0). If not creates a new node
         and sets it's value to empty and returns a Success(Inte-
         ger 1).
-        \param None.
+        \param (The only explicit interface)None.
         \return An int 0 for Error or 1 for Success
     */
 int StringNode::insertLeftNode(){
@@ -88,7 +88,7 @@ int StringNode::insertLeftNode(){
         returns an Error(Integer 0). If not creates a new node
         and sets it's value to the value of the param
          then returns a Success(Integer 1).
-        \param An already existent string which will be the
+        \param (The only explicit interface) A valid and already allocated string which will be the
         value of the new node.
         \return An int 0 for Error or 1 for Success
     */
@@ -107,7 +107,7 @@ int StringNode::insertLeftNode( string initial_new_node_text ){
         returns an Error(Integer 0). If not creates a new node
         and sets it's value to empty and returns a Success(Inte-
         ger 1).
-        \param None.
+        \param (The only explicit interface)None.
         \return An int 0 for Error or 1 for Success
     */
 int StringNode::insertRightNode( ){
@@ -125,7 +125,7 @@ int StringNode::insertRightNode( ){
         returns an Error(Integer 0). If not creates a new node
         and sets it's value to the value of the param
          then returns a Success(Integer 1).
-        \param An already existent string which will be the
+        \param (The only explicit interface) A valid and already allocated string which will be the
         value of the new node.
         \return An int 0 for Error or 1 for Success
     */
@@ -144,7 +144,7 @@ int StringNode::insertRightNode(string initial_new_node_text){
         \Description Try to assign a new value to
         node. If it fails returns an Error(Integer 0)
         else it returns a Success(Integer 1).
-        \param An already existing string. 
+        \param (The only explicit interface)An already existing string. 
         \return An int 0 for Error or 1 for Success
     */
 int StringNode::setText(string newText)
@@ -172,7 +172,7 @@ int StringNode::setText(string newText)
         an Error.(enum 0).
         Note: The actual node it's not deallocated.
         Just cleared of value.
-        \param None.
+        \param (The only explicit interface)None.
         \return An int 0 for Error or 1 for Success
     */
 int StringNode::cutNode(void )
@@ -204,7 +204,7 @@ int StringNode::cutNode(void )
         \Description Try to reset the left node
         If it fails returns an Error(Integer 0)
         else it returns a Success(Integer 1).
-        \param None.
+        \param (The only explicit interface)None.
         \return An int 0 for Error or 1 for Success
     */
 int StringNode::clearLeft( void )
@@ -222,7 +222,7 @@ int StringNode::clearLeft( void )
         \Description Try to reset the left node
         If it fails returns an Error(Integer 0)
         else it returns a Success(Integer 1).
-        \param None.
+        \param (The only explicit interface)None.
         \return An int 0 for Error or 1 for Success
     */
 int StringNode::clearRight( void )
