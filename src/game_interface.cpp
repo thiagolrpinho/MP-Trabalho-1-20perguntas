@@ -15,9 +15,6 @@ GameInterface::GameInterface( void )
   p_game_engine_.reset( new GameEngine());
 }
 
-
-
-
 //! A method that returns a pointer to the game engine.
   /*!
     \return A shared pointer for the game engine of
@@ -27,9 +24,6 @@ PGameEngine GameInterface::getEngine( void )
 {
   return this->p_game_engine_;
 }
-
-
-
 
 //! A method that calls a Menu
   /*!
@@ -153,10 +147,24 @@ int GameInterface::startNewGame( void )
   return getEngine()->writeInActualNode(user_input_first_answer_of_the_game);
 }
 
-
 //! A method that can load last game or load another game of the user's choice.
   /*!
-    \Description The method asks the user if 
+    \Description The method asks the user if he or
+    she would like to load the last game by writing a
+    valid yes input(See method validyesInput method
+    for more information). 
+    If yes method loadGame() is called
+    with the standard param "last_game". A valid
+    last_game.txt file must have been created already   
+    inside the save_games folder. For example, by calling
+    the saveGame() method. If load_game is not a valid 
+    file, the method returns an Error(Integer 0).
+    If not the user is asked to write a valid txt filename
+    and the input is read. Then the loadGame() method is 
+    called using the input read as param. While it's not 
+    a valid file this procedure to ask, read and load
+    is repeated.
+    Then it return as Success(Integer 0).
     \return An integer 0 for Error or 1 for Success.
   */
 int GameInterface::loadSavedGame( void )
@@ -179,9 +187,16 @@ int GameInterface::loadSavedGame( void )
 } //LOAD SAVED GAME
 
 
-/*
-  This method can save the actual game as the last_game in a txt file of the users choice.
-*/
+//! This method can save the actual game as the last_game in a txt file of the users choice.
+  /*!
+    \Description The method asks the user to write 
+    a valid filename to be saved inside save_games
+    folder. Then it reads an input and tries to save
+    the actual tree of statements on the folder. While
+    the saveGame() method fails, the procedure to ask,
+    read and save is repeated.
+    \return An integer 0 for Error or 1 for Success.
+  */
 int GameInterface::saveActualGame( void )
 {
   string user_input_file_name_to_be_saved;
@@ -195,12 +210,31 @@ int GameInterface::saveActualGame( void )
 
 }//SAVE ACTUAL GAME
 
+//! This method starts the playing routine.
+  /*!
+    \Description Adds a empty line on the 
+    terminal screen and calls the recursive
+    method doRound(). It returns whatever the first
+    doRound() returns.
+    \return An integer 0 for Error or 1 for Success.
+  */
 int GameInterface::playingRoutine( void )
 {
   cout << "\n";
   return doRound();
 }//Playing Routine
 
+//! This method starts the edit routine
+  /*!
+    \Description Prints some instructions
+    to the user and the calls the recursive
+    method doEditRound(). If it returns 
+    an Error(Integer 0) the editRoutine()
+    also returns an Error(Integer 0).
+    Else it calls finishGame() method and
+    returns what it returns.
+    \return An integer 0 for Error or 1 for Success.
+  */
 int GameInterface::editRoutine( void )
 {
   cout << "\n Welcome to the edit routine. \n";
@@ -209,8 +243,20 @@ int GameInterface::editRoutine( void )
   return finishGame();
 }
 
+//! This method starts the exit game
+  /*!
+    \Description asks the user if he or
+    she really wants to leave the game. 
+    Then reads the input, if it's a valid
+    yes(See validYesInput() method for more
+    information) it returns the kEndGameCode
+    which is a constant integer value that
+    ends the game. If not, the method returns 
+    a Success(Integer 0).
+    \return a constant integer kEndGameCode;
+  */
 int GameInterface::exitGame( void )
-{   
+{  
   string user_input_yes_or_something_else;
   cout << "\n Are you sure? \n";
   cout << " Write Yes if and only if you want. \n";
@@ -222,12 +268,12 @@ int GameInterface::exitGame( void )
   return kEndGameCode;
 } //EXIT GAME
 
-
-/*
- Each round should consist of:
+//! This is a recursive method that plays each round.
+  /*!
+    \Description  
+    Each round should consist of:
     1)Read the statement.
-    2) 
-      if it's an answer, show it an wait to know if it's right.
+    2) If it's an answer, show it an wait to know if it's right.
     In case it's right, just finish the game. Case not, ask the
     user for a question that would lead to the right answer and
     the right answer on the Yes branch.
@@ -236,18 +282,60 @@ int GameInterface::exitGame( void )
     then ask the user what should be the right answer and write it
     there. If not, follow to step 3.
     3)Repeat until answer or a "don't know".
-*/
+    --------------------------------------------
+    The method checkGuess() is called. If it returns
+    an Error(Integer 0), calls gotQuestion() and returns
+    what it returns. Else it calls gotAnswer() and 
+    also will return what the method returns.
+    If none is called, return an Error(Integer 0).
 
+    \return Success(integer 1) or an Error(Integer 0).
+  */
 int GameInterface::doRound( void )
 {
   
   //If it's an answer:
   if( getEngine()->checkGuess() == Success ) return gotAnswer();
+  //If not.
   return gotQuestion();
   
   return Error;
 } //DO Round
 
+//! This is a recursive method that plays each edition round.
+  /*!
+    \Description  
+    First show the user what is the value of the actual
+    node. Then asks if the user wants to erase this
+    node and those bellow it.
+    Reads the input and calls validYesInput() passing
+    the read input as param. 
+    If it returns a Success(Integer 1):
+      The removeActualNode() method 
+    is called. If there is an Error(Integer 0) then
+    the method returns an Error(Integer 0).
+    If none happens. Another recursion of editRound()
+    is called and whatever it returns the actual method
+    also returns. 
+    Else: 
+      The method asks if the user wants to just edit
+    the actual node value. Then reads the input and 
+    calls validYesMethod() and pass the input as param.
+    If it return a Success(Integer 0):
+      It reads an input and tries to write on the actual node.
+    If there's an Error(Integer 0), it reads another input 
+    and tries again until a Success(Integer 1) is returned.
+    Else, if the user didn't want to edit the actual node:
+      It asks if the user wants to edit the Yes Branch(Left)
+    if so, it verifies if there is a valid left branch and
+    go to it if it exists and calls another recursion of 
+    doEditRound(). If not the doEditRound() is called again.
+      The same is done for right branch and if the user
+    don't want to edit the right branch. The method asks
+    if the user wants to do edit again the last node visited.
+    If there's a previous node, the same behavior is done.
+    \return Success(integer 1) or an Error(Integer 0).
+  */
 int GameInterface::doEditRound( void )
 {
   string user_input_yes_or_something_else;
@@ -331,12 +419,36 @@ int GameInterface::doEditRound( void )
 
 
 /*
-  if it's an answer, show it an wait to know if it's right.
-  In case it's right, just finish the game. Case not, ask the
-  user for a question that would lead to the right answer and
-  the right answer on the Yes branch.
+  
 */
-
+//! This method that deals with answer nodes while in the playing routine.
+  /*!
+    \brief If it's an answer, show it an wait to know if it's right.
+    In case it's right, just finish the game. Case not, ask the
+    user for a question that would lead to the right answer and
+    the right answer on the yes branch.
+    ----------------------------------------------------------
+    \Description  Read the actual node and asks if it is
+    the right answer. Read the input and then calls the
+    validYesMethod() with the read param as input. 
+    If it return a Success(Integer 1), the finishGame()
+    method is called and return what it returns.
+    Else it asks the user what questions answering yes
+    would take to the right answer. Then read the input
+    and write it in the actual node. If it fails, the 
+    method returns an Error(Intger 0). 
+    Note that whatever string is considered valid. It
+    is a responsability of the user to keep it's game
+    making sense.
+    Then asks the user what is the right answer.
+    Reads the input and calls newYesAnswer() method
+    passing as param the read input. If this returns
+    an Error(Integer 0) the method returns an Error
+    (Integer 0) too.
+    Else it calls finishGame() method and returns
+    what it returns.
+    \return Success(integer 1) or an Error(Integer 0).
+  */
 int GameInterface::gotAnswer( void )
 {
   string user_input_yes_or_something_else, user_input_right_yes_question;
@@ -376,14 +488,31 @@ int GameInterface::gotAnswer( void )
   
 };//GOT ANSWER
 
+//! This method that deals with question nodes while in the playing routine.
+  /*!
+    \brief If it's a question, ask it and wait for an answer.
+    Verify if the answer statement is a "don't know". If it is,
+    then ask the user what should be the right answer and write it
+    there. If not, follow to step 3.
+    ----------------------------------------------------------
+    \Description  Read the actual node and asks it as
+    a question of yes or no. Read the input and then 
+    calls the validYesMethod() with the read param as
+    input. 
+    If it return a Success(Integer 1):
+       It tries to move to the left branch(yes branch). 
+    If it succeeds calls another recursion of doRound().
+    If there's no left branch, the game doesn't know
+    what the answer is and asks the user for it.
+    It reads the input and creates a new left branch
+    with the input read as param. If it returns an Error
+    (Integer 0) this methods also returns one.
+    Else it calls finishGame() and returns what it returns.
+    If it returns an Error(Integer 0):
+      It does the same for the right branch.
 
-
-/*
-  If it's a question, ask it and wait for an answer.
-Verify if the answer statement is a "don't know". If it is,
-then ask the user what should be the right answer and write it
-there. If not, follow to step 3.
-*/
+    \return Success(integer 1) or an Error(Integer 0).
+  */
 int GameInterface::gotQuestion( void ) 
 {
   string user_input_yes_or_something_else;
@@ -437,7 +566,15 @@ int GameInterface::gotQuestion( void )
 
 }; //GOT QUESTION
 
-
+//! This method verifies if the string is a valid yes and return a Success if so
+  /*!
+    \Description  
+    If the string passed as param is a "Yes, yEs, yEs, y, Y
+    Sim, sim or a S" it return a Success(Integer 1).
+    If not, returns an Error(Integer 0).
+    \param  An already created string.
+    \return Success(integer 1) or an Error(Integer 0).
+  */
 int GameInterface::validYesInput( string user_input )
 {
    if ( user_input.compare("Yes") == Equals ) return Success;
@@ -452,6 +589,10 @@ int GameInterface::validYesInput( string user_input )
    return Error;
 };
 
+//! This method saves the game in last_game filename and prints a farewell.
+  /*!
+    \return Success(integer 1) or an Error(Integer 0).
+  */
 int GameInterface::finishGame( void )
 {
   cout << "\n Thank you for playing the 20 questions game.\n \n";
