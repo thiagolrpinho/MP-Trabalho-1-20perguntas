@@ -9,6 +9,14 @@ typedef shared_ptr<BTree> PBTree;
 
 TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" ) 
 {
+  /*!
+    Here will be tested the capacity of create nodes and branches
+    of the binary tree without affecting it's integrity
+    Methods tested:
+    stringnode->insertLeftNode()
+    stringnode->insertRightNode()
+    stringnode->getText()
+  */
   string initial_text = "É verde?";
 
   //First we create test trees
@@ -117,87 +125,111 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" )
 } //TestCase Binary Tree Create and Read
 
 TEST_CASE( "Binary Tree Update", "[binary_tree]" ) {
+  //Here will be tested the capacity of update the binary tree
+  //without affecting it's integrity
+  // Methods tested:
+  // stringnode->setText()
   PBTree p_non_empty_test_tree( new BTree("É moderno?") );
 
   SECTION( "Changing root node text value" )
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
+    //An text update should result in a Success
     REQUIRE( p_root->setText("É clássico?") == Success );
+    //The inserted text should equal the text read from the tree
     REQUIRE( p_root->getText().compare("É clássico?") == Equals );
-  }
+  } //SECTION( "Changing root node text value" )
 
   SECTION( "Changing branch node text value" )
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
-    p_root->insertNode("Errou!");
-
+    //Fist we insert a new node with a dummy value
+    p_root->insertLeftNode("Errou!");
     PStringNode p_node = p_root->getLeftNode();
+    //Then we change it and verify if the change was made correctly
     REQUIRE( p_node->setText("Acertou!") == Success );
     REQUIRE_FALSE( p_node->getText().compare("Errou!") == Equals );
-  }
+  } //SECTION( "Changing branch node text value" )
 }//TestCase Binary Tree Update
 
 TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
+   /*!
+    Here will be tested the capacity of create nodes and branches
+    of the binary tree without affecting it's integrity
+    Methods tested:
+    stringnode->clearLeft()
+    stringnode->clearRight()
+    stringnode->getText()
+  */
   PBTree p_non_empty_test_tree( new BTree("É moderno?") );
   PStringNode p_root = p_non_empty_test_tree->getRoot();
-  p_root->insertNode("É novo?");
+  p_root->insertLeftNode("É novo?");
+  p_root->insertRightNode("É velho?");
   
-  
-  SECTION( "root can be deleted" )
-  {
-    REQUIRE_FALSE( p_root->getText().empty() );
-    REQUIRE_FALSE( p_root->getLeftNode() == nullptr );
-    p_root.reset();
-    REQUIRE( p_root == nullptr );
-  }
-
-  SECTION( "a branch can be deleted and those above it are not affected" )
+  SECTION( "a left branch can be deleted and those above it are not affected" )
   {
     PStringNode p_node = p_root->getLeftNode();
+      //The left node is not empty before the deletion.
     REQUIRE_FALSE( p_node->getText().empty() );
 
-    p_node.reset();
+    p_root->clearLeft();
 
     REQUIRE_FALSE( p_root == nullptr );
     REQUIRE( p_node == nullptr );
-  }
+  } //SECTION( "a  left branch can be deleted and those above it are not affected" )
+
+  SECTION( "a right branch can be deleted and those above it are not affected" )
+  {
+    PStringNode p_node = p_root->getRightNode();
+      //The right node is not empty before the deletion.
+    REQUIRE_FALSE( p_node->getText().empty() );
+
+    p_root->clearRight();
+
+    REQUIRE_FALSE( p_root == nullptr );
+    REQUIRE( p_node == nullptr );
+  } //SECTION( "a right branch can be deleted and those above it are not affected" )
+
   
   SECTION( "a branch can be deleted and those below it are deleted too")
   {
     PStringNode p_node = p_root->getLeftNode();
-    p_node->insertNode( "Abaixo?" );
-    p_node->getLeftNode()->insertNode( "Abaixo do abaixo?" );
+    p_node->insertLeftNode( "Abaixo?" );
+    p_node->getLeftNode()->insertLeftNode( "Abaixo do abaixo?" );
+    //p_root -> p_node -> second_left -> third_left
 
     REQUIRE_FALSE( p_node == nullptr );
     REQUIRE_FALSE( p_node->getLeftNode() == nullptr );
     REQUIRE_FALSE( p_node->getLeftNode()->getLeftNode() == nullptr );
     REQUIRE( p_node->getLeftNode()->getLeftNode()->getLeftNode() == nullptr );
-
-    p_node->cutNode();
     
+    //Cut node should cut off recursively p_node and it's branches
+    REQUIRE( p_node->cutNode() == Success );
+    //After cutNode, there shouldn't be a no branches.
     REQUIRE( p_node->getLeftNode() == nullptr );
-    //Shared_ptr garanties that when there's no reference to the pointer, they're deallocated
-  }
+    REQUIRE( p_node->getText().empty() );
+    //Shared_ptr guaranties that when there's no reference to the pointer, they're deallocated
+  } //SECTION( "a branch can be deleted and those below it are deleted too")
 
-  SECTION("A node can have it's left branch deleted")
+  SECTION("A node can have it's left branch specifically deleted")
   {
     PStringNode p_node = p_root->getLeftNode();
-    p_node->insertNode( "Abaixo?" );
-    p_node->getLeftNode()->insertNode( "Abaixo do abaixo?" );
+    p_node->insertLeftNode( "Abaixo?" );
+    p_node->getLeftNode()->insertLeftNode( "Abaixo do abaixo?" );
 
-    REQUIRE( p_node->clearLeft() == Success);
+    REQUIRE( p_node->clearLeft() == Success );
     REQUIRE( p_node->getLeftNode() == nullptr );
-  }
+  } //SECTION("A node can have it's left branch deleted")
 
-  SECTION("A node can have it's right branch deleted")
+  SECTION("A node can have it's right branch specifically deleted")
   {
     PStringNode p_node = p_root->getLeftNode();
     p_node->insertRightNode( "Abaixo?" );
     p_node->getRightNode()->insertRightNode( "Abaixo do abaixo?" );
 
-    REQUIRE( p_node->clearRight() == Success);
+    REQUIRE( p_node->clearRight() == Success );
     REQUIRE( p_node->getRightNode() == nullptr );
-  }
+  } //SECTION("A node can have it's right branch deleted")
 
 }//TEST CASE DELETE BINARY TREE
 
