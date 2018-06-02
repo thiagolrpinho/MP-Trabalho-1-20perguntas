@@ -166,26 +166,22 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
   
   SECTION( "a left branch can be deleted and those above it are not affected" )
   {
-    PStringNode p_node = p_root->getLeftNode();
-      //The left node is not empty before the deletion.
-    REQUIRE_FALSE( p_node->getText().empty() );
-
+    //The left node is not empty before the deletion.
+    REQUIRE_FALSE( p_root->getLeftNode() == nullptr );
     p_root->clearLeft();
 
     REQUIRE_FALSE( p_root == nullptr );
-    REQUIRE( p_node == nullptr );
+    REQUIRE( p_root->getLeftNode() == nullptr );
   } //SECTION( "a  left branch can be deleted and those above it are not affected" )
 
   SECTION( "a right branch can be deleted and those above it are not affected" )
   {
-    PStringNode p_node = p_root->getRightNode();
-      //The right node is not empty before the deletion.
-    REQUIRE_FALSE( p_node->getText().empty() );
-
+    //The right node is not empty before the deletion.
+    REQUIRE_FALSE( p_root->getRightNode() == nullptr);
     p_root->clearRight();
 
     REQUIRE_FALSE( p_root == nullptr );
-    REQUIRE( p_node == nullptr );
+    REQUIRE(  p_root->getRightNode() == nullptr );
   } //SECTION( "a right branch can be deleted and those above it are not affected" )
 
   
