@@ -114,7 +114,7 @@ With each method used, what it does(in portuguese) and a list of the tests used 
 
 ## Author
 
-* **Thiago Luis Rodrigue Pinho** - *Game of 20 Questions* - [Thiago Luis](https://github.com/thiagolrpinho/MP-Trabalho-1-20perguntas)
+* **Thiago Luis Rodrigues Pinho** - *Game of 20 Questions* - [Thiago Luis](https://github.com/thiagolrpinho/MP-Trabalho-1-20perguntas)
 
 
 
@@ -125,5 +125,5 @@ the experience.
 * It think this was a bit too complex for a two weeks project. 
 * I wish I could have organized my code more. 
 * Thanks for reading until here.
-* Sorry for English and programation mistakes. Please correct me and I'll fix it.
+* Sorry for English and programation mistakes. Please correct me so I can improve.
 

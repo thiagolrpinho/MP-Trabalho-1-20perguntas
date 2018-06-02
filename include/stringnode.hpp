@@ -40,7 +40,6 @@ class StringNode{
   string getText(void) { return this->text; }
 
   int setText(string newText);
-  int insertNode(string initial_new_node_text);
   int insertLeftNode( void );
   int insertLeftNode(string initial_new_node_text);
   int insertRightNode( void );

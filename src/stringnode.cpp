@@ -35,35 +35,6 @@ StringNode::~StringNode(){
     text.clear();
 }
 
-//! A method that create a new node with an initial string chosen
-  /*!
-    \Description verifies if left node is empty, if it is creates
-    a new node and sets it's value to the initial_new_node_text
-    value. Then it'll return a Success which is an enum with value
-    1.
-    If left node is not empty then it tries the rightNode.
-    If the right one is empty, creates a new node there and sets
-    it's value to the value of the same argument. Then it'll return
-      a Success which is an enum with value 1.
-    If neither are empty, nothing is done and the method return an 
-    Error which is an enum with value 0.
-    \param (The only explicit interface) A valid and already allocated string which will be the value of
-    the new node.
-    \return An int 0 for Error or 1 for Success
-  */
-int StringNode::insertNode( string initial_new_node_text ){
-    if ( this->getLeftNode() == nullptr ) {
-        this->p_left_node_.reset( new StringNode(initial_new_node_text) );
-    } else if (this->getRightNode() == nullptr) {
-        this->p_right_node_.reset( new StringNode(initial_new_node_text) );
-    } else {
-        return Error;
-    }
-
-    return Success;
-};
-
-
 //! A method that creates the a blank left node of an empty branch.
     /*!
         \Description Verifies if the left node already exists 
