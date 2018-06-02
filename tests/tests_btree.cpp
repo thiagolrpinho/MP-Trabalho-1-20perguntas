@@ -46,7 +46,7 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" )
   SECTION( "Inserting left branch on root")
   {
     //The insertion should not raise Errors.
-    REQUIRE_FALSE( p_non_empty_test_tree->getRoot()->inserLeftNode("É azul?") == Error);
+    REQUIRE_FALSE( p_non_empty_test_tree->getRoot()->insertLeftNode("É azul?") == Error);
     //The inserted value should be equal to the value read after the insertion
     REQUIRE(p_non_empty_test_tree->getRoot()->getLeftNode()->getText().compare("É azul?") == Equals);
   } //SECTION( "Inserting left branch on root")
@@ -87,18 +87,16 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" )
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
     p_root->insertLeftNode("É azul?");
-    PStringNode p_left_node_of_root = p_root->getLeftNode();
-
-    REQUIRE( p_left_node_of_root->insertLeftNode("É manufaturado?") == Error );
+    //p_root -> first_left
+    REQUIRE( p_root->insertLeftNode("É manufaturado?") == Error );
   } //SECTION( "Inserting left branch on a non empty left branch results in error" ) 
 
     SECTION( "Inserting right branch on a non empty right branch results in error" ) 
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
     p_root->insertRightNode("É vermelho?");
-    PStringNode p_right_node_of_root = p_root->getLeftNode();
-
-    REQUIRE( p_right_node_of_root->insertRightNode("É orgânico?") == Error );
+    //p_root -> first_right
+    REQUIRE( p_root->insertRightNode("É orgânico?") == Error );
   } //SECTION( "Inserting right branch on a non empty right branch results in error" ) 
 
   SECTION( "Inserting three levels deep of root" )
@@ -230,6 +228,5 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
     REQUIRE( p_node->clearRight() == Success );
     REQUIRE( p_node->getRightNode() == nullptr );
   } //SECTION("A node can have it's right branch deleted")
-
 }//TEST CASE DELETE BINARY TREE
 
