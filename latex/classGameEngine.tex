@@ -3,93 +3,522 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Game\+Engine} (string initial\+\_\+text)\hypertarget{classGameEngine_a61a8e7428298785176db2cc23436d4c1}{}\label{classGameEngine_a61a8e7428298785176db2cc23436d4c1}
-
+\hyperlink{classGameEngine_a64c430f74d72e2745646fdbffbd97930}{Game\+Engine} ()
+\begin{DoxyCompactList}\small\item\em A constructor that creates a game engine with a tree of statements. \end{DoxyCompactList}\item 
+\hyperlink{classGameEngine_a61a8e7428298785176db2cc23436d4c1}{Game\+Engine} (string initial\+\_\+text)
+\begin{DoxyCompactList}\small\item\em A constructor that creates a game engine with a tree of statements with a setted root. \end{DoxyCompactList}\item 
+P\+String\+Node \hyperlink{classGameEngine_a921086c9cc040a04b58ab43ca1993b8a}{get\+Start} (void)
 \item 
-P\+String\+Node {\bfseries get\+Start} (void)\hypertarget{classGameEngine_a921086c9cc040a04b58ab43ca1993b8a}{}\label{classGameEngine_a921086c9cc040a04b58ab43ca1993b8a}
-
+P\+String\+Node \hyperlink{classGameEngine_a12de523ffd3267f652e8834e680bac14}{get\+Actual\+Node} (void)
+\begin{DoxyCompactList}\small\item\em A method that returns the actual node. \end{DoxyCompactList}\item 
+P\+String\+Node \hyperlink{classGameEngine_acadf06a46e5bd271a7be462bbac559a3}{pop\+Last\+Node} (void)
+\begin{DoxyCompactList}\small\item\em A method that pops out the last shared pointer stored by the stack of last nodes. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_ae0ea93bfa7e03359bfca6851aac0f79c}{set\+Actual\+Node} (P\+String\+Node p\+\_\+next\+\_\+node)
+\begin{DoxyCompactList}\small\item\em A method sets the actual node to the value passed as param. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_a0ccf9ba8728a8f4b699f95803f05089f}{push\+Last\+Node} (void)
+\begin{DoxyCompactList}\small\item\em A method that pushes the actual node to the stack of last nodes. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_a599023dd006f5f19b8793dde54806d37}{push\+Last\+Node} (P\+String\+Node p\+\_\+next\+\_\+node)
+\begin{DoxyCompactList}\small\item\em A method that pushes a given node to the stack of last nodes. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_abdba822c3e78d637d47395dc616b363e}{move\+To\+Yes} (void)
+\begin{DoxyCompactList}\small\item\em A method that changes the actual node to his left node and stores the last node. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_aef22044b8c728d648f4b0d478276c028}{move\+To\+No} (void)
+\begin{DoxyCompactList}\small\item\em A method that changes the actual node to his right node and stores the last node. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_ad5980e20974bf0f3b5adc9f1de0434ee}{move\+Back} (void)
+\begin{DoxyCompactList}\small\item\em A method that changes the actual node to the last node visited. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_ab54d6b668a506e746d432157cc611240}{restart} (void)
+\begin{DoxyCompactList}\small\item\em A method that sets the game engine to an initial state. \end{DoxyCompactList}\item 
+string \hyperlink{classGameEngine_ab0ccbeccb193bcade16938be6a6a388f}{read\+Actual\+Node} (void)
 \item 
-P\+String\+Node {\bfseries get\+Actual\+Node} (void)\hypertarget{classGameEngine_a12de523ffd3267f652e8834e680bac14}{}\label{classGameEngine_a12de523ffd3267f652e8834e680bac14}
-
+int \hyperlink{classGameEngine_a7c0c3494620ea427d232875ec6ac5314}{write\+In\+Actual\+Node} (string new\+\_\+text)
+\begin{DoxyCompactList}\small\item\em A method to that sets the value of the actual node. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_a17f5e4446691b4b49946aa5246e9c745}{remove\+Actual\+Node} (void)
 \item 
-P\+String\+Node {\bfseries pop\+Last\+Node} (void)\hypertarget{classGameEngine_acadf06a46e5bd271a7be462bbac559a3}{}\label{classGameEngine_acadf06a46e5bd271a7be462bbac559a3}
-
+int \hyperlink{classGameEngine_a60f59ad9d986518c2b02395e1141762c}{new\+Yes\+Answer} (void)
+\begin{DoxyCompactList}\small\item\em A method that creates a new node with empty text at left of the actual node. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_aa9ffb7adbdb70bdd8b443969a016c4be}{new\+Yes\+Answer} (string initial\+\_\+text)
+\begin{DoxyCompactList}\small\item\em A method that creates a new node with a given value at left of the actual node. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_af56b409af16473edc6c8e8fac73f251c}{new\+No\+Answer} (void)
+\begin{DoxyCompactList}\small\item\em A method that creates a new node with empty text at right of the actual node. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_ad3f74526d6de45dd90dbb3e4f6e3807e}{new\+No\+Answer} (string initial\+\_\+text)
+\begin{DoxyCompactList}\small\item\em A method that creates a new node with a given value at right of the actual node. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_a3a21ccb76962cf94f932b3f837d7977f}{new\+Yes\+Question} (string initial\+\_\+question)
 \item 
-int {\bfseries set\+Actual\+Node} (P\+String\+Node p\+\_\+next\+\_\+node)\hypertarget{classGameEngine_ae0ea93bfa7e03359bfca6851aac0f79c}{}\label{classGameEngine_ae0ea93bfa7e03359bfca6851aac0f79c}
-
+P\+String\+Node \hyperlink{classGameEngine_ab3f646b7979c18693707356bb2bbea19}{get\+Yes} (void)
+\begin{DoxyCompactList}\small\item\em A method that returns the left node of the actual node. \end{DoxyCompactList}\item 
+P\+String\+Node \hyperlink{classGameEngine_a55fea2d808bae3ce0ef6d07e0c430c75}{get\+No} (void)
+\begin{DoxyCompactList}\small\item\em A method that returns the right node of the actual node. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_a01b9a5c3114b34869021b391147e61ba}{check\+Guess} (void)
 \item 
-int {\bfseries push\+Last\+Node} (void)\hypertarget{classGameEngine_a0ccf9ba8728a8f4b699f95803f05089f}{}\label{classGameEngine_a0ccf9ba8728a8f4b699f95803f05089f}
-
+int \hyperlink{classGameEngine_ad9b78e44d4eea9bcb98bd58876b1ba7d}{save\+Game} (void)
+\begin{DoxyCompactList}\small\item\em A method that save a game engine state as \char`\"{}autosave\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_a7e16dc069ce815e79fcef09c19a1a97a}{save\+Game} (string file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em A method that saves a game engine state with a given name. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_a6c6612550ae0b18be1540881859cdaca}{load\+Game} (void)
 \item 
-int {\bfseries push\+Last\+Node} (P\+String\+Node p\+\_\+next\+\_\+node)\hypertarget{classGameEngine_a599023dd006f5f19b8793dde54806d37}{}\label{classGameEngine_a599023dd006f5f19b8793dde54806d37}
+int \hyperlink{classGameEngine_a66fc0b13065015768f4fb6f949329937}{load\+Game} (string file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em A method that loads a game engine state with a given name. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_afa0b28d7d51e3f69d470943e50f017e6}{read\+File} (fstream \&p\+\_\+file\+\_\+to\+\_\+read)
+\begin{DoxyCompactList}\small\item\em A method that reads a file and writes on the tree of statements of a game engine. \end{DoxyCompactList}\item 
+int \hyperlink{classGameEngine_adeba29a50b810c32e9b6c8018969325b}{write\+In\+File} (fstream \&p\+\_\+file\+\_\+to\+\_\+write)
+\begin{DoxyCompactList}\small\item\em A method that writes on a file the tree of statements of game engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\item 
-int {\bfseries move\+To\+Yes} (void)\hypertarget{classGameEngine_abdba822c3e78d637d47395dc616b363e}{}\label{classGameEngine_abdba822c3e78d637d47395dc616b363e}
 
-\item 
-int {\bfseries move\+To\+No} (void)\hypertarget{classGameEngine_aef22044b8c728d648f4b0d478276c028}{}\label{classGameEngine_aef22044b8c728d648f4b0d478276c028}
+\subsection{Constructor \& Destructor Documentation}
+\index{Game\+Engine@{Game\+Engine}!Game\+Engine@{Game\+Engine}}
+\index{Game\+Engine@{Game\+Engine}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{Game\+Engine()}{GameEngine()}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Engine\+::\+Game\+Engine (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a64c430f74d72e2745646fdbffbd97930}{}\label{classGameEngine_a64c430f74d72e2745646fdbffbd97930}
 
-\item 
-int {\bfseries move\+Back} (void)\hypertarget{classGameEngine_ad5980e20974bf0f3b5adc9f1de0434ee}{}\label{classGameEngine_ad5980e20974bf0f3b5adc9f1de0434ee}
 
-\item 
-int {\bfseries restart} (void)\hypertarget{classGameEngine_ab54d6b668a506e746d432157cc611240}{}\label{classGameEngine_ab54d6b668a506e746d432157cc611240}
+A constructor that creates a game engine with a tree of statements. 
 
-\item 
-string {\bfseries read\+Actual\+Node} (void)\hypertarget{classGameEngine_ab0ccbeccb193bcade16938be6a6a388f}{}\label{classGameEngine_ab0ccbeccb193bcade16938be6a6a388f}
+Creates a new game engine and creates a binary tree to be it\textquotesingle{}s tree of statements. The root value of the binary tree is empty. It also sets the value pointed by the actual node to the root of the tree and pushs the root in the stack of last nodes. \index{Game\+Engine@{Game\+Engine}!Game\+Engine@{Game\+Engine}}
+\index{Game\+Engine@{Game\+Engine}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{Game\+Engine(string initial\+\_\+text)}{GameEngine(string initial_text)}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Engine\+::\+Game\+Engine (
+\begin{DoxyParamCaption}
+\item[{string}]{initial\+\_\+text}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a61a8e7428298785176db2cc23436d4c1}{}\label{classGameEngine_a61a8e7428298785176db2cc23436d4c1}
 
-\item 
-int {\bfseries write\+In\+Actual\+Node} (string new\+\_\+text)\hypertarget{classGameEngine_a7c0c3494620ea427d232875ec6ac5314}{}\label{classGameEngine_a7c0c3494620ea427d232875ec6ac5314}
 
-\item 
-int {\bfseries remove\+Actual\+Node} (void)\hypertarget{classGameEngine_a17f5e4446691b4b49946aa5246e9c745}{}\label{classGameEngine_a17f5e4446691b4b49946aa5246e9c745}
+A constructor that creates a game engine with a tree of statements with a setted root. 
 
-\item 
-int {\bfseries new\+Yes\+Answer} (void)\hypertarget{classGameEngine_a60f59ad9d986518c2b02395e1141762c}{}\label{classGameEngine_a60f59ad9d986518c2b02395e1141762c}
+Creates a new game engine and creates a binary tree to be it\textquotesingle{}s tree of statements. The root value of the binary tree is given by the param. It also sets the value pointed by the actual node to the root of the tree and pushs the root in the stack of last nodes. 
+\begin{DoxyParams}{Parameters}
+{\em An} & already created String. \\
+\hline
+\end{DoxyParams}
 
-\item 
-int {\bfseries new\+Yes\+Answer} (string initial\+\_\+text)\hypertarget{classGameEngine_aa9ffb7adbdb70bdd8b443969a016c4be}{}\label{classGameEngine_aa9ffb7adbdb70bdd8b443969a016c4be}
 
-\item 
-int {\bfseries new\+No\+Answer} (void)\hypertarget{classGameEngine_af56b409af16473edc6c8e8fac73f251c}{}\label{classGameEngine_af56b409af16473edc6c8e8fac73f251c}
+\subsection{Member Function Documentation}
+\index{Game\+Engine@{Game\+Engine}!check\+Guess@{check\+Guess}}
+\index{check\+Guess@{check\+Guess}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{check\+Guess(void)}{checkGuess(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::check\+Guess (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a01b9a5c3114b34869021b391147e61ba}{}\label{classGameEngine_a01b9a5c3114b34869021b391147e61ba}
+! Question Logic A method that checks if the node has branches.
 
-\item 
-int {\bfseries new\+No\+Answer} (string initial\+\_\+text)\hypertarget{classGameEngine_ad3f74526d6de45dd90dbb3e4f6e3807e}{}\label{classGameEngine_ad3f74526d6de45dd90dbb3e4f6e3807e}
+Return a Success(enum 1) if there\textquotesingle{}s no branches. Otherwise returns an Error(enum 0). \begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!get\+Actual\+Node@{get\+Actual\+Node}}
+\index{get\+Actual\+Node@{get\+Actual\+Node}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{get\+Actual\+Node(void)}{getActualNode(void)}}]{\setlength{\rightskip}{0pt plus 5cm}P\+String\+Node Game\+Engine\+::get\+Actual\+Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a12de523ffd3267f652e8834e680bac14}{}\label{classGameEngine_a12de523ffd3267f652e8834e680bac14}
 
-\item 
-int {\bfseries new\+Yes\+Question} (string initial\+\_\+question)\hypertarget{classGameEngine_a3a21ccb76962cf94f932b3f837d7977f}{}\label{classGameEngine_a3a21ccb76962cf94f932b3f837d7977f}
 
-\item 
-P\+String\+Node {\bfseries get\+Yes} (void)\hypertarget{classGameEngine_ab3f646b7979c18693707356bb2bbea19}{}\label{classGameEngine_ab3f646b7979c18693707356bb2bbea19}
+A method that returns the actual node. 
 
-\item 
-P\+String\+Node {\bfseries get\+No} (void)\hypertarget{classGameEngine_a55fea2d808bae3ce0ef6d07e0c430c75}{}\label{classGameEngine_a55fea2d808bae3ce0ef6d07e0c430c75}
+\begin{DoxyReturn}{Returns}
+a shared pointer to the node pointed by the actual node of the game engine. 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!get\+No@{get\+No}}
+\index{get\+No@{get\+No}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{get\+No(void)}{getNo(void)}}]{\setlength{\rightskip}{0pt plus 5cm}P\+String\+Node Game\+Engine\+::get\+No (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a55fea2d808bae3ce0ef6d07e0c430c75}{}\label{classGameEngine_a55fea2d808bae3ce0ef6d07e0c430c75}
 
-\item 
-int {\bfseries check\+Guess} (void)\hypertarget{classGameEngine_a01b9a5c3114b34869021b391147e61ba}{}\label{classGameEngine_a01b9a5c3114b34869021b391147e61ba}
 
-\item 
-int {\bfseries save\+Game} (void)\hypertarget{classGameEngine_ad9b78e44d4eea9bcb98bd58876b1ba7d}{}\label{classGameEngine_ad9b78e44d4eea9bcb98bd58876b1ba7d}
+A method that returns the right node of the actual node. 
 
-\item 
-int {\bfseries save\+Game} (string file\+\_\+name)\hypertarget{classGameEngine_a7e16dc069ce815e79fcef09c19a1a97a}{}\label{classGameEngine_a7e16dc069ce815e79fcef09c19a1a97a}
+\begin{DoxyReturn}{Returns}
+a shared pointer of the right node of the actual node. 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!get\+Start@{get\+Start}}
+\index{get\+Start@{get\+Start}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{get\+Start(void)}{getStart(void)}}]{\setlength{\rightskip}{0pt plus 5cm}P\+String\+Node Game\+Engine\+::get\+Start (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a921086c9cc040a04b58ab43ca1993b8a}{}\label{classGameEngine_a921086c9cc040a04b58ab43ca1993b8a}
+!\+P\+O\+S\+I\+T\+I\+O\+N\+I\+NG M\+E\+T\+H\+O\+DS A method that returns the start of the tree of statements.
 
-\item 
-int {\bfseries load\+Game} (void)\hypertarget{classGameEngine_a6c6612550ae0b18be1540881859cdaca}{}\label{classGameEngine_a6c6612550ae0b18be1540881859cdaca}
+\begin{DoxyReturn}{Returns}
+a shared pointer to the root of the tree of the statements. 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!get\+Yes@{get\+Yes}}
+\index{get\+Yes@{get\+Yes}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{get\+Yes(void)}{getYes(void)}}]{\setlength{\rightskip}{0pt plus 5cm}P\+String\+Node Game\+Engine\+::get\+Yes (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_ab3f646b7979c18693707356bb2bbea19}{}\label{classGameEngine_ab3f646b7979c18693707356bb2bbea19}
 
-\item 
-int {\bfseries load\+Game} (string file\+\_\+name)\hypertarget{classGameEngine_a66fc0b13065015768f4fb6f949329937}{}\label{classGameEngine_a66fc0b13065015768f4fb6f949329937}
 
-\item 
-int {\bfseries read\+File} (fstream \&p\+\_\+file\+\_\+to\+\_\+read)\hypertarget{classGameEngine_afa0b28d7d51e3f69d470943e50f017e6}{}\label{classGameEngine_afa0b28d7d51e3f69d470943e50f017e6}
+A method that returns the left node of the actual node. 
 
-\item 
-int {\bfseries write\+In\+File} (fstream \&p\+\_\+file\+\_\+to\+\_\+write)\hypertarget{classGameEngine_adeba29a50b810c32e9b6c8018969325b}{}\label{classGameEngine_adeba29a50b810c32e9b6c8018969325b}
+\begin{DoxyReturn}{Returns}
+a shared pointer of the left node of the actual node. 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!load\+Game@{load\+Game}}
+\index{load\+Game@{load\+Game}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{load\+Game(void)}{loadGame(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::load\+Game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a6c6612550ae0b18be1540881859cdaca}{}\label{classGameEngine_a6c6612550ae0b18be1540881859cdaca}
+!\+F\+I\+LE M\+A\+N\+A\+G\+I\+NG A method that loads a game engine state that was saved as \char`\"{}autosave\char`\"{}
 
-\end{DoxyCompactItemize}
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!load\+Game@{load\+Game}}
+\index{load\+Game@{load\+Game}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{load\+Game(string file\+\_\+name)}{loadGame(string file_name)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::load\+Game (
+\begin{DoxyParamCaption}
+\item[{string}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a66fc0b13065015768f4fb6f949329937}{}\label{classGameEngine_a66fc0b13065015768f4fb6f949329937}
+
+
+A method that loads a game engine state with a given name. 
+
+There are two explicits interfaces\+: The string as param and the file to be open.  try to\+: Open a file with the given name that is inside the the folder saved\+\_\+games that should be a subdirectory of the folder that the programs is running. The file\+\_\+name should not be passed with a file extension. It\textquotesingle{}ll be put by the algorithm. If it fails at any point, the method will return an Error (integer 0); If this Succeeds then the game engine will be restarted. After this, the algorithm calls a method \hyperlink{classGameEngine_afa0b28d7d51e3f69d470943e50f017e6}{read\+File()} and verifies if it will return an Error(integer 0) if so \hyperlink{classGameEngine_a6c6612550ae0b18be1540881859cdaca}{load\+Game()} return a Error(integer 0). If not the file pointeris freed and returns a Success(\+Integer 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explict interface) A valid and already allocated string of a file name(without extension)that was already created inside the folder ./saved\+\_\+games/ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!move\+Back@{move\+Back}}
+\index{move\+Back@{move\+Back}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{move\+Back(void)}{moveBack(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::move\+Back (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_ad5980e20974bf0f3b5adc9f1de0434ee}{}\label{classGameEngine_ad5980e20974bf0f3b5adc9f1de0434ee}
+
+
+A method that changes the actual node to the last node visited. 
+
+Verifies if the stack of node is not empty. If it is return an Error(enum 0). If not, it sets the actual node to the value of the last node visited by popping it out from the last node stack. Then it return a Success(enum 1). \begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!move\+To\+No@{move\+To\+No}}
+\index{move\+To\+No@{move\+To\+No}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{move\+To\+No(void)}{moveToNo(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::move\+To\+No (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_aef22044b8c728d648f4b0d478276c028}{}\label{classGameEngine_aef22044b8c728d648f4b0d478276c028}
+
+
+A method that changes the actual node to his right node and stores the last node. 
+
+Verifies if the right node exists. If not, return Error(enum 0) else it pushes the actual node to the stack of last nodes. Then it verifies if the actual node could be setted to be to the right node. If it fails return an Error. If it succeeds return Success(enum 1). \begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!move\+To\+Yes@{move\+To\+Yes}}
+\index{move\+To\+Yes@{move\+To\+Yes}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{move\+To\+Yes(void)}{moveToYes(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::move\+To\+Yes (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_abdba822c3e78d637d47395dc616b363e}{}\label{classGameEngine_abdba822c3e78d637d47395dc616b363e}
+
+
+A method that changes the actual node to his left node and stores the last node. 
+
+Verifies if the left node exists. If not, return Error(enum 0) else it pushes the actual node to the stack of last nodes. Then it verifies if the actual node could be setted to be to the left node. If it fails return an Error. If it succeeds return Success(enum 1). \begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!new\+No\+Answer@{new\+No\+Answer}}
+\index{new\+No\+Answer@{new\+No\+Answer}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{new\+No\+Answer(void)}{newNoAnswer(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::new\+No\+Answer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_af56b409af16473edc6c8e8fac73f251c}{}\label{classGameEngine_af56b409af16473edc6c8e8fac73f251c}
+
+
+A method that creates a new node with empty text at right of the actual node. 
+
+Verifies if there\textquotesingle{}s already a node in the right branch of the actual node. If yes, returns an Error(enum 0). If no, creates a new node with empty value and sets right branch to point to it then return a Success(enum 1). \begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!new\+No\+Answer@{new\+No\+Answer}}
+\index{new\+No\+Answer@{new\+No\+Answer}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{new\+No\+Answer(string initial\+\_\+text)}{newNoAnswer(string initial_text)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::new\+No\+Answer (
+\begin{DoxyParamCaption}
+\item[{string}]{initial\+\_\+text}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_ad3f74526d6de45dd90dbb3e4f6e3807e}{}\label{classGameEngine_ad3f74526d6de45dd90dbb3e4f6e3807e}
+
+
+A method that creates a new node with a given value at right of the actual node. 
+
+Verifies if there\textquotesingle{}s already a node in the right branch of the actual node. If yes, returns an Error(enum 0). If no, creates a new node with value equal to the one given as param and sets right branch to point to it then return a Success(enum 1).
+
+
+\begin{DoxyParams}{Parameters}
+{\em An} & already created string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!new\+Yes\+Answer@{new\+Yes\+Answer}}
+\index{new\+Yes\+Answer@{new\+Yes\+Answer}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{new\+Yes\+Answer(void)}{newYesAnswer(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::new\+Yes\+Answer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a60f59ad9d986518c2b02395e1141762c}{}\label{classGameEngine_a60f59ad9d986518c2b02395e1141762c}
+
+
+A method that creates a new node with empty text at left of the actual node. 
+
+Verifies if there\textquotesingle{}s already a node in the left branch of the actual node. If yes, returns an Error(enum 0). If no, creates a new node with empty value and sets left branch to point to it then return a Success(enum 1). \begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!new\+Yes\+Answer@{new\+Yes\+Answer}}
+\index{new\+Yes\+Answer@{new\+Yes\+Answer}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{new\+Yes\+Answer(string initial\+\_\+text)}{newYesAnswer(string initial_text)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::new\+Yes\+Answer (
+\begin{DoxyParamCaption}
+\item[{string}]{initial\+\_\+text}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_aa9ffb7adbdb70bdd8b443969a016c4be}{}\label{classGameEngine_aa9ffb7adbdb70bdd8b443969a016c4be}
+
+
+A method that creates a new node with a given value at left of the actual node. 
+
+Verifies if there\textquotesingle{}s already a node in the left branch of the actual node. If yes, returns an Error(enum 0). If no, creates a new node with value equal to the one given as param and sets left branch to point to it then return a Success(enum 1). 
+\begin{DoxyParams}{Parameters}
+{\em An} & already created string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!new\+Yes\+Question@{new\+Yes\+Question}}
+\index{new\+Yes\+Question@{new\+Yes\+Question}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{new\+Yes\+Question(string initial\+\_\+question)}{newYesQuestion(string initial_question)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::new\+Yes\+Question (
+\begin{DoxyParamCaption}
+\item[{string}]{initial\+\_\+question}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a3a21ccb76962cf94f932b3f837d7977f}{}\label{classGameEngine_a3a21ccb76962cf94f932b3f837d7977f}
+! Yes\+Or\+No Logic A method creates a new Question with a given value as the left branch of the actual node.
+
+Tries to\+: Create a new\+Yes\+Answer with the given param value as the initial text. Sets the left branch of the actual node to points to the new created node. Then creates a new empty left and a new empty right nodes on the branches of the firstly created node. If something fails, returns Error(enum 0). Else it returns Success(enum 1). 
+\begin{DoxyParams}{Parameters}
+{\em An} & already created string to be the initial value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!pop\+Last\+Node@{pop\+Last\+Node}}
+\index{pop\+Last\+Node@{pop\+Last\+Node}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{pop\+Last\+Node(void)}{popLastNode(void)}}]{\setlength{\rightskip}{0pt plus 5cm}P\+String\+Node Game\+Engine\+::pop\+Last\+Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_acadf06a46e5bd271a7be462bbac559a3}{}\label{classGameEngine_acadf06a46e5bd271a7be462bbac559a3}
+
+
+A method that pops out the last shared pointer stored by the stack of last nodes. 
+
+Gets the last shared pointer at the stack, stores it with a new variable and removes it from the stack. Then returns the new variable. 
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The shared pointer of the last node. 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!push\+Last\+Node@{push\+Last\+Node}}
+\index{push\+Last\+Node@{push\+Last\+Node}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{push\+Last\+Node(void)}{pushLastNode(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::push\+Last\+Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a0ccf9ba8728a8f4b699f95803f05089f}{}\label{classGameEngine_a0ccf9ba8728a8f4b699f95803f05089f}
+
+
+A method that pushes the actual node to the stack of last nodes. 
+
+Tries to push the actual node to the stack. If it succeeds return Success(enum 1). If not, return Error(enum 0). \begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!push\+Last\+Node@{push\+Last\+Node}}
+\index{push\+Last\+Node@{push\+Last\+Node}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{push\+Last\+Node(\+P\+String\+Node p\+\_\+next\+\_\+node)}{pushLastNode(PStringNode p_next_node)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::push\+Last\+Node (
+\begin{DoxyParamCaption}
+\item[{P\+String\+Node}]{p\+\_\+next\+\_\+node}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a599023dd006f5f19b8793dde54806d37}{}\label{classGameEngine_a599023dd006f5f19b8793dde54806d37}
+
+
+A method that pushes a given node to the stack of last nodes. 
+
+Tries to push the node given by the param to the stack. If it succeeds return Success(enum 1). If not, return Error(enum 0). \begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!read\+Actual\+Node@{read\+Actual\+Node}}
+\index{read\+Actual\+Node@{read\+Actual\+Node}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{read\+Actual\+Node(void)}{readActualNode(void)}}]{\setlength{\rightskip}{0pt plus 5cm}string Game\+Engine\+::read\+Actual\+Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_ab0ccbeccb193bcade16938be6a6a388f}{}\label{classGameEngine_ab0ccbeccb193bcade16938be6a6a388f}
+!\+R\+E\+A\+D\+I\+NG A\+ND W\+R\+I\+T\+I\+NG M\+E\+T\+H\+O\+DS A method that returns the value of the actual node.
+
+\begin{DoxyReturn}{Returns}
+a string copy of the text inside actual node. 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!read\+File@{read\+File}}
+\index{read\+File@{read\+File}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{read\+File(fstream \&p\+\_\+file\+\_\+to\+\_\+read)}{readFile(fstream &p_file_to_read)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::read\+File (
+\begin{DoxyParamCaption}
+\item[{fstream \&}]{p\+\_\+file\+\_\+to\+\_\+read}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_afa0b28d7d51e3f69d470943e50f017e6}{}\label{classGameEngine_afa0b28d7d51e3f69d470943e50f017e6}
+
+
+A method that reads a file and writes on the tree of statements of a game engine. 
+
+Game engine should have been restarted before calling this method. try to\+: Read the line pointed by the file pointer until the separator \textquotesingle{};\textquotesingle{} is found and stores it on the string node\+\_\+statement. Verifies if it\textquotesingle{}s already on the end of the file. If it\textquotesingle{}s, returns a Error(integer 0). This occurs because the first read should be followed by two more separators. Else the method checks if the read string is \textquotesingle{}\#\textquotesingle{}, if it is returns a Error(integer 0). This occurs because the first read should be a valid node. Else it writes the read string on the actual node. Then it creates a new left node, verifies if the creation was successfull(if not returns a Error(integer 0)) and then calls itself recursively. If the recursion returns an Error(integer 0) the new branch is undone. Else it moves back to the previous state where actual node was the first node wrote by this method. The it creates a right node of the actual node and does the same behaviour. If any of this fails, it returns an Error(integer 0). Else it returns a Success(integer 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explict interface) A valid and already allocated pointer to a file already opened. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!remove\+Actual\+Node@{remove\+Actual\+Node}}
+\index{remove\+Actual\+Node@{remove\+Actual\+Node}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{remove\+Actual\+Node(void)}{removeActualNode(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::remove\+Actual\+Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a17f5e4446691b4b49946aa5246e9c745}{}\label{classGameEngine_a17f5e4446691b4b49946aa5246e9c745}
+! D\+E\+L\+E\+T\+I\+NG M\+E\+T\+H\+O\+DS A method that deletes the actual node and those bellow it.
+
+Tries to\+: Stores the actual node pointer temporalily as the node to be deleted. Verifies if it\textquotesingle{}s the root. If it is call \hyperlink{classGameEngine_ab54d6b668a506e746d432157cc611240}{restart()} method. If not, changes actual node to the pointer of the last node visited by popping stack of last nodes. Then if the node to be deleted is the left node of the actual node. Calls clear\+Left() method. If not, verifies if it is the right node and if it is right node of the actual node. Calls clear\+Right(). Then calls reset() on the node to be deleted. If any of this fails, return an Error(enum 0). Else it return a Success(enum 1).
+
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!restart@{restart}}
+\index{restart@{restart}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{restart(void)}{restart(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::restart (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_ab54d6b668a506e746d432157cc611240}{}\label{classGameEngine_ab54d6b668a506e746d432157cc611240}
+
+
+A method that sets the game engine to an initial state. 
+
+Tries to\+: Reset the tree of statements to a new binary tree with root valued as \char`\"{}\+New Game\char`\"{}. Changes the actual node to the binary tree\textquotesingle{}s root. Empties the stack then pushes the actual node to it. If it fails return an Error(enum 0). If not, it return a Success(enum 1). \begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!save\+Game@{save\+Game}}
+\index{save\+Game@{save\+Game}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{save\+Game(void)}{saveGame(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::save\+Game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_ad9b78e44d4eea9bcb98bd58876b1ba7d}{}\label{classGameEngine_ad9b78e44d4eea9bcb98bd58876b1ba7d}
+
+
+A method that save a game engine state as \char`\"{}autosave\char`\"{}. 
+
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!save\+Game@{save\+Game}}
+\index{save\+Game@{save\+Game}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{save\+Game(string file\+\_\+name)}{saveGame(string file_name)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::save\+Game (
+\begin{DoxyParamCaption}
+\item[{string}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a7e16dc069ce815e79fcef09c19a1a97a}{}\label{classGameEngine_a7e16dc069ce815e79fcef09c19a1a97a}
+
+
+A method that saves a game engine state with a given name. 
+
+There are two explicits interfaces\+: The string as param and the file to be open.  try to\+: Open or creates(if not existent)a file with the given name that is inside the the folder saved\+\_\+games that will be a subdirectory of the folder that the programs is running. The file\+\_\+name should not be passed with a file extension. It\textquotesingle{}ll be put by the algorithm. If it fails at any point, the method will return an Error (integer 0); If this Succeeds the algorithm calls a method \hyperlink{classGameEngine_adeba29a50b810c32e9b6c8018969325b}{write\+In\+File()} and verifies if it will return an Error(integer 0) if so \hyperlink{classGameEngine_ad9b78e44d4eea9bcb98bd58876b1ba7d}{save\+Game()} returns a Error(integer 0). If not the game engine returns to the state before by poping last state node and seting it to be the actual node then file pointer is freed and it returns a Success(\+Integer 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explict interface) A valid and already allocated string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!set\+Actual\+Node@{set\+Actual\+Node}}
+\index{set\+Actual\+Node@{set\+Actual\+Node}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{set\+Actual\+Node(\+P\+String\+Node p\+\_\+next\+\_\+node)}{setActualNode(PStringNode p_next_node)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::set\+Actual\+Node (
+\begin{DoxyParamCaption}
+\item[{P\+String\+Node}]{p\+\_\+next\+\_\+node}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_ae0ea93bfa7e03359bfca6851aac0f79c}{}\label{classGameEngine_ae0ea93bfa7e03359bfca6851aac0f79c}
+
+
+A method sets the actual node to the value passed as param. 
+
+Try to set the actual node pointer to the pointer passed as a param. If it didn\textquotesingle{}t succeeds returns Error(enum 0). Else it return Success. 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explict interface) A valid and already allocated shared pointer of string\+Node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer 0 for Error or 1 for Success. 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!write\+In\+Actual\+Node@{write\+In\+Actual\+Node}}
+\index{write\+In\+Actual\+Node@{write\+In\+Actual\+Node}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{write\+In\+Actual\+Node(string new\+\_\+text)}{writeInActualNode(string new_text)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::write\+In\+Actual\+Node (
+\begin{DoxyParamCaption}
+\item[{string}]{new\+\_\+text}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a7c0c3494620ea427d232875ec6ac5314}{}\label{classGameEngine_a7c0c3494620ea427d232875ec6ac5314}
+
+
+A method to that sets the value of the actual node. 
+
+Try to change the text of the actual node with the given string passed as param. If it fails return an Error(enum 0). If not, return a Success(enum 1). 
+\begin{DoxyParams}{Parameters}
+{\em An} & already created string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!write\+In\+File@{write\+In\+File}}
+\index{write\+In\+File@{write\+In\+File}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{write\+In\+File(fstream \&p\+\_\+file\+\_\+to\+\_\+write)}{writeInFile(fstream &p_file_to_write)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::write\+In\+File (
+\begin{DoxyParamCaption}
+\item[{fstream \&}]{p\+\_\+file\+\_\+to\+\_\+write}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_adeba29a50b810c32e9b6c8018969325b}{}\label{classGameEngine_adeba29a50b810c32e9b6c8018969325b}
+
+
+A method that writes on a file the tree of statements of game engine. 
+
+try to\+: write in the file the actual node value followed by the separator \textquotesingle{};\textquotesingle{}then it checks if it\textquotesingle{}s possible to move to the left branch. If it\textquotesingle{}s not, then it\textquotesingle{}s an empty branch so it writes \textquotesingle{}\#;\textquotesingle{} on the file. If it can move to the left branch. The method calls itself recursively. If the recursion return an Error(integer 0) the actual method also return an Error(integer 0). Else it moves back to the node that was read before calling the recursion and does the same to the right branch. If any of this fails, the method returns an Error(integer 0). If everything Succeeds, it return a Success(integer 1).
+
+
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explict interface) A valid and already allocated pointer to a file already opened. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer 1(Success) or 0(Error) 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/game\+\_\+engine.\+hpp\item 
-src/game\+\_\+engine.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{game__engine_8cpp}{game\+\_\+engine.\+cpp}\end{DoxyCompactItemize}

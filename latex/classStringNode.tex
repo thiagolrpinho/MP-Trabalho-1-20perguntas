@@ -3,9 +3,13 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries String\+Node} (string initial\+\_\+text)\hypertarget{classStringNode_a1f3433ce567eebdbb4e6eca97c473893}{}\label{classStringNode_a1f3433ce567eebdbb4e6eca97c473893}
+\hyperlink{classStringNode_a3ac1767041e5519e52ada6e7c5ecbbe4}{String\+Node} ()
+\begin{DoxyCompactList}\small\item\em A constructor that creates a node with empty value. \end{DoxyCompactList}\item 
+\hyperlink{classStringNode_a1f3433ce567eebdbb4e6eca97c473893}{String\+Node} (string initial\+\_\+text)
+\begin{DoxyCompactList}\small\item\em A constructor that creates a node with a string value. \end{DoxyCompactList}\item 
+\hyperlink{classStringNode_a2d525c434de4a578a3ff53745865130d}{$\sim$\+String\+Node} ()\hypertarget{classStringNode_a2d525c434de4a578a3ff53745865130d}{}\label{classStringNode_a2d525c434de4a578a3ff53745865130d}
 
-\item 
+\begin{DoxyCompactList}\small\item\em A destructor that cleans all pointers. \end{DoxyCompactList}\item 
 shared\+\_\+ptr$<$ \hyperlink{classStringNode}{String\+Node} $>$ {\bfseries get\+Left\+Node} (void)\hypertarget{classStringNode_a26959d3dfb7ca6cbad4826dfe27f24f6}{}\label{classStringNode_a26959d3dfb7ca6cbad4826dfe27f24f6}
 
 \item 
@@ -15,36 +19,231 @@ shared\+\_\+ptr$<$ \hyperlink{classStringNode}{String\+Node} $>$ {\bfseries get\
 string {\bfseries get\+Text} (void)\hypertarget{classStringNode_a43dce00f3299da71994d88ac0d3c48ee}{}\label{classStringNode_a43dce00f3299da71994d88ac0d3c48ee}
 
 \item 
-int {\bfseries set\+Text} (string new\+Text)\hypertarget{classStringNode_aa87f867d5e9ba8f8263afe8b32cd1df8}{}\label{classStringNode_aa87f867d5e9ba8f8263afe8b32cd1df8}
+int \hyperlink{classStringNode_aa87f867d5e9ba8f8263afe8b32cd1df8}{set\+Text} (string new\+Text)
+\begin{DoxyCompactList}\small\item\em A method that sets the value of a node. \end{DoxyCompactList}\item 
+int \hyperlink{classStringNode_a0496eef4a3ff3c8134ba1ce2e1f01804}{insert\+Node} (string initial\+\_\+new\+\_\+node\+\_\+text)
+\begin{DoxyCompactList}\small\item\em A method that create a new node with an initial string chosen. \end{DoxyCompactList}\item 
+int \hyperlink{classStringNode_a9deca96372ae91bea728cc9ff5236441}{insert\+Left\+Node} (void)
+\begin{DoxyCompactList}\small\item\em A method that creates the a blank left node of an empty branch. \end{DoxyCompactList}\item 
+int \hyperlink{classStringNode_a4199a842393aa4d98c3695858b097128}{insert\+Left\+Node} (string initial\+\_\+new\+\_\+node\+\_\+text)
+\begin{DoxyCompactList}\small\item\em A method that creates the a setted left node of an empty branch. \end{DoxyCompactList}\item 
+int \hyperlink{classStringNode_acdd9f10faab37dd69762ab3774d50775}{insert\+Right\+Node} (void)
+\begin{DoxyCompactList}\small\item\em A method that creates the a blank right node of an empty branch. \end{DoxyCompactList}\item 
+int \hyperlink{classStringNode_abf313da2479d5c40c2769474948a7398}{insert\+Right\+Node} (string initial\+\_\+new\+\_\+node\+\_\+text)
+\begin{DoxyCompactList}\small\item\em A method that creates the a setted right node of an empty branch. \end{DoxyCompactList}\item 
+int \hyperlink{classStringNode_acd57ad0e36258a8fada5b092083218f0}{cut\+Node} (void)
+\begin{DoxyCompactList}\small\item\em A method that reset each node after cleaning the nodes below it. \end{DoxyCompactList}\item 
+int \hyperlink{classStringNode_a8b39a65ddafb6a3324823da77d0af6d0}{clear\+Left} (void)
+\begin{DoxyCompactList}\small\item\em A method that resets the left node to null. \end{DoxyCompactList}\item 
+int \hyperlink{classStringNode_a778c4554c12fc329fd9d3ecb54c1849b}{clear\+Right} (void)
+\begin{DoxyCompactList}\small\item\em A method that resets the right node to null. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\item 
-int {\bfseries insert\+Node} (string initial\+\_\+new\+\_\+node\+\_\+text)\hypertarget{classStringNode_a0496eef4a3ff3c8134ba1ce2e1f01804}{}\label{classStringNode_a0496eef4a3ff3c8134ba1ce2e1f01804}
 
-\item 
-int {\bfseries insert\+Left\+Node} (void)\hypertarget{classStringNode_a9deca96372ae91bea728cc9ff5236441}{}\label{classStringNode_a9deca96372ae91bea728cc9ff5236441}
+\subsection{Constructor \& Destructor Documentation}
+\index{String\+Node@{String\+Node}!String\+Node@{String\+Node}}
+\index{String\+Node@{String\+Node}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{String\+Node()}{StringNode()}}]{\setlength{\rightskip}{0pt plus 5cm}String\+Node\+::\+String\+Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_a3ac1767041e5519e52ada6e7c5ecbbe4}{}\label{classStringNode_a3ac1767041e5519e52ada6e7c5ecbbe4}
 
-\item 
-int {\bfseries insert\+Left\+Node} (string initial\+\_\+new\+\_\+node\+\_\+text)\hypertarget{classStringNode_a4199a842393aa4d98c3695858b097128}{}\label{classStringNode_a4199a842393aa4d98c3695858b097128}
 
-\item 
-int {\bfseries insert\+Right\+Node} (void)\hypertarget{classStringNode_acdd9f10faab37dd69762ab3774d50775}{}\label{classStringNode_acdd9f10faab37dd69762ab3774d50775}
+A constructor that creates a node with empty value. 
 
-\item 
-int {\bfseries insert\+Right\+Node} (string initial\+\_\+new\+\_\+node\+\_\+text)\hypertarget{classStringNode_abf313da2479d5c40c2769474948a7398}{}\label{classStringNode_abf313da2479d5c40c2769474948a7398}
+Creates a new node with left, right branches and value empties. \index{String\+Node@{String\+Node}!String\+Node@{String\+Node}}
+\index{String\+Node@{String\+Node}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{String\+Node(string initial\+\_\+text)}{StringNode(string initial_text)}}]{\setlength{\rightskip}{0pt plus 5cm}String\+Node\+::\+String\+Node (
+\begin{DoxyParamCaption}
+\item[{string}]{initial\+\_\+text}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_a1f3433ce567eebdbb4e6eca97c473893}{}\label{classStringNode_a1f3433ce567eebdbb4e6eca97c473893}
 
-\item 
-int {\bfseries cut\+Node} (void)\hypertarget{classStringNode_acd57ad0e36258a8fada5b092083218f0}{}\label{classStringNode_acd57ad0e36258a8fada5b092083218f0}
 
-\item 
-int {\bfseries clear\+Left} (void)\hypertarget{classStringNode_a8b39a65ddafb6a3324823da77d0af6d0}{}\label{classStringNode_a8b39a65ddafb6a3324823da77d0af6d0}
+A constructor that creates a node with a string value. 
 
-\item 
-int {\bfseries clear\+Right} (void)\hypertarget{classStringNode_a778c4554c12fc329fd9d3ecb54c1849b}{}\label{classStringNode_a778c4554c12fc329fd9d3ecb54c1849b}
+Creates a new node with left and right branches empty. Sets the value to the string given as param. 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface) A valid and already allocated string. \\
+\hline
+\end{DoxyParams}
 
-\end{DoxyCompactItemize}
+
+\subsection{Member Function Documentation}
+\index{String\+Node@{String\+Node}!clear\+Left@{clear\+Left}}
+\index{clear\+Left@{clear\+Left}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{clear\+Left(void)}{clearLeft(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int String\+Node\+::clear\+Left (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_a8b39a65ddafb6a3324823da77d0af6d0}{}\label{classStringNode_a8b39a65ddafb6a3324823da77d0af6d0}
+
+
+A method that resets the left node to null. 
+
+Try to reset the left node If it fails returns an Error(\+Integer 0) else it returns a Success(\+Integer 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface)None. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An int 0 for Error or 1 for Success 
+\end{DoxyReturn}
+\index{String\+Node@{String\+Node}!clear\+Right@{clear\+Right}}
+\index{clear\+Right@{clear\+Right}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{clear\+Right(void)}{clearRight(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int String\+Node\+::clear\+Right (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_a778c4554c12fc329fd9d3ecb54c1849b}{}\label{classStringNode_a778c4554c12fc329fd9d3ecb54c1849b}
+
+
+A method that resets the right node to null. 
+
+Try to reset the left node If it fails returns an Error(\+Integer 0) else it returns a Success(\+Integer 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface)None. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An int 0 for Error or 1 for Success 
+\end{DoxyReturn}
+\index{String\+Node@{String\+Node}!cut\+Node@{cut\+Node}}
+\index{cut\+Node@{cut\+Node}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{cut\+Node(void)}{cutNode(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int String\+Node\+::cut\+Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_acd57ad0e36258a8fada5b092083218f0}{}\label{classStringNode_acd57ad0e36258a8fada5b092083218f0}
+
+
+A method that reset each node after cleaning the nodes below it. 
+
+Try to \+: check if left node is null if it\textquotesingle{}s not, nothing is done. If it\textquotesingle{}s not null, then call a recursion of this method for that node and then resets the left node to null. Then it does the same verification and action to right node. After this, the value of the actual node is cleared. Then return Success(enum 1). If it fails to verify any of them, it returns an Error.(enum 0). Note\+: The actual node it\textquotesingle{}s not deallocated. Just cleared of value. 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface)None. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An int 0 for Error or 1 for Success 
+\end{DoxyReturn}
+\index{String\+Node@{String\+Node}!insert\+Left\+Node@{insert\+Left\+Node}}
+\index{insert\+Left\+Node@{insert\+Left\+Node}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{insert\+Left\+Node(void)}{insertLeftNode(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int String\+Node\+::insert\+Left\+Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_a9deca96372ae91bea728cc9ff5236441}{}\label{classStringNode_a9deca96372ae91bea728cc9ff5236441}
+
+
+A method that creates the a blank left node of an empty branch. 
+
+Verifies if the left node already exists returns an Error(\+Integer 0). If not creates a new node and sets it\textquotesingle{}s value to empty and returns a Success(Inte-\/ ger 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface)None. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An int 0 for Error or 1 for Success 
+\end{DoxyReturn}
+\index{String\+Node@{String\+Node}!insert\+Left\+Node@{insert\+Left\+Node}}
+\index{insert\+Left\+Node@{insert\+Left\+Node}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{insert\+Left\+Node(string initial\+\_\+new\+\_\+node\+\_\+text)}{insertLeftNode(string initial_new_node_text)}}]{\setlength{\rightskip}{0pt plus 5cm}int String\+Node\+::insert\+Left\+Node (
+\begin{DoxyParamCaption}
+\item[{string}]{initial\+\_\+new\+\_\+node\+\_\+text}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_a4199a842393aa4d98c3695858b097128}{}\label{classStringNode_a4199a842393aa4d98c3695858b097128}
+
+
+A method that creates the a setted left node of an empty branch. 
+
+Verifies if the left node already exists returns an Error(\+Integer 0). If not creates a new node and sets it\textquotesingle{}s value to the value of the param then returns a Success(\+Integer 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface) A valid and already allocated string which will be the value of the new node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An int 0 for Error or 1 for Success 
+\end{DoxyReturn}
+\index{String\+Node@{String\+Node}!insert\+Node@{insert\+Node}}
+\index{insert\+Node@{insert\+Node}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{insert\+Node(string initial\+\_\+new\+\_\+node\+\_\+text)}{insertNode(string initial_new_node_text)}}]{\setlength{\rightskip}{0pt plus 5cm}int String\+Node\+::insert\+Node (
+\begin{DoxyParamCaption}
+\item[{string}]{initial\+\_\+new\+\_\+node\+\_\+text}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_a0496eef4a3ff3c8134ba1ce2e1f01804}{}\label{classStringNode_a0496eef4a3ff3c8134ba1ce2e1f01804}
+
+
+A method that create a new node with an initial string chosen. 
+
+verifies if left node is empty, if it is creates a new node and sets it\textquotesingle{}s value to the initial\+\_\+new\+\_\+node\+\_\+text value. Then it\textquotesingle{}ll return a Success which is an enum with value 1. If left node is not empty then it tries the right\+Node. If the right one is empty, creates a new node there and sets it\textquotesingle{}s value to the value of the same argument. Then it\textquotesingle{}ll return a Success which is an enum with value 1. If neither are empty, nothing is done and the method return an Error which is an enum with value 0. 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface) A valid and already allocated string which will be the value of the new node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An int 0 for Error or 1 for Success 
+\end{DoxyReturn}
+\index{String\+Node@{String\+Node}!insert\+Right\+Node@{insert\+Right\+Node}}
+\index{insert\+Right\+Node@{insert\+Right\+Node}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{insert\+Right\+Node(void)}{insertRightNode(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int String\+Node\+::insert\+Right\+Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_acdd9f10faab37dd69762ab3774d50775}{}\label{classStringNode_acdd9f10faab37dd69762ab3774d50775}
+
+
+A method that creates the a blank right node of an empty branch. 
+
+Verifies if the right node already exists returns an Error(\+Integer 0). If not creates a new node and sets it\textquotesingle{}s value to empty and returns a Success(Inte-\/ ger 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface)None. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An int 0 for Error or 1 for Success 
+\end{DoxyReturn}
+\index{String\+Node@{String\+Node}!insert\+Right\+Node@{insert\+Right\+Node}}
+\index{insert\+Right\+Node@{insert\+Right\+Node}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{insert\+Right\+Node(string initial\+\_\+new\+\_\+node\+\_\+text)}{insertRightNode(string initial_new_node_text)}}]{\setlength{\rightskip}{0pt plus 5cm}int String\+Node\+::insert\+Right\+Node (
+\begin{DoxyParamCaption}
+\item[{string}]{initial\+\_\+new\+\_\+node\+\_\+text}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_abf313da2479d5c40c2769474948a7398}{}\label{classStringNode_abf313da2479d5c40c2769474948a7398}
+
+
+A method that creates the a setted right node of an empty branch. 
+
+Verifies if the right node already exists returns an Error(\+Integer 0). If not creates a new node and sets it\textquotesingle{}s value to the value of the param then returns a Success(\+Integer 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface) A valid and already allocated string which will be the value of the new node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An int 0 for Error or 1 for Success 
+\end{DoxyReturn}
+\index{String\+Node@{String\+Node}!set\+Text@{set\+Text}}
+\index{set\+Text@{set\+Text}!String\+Node@{String\+Node}}
+\subsubsection[{\texorpdfstring{set\+Text(string new\+Text)}{setText(string newText)}}]{\setlength{\rightskip}{0pt plus 5cm}int String\+Node\+::set\+Text (
+\begin{DoxyParamCaption}
+\item[{string}]{new\+Text}
+\end{DoxyParamCaption}
+)}\hypertarget{classStringNode_aa87f867d5e9ba8f8263afe8b32cd1df8}{}\label{classStringNode_aa87f867d5e9ba8f8263afe8b32cd1df8}
+
+
+A method that sets the value of a node. 
+
+Try to assign a new value to node. If it fails returns an Error(\+Integer 0) else it returns a Success(\+Integer 1). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface)An already existing string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An int 0 for Error or 1 for Success 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/stringnode.\+hpp\item 
-src/stringnode.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{stringnode_8cpp}{stringnode.\+cpp}\end{DoxyCompactItemize}

@@ -65,7 +65,23 @@ make game_engine_tester
 ```
 
 ### Gcov Test
-If you have gcov and gcovr installed you can run
+If you have gcov and gcovr installed, you can generate the 
+test coverture of the binary tree by typing:
+```
+make gcov_btree
+```
+And then:
+```
+./gcov_btree
+```
+After this you can type:
+```
+make gcovr_html
+```
+
+You can additionally check game statements and game engine by changing *gcov_btree*
+for *gcov_statement* or *gcov_engine* respectively on the previous list of instruction.
+You can also just genereate for all tests by doing:
 ```
 make gcov_tester
 ```
@@ -80,6 +96,10 @@ make gcovr_html
 To generate a graphical representantion of how much the code is abranged by the tests.
 
 *I must warn that Gcov is not associating all my tests to the code its protect. I'm not sure why. But when I found I'll fix it.*
+
+*Warning
+    The gcov_tester is not fully automatized because I'm new to catch library of tests and don't know how to automatize input and output on terminal tests.
+    This happens only with tests_game_interface.cpp*
 
 ## More information
 There's a folder created with doxygen that contains an interactive way to see the classes and methods useds in the game.

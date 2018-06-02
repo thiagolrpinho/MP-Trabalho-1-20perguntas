@@ -32,17 +32,26 @@ play_game: $(OBJ)
 btree_tester:$(TOBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
+gcov_btree: $(TOBJ)
+	$(CC) -o $@ $^ $(GCOVFLAGS) $(LIBS)
+
 _TOBJ += tests_game_statement.o 
 TOBJ = $(patsubst %,$(ODIR)/%,$(_TOBJ))
 
 game_statement_tester:$(TOBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
+gcov_statement: $(TOBJ)
+	$(CC) -o $@ $^ $(GCOVFLAGS) $(LIBS)
+
 _TOBJ += tests_game_engine.o 
 TOBJ = $(patsubst %,$(ODIR)/%,$(_TOBJ))
 
 game_engine_tester:$(TOBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+gcov_engine: $(TOBJ)
+	$(CC) -o $@ $^ $(GCOVFLAGS) $(LIBS)
 
 _TOBJ += tests_game_interface.o 
 TOBJ = $(patsubst %,$(ODIR)/%,$(_TOBJ))
@@ -56,7 +65,7 @@ all_tester: $(TOBJ)
 gcov_tester: $(TOBJ)
 	$(CC) -o $@ $^ $(GCOVFLAGS) $(LIBS)
 
-gcovr_htmls:
+gcovr_html:
 	gcovr -r . --html --html-details -o ./tests/gcov/tests-detailts.html
 	
 .PHONY: clean

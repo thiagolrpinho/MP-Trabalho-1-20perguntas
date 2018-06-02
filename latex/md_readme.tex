@@ -34,11 +34,11 @@ On the folder you installed your Game of 20 Questions, write in the terminal\+: 
 \begin{DoxyCode}
 1 ./all\_tester --list-tests
 \end{DoxyCode}
- Or jus run it using 
+ Or just run it using 
 \begin{DoxyCode}
 1 ./all\_tester 
 \end{DoxyCode}
- {\itshape Warning The all\+\_\+tester is not fully automatized because I\textquotesingle{}m new to catch library and don\textquotesingle{}t know how to automatize input and output on terminal tests. This happens only with tests\+\_\+game\+\_\+interface.\+cpp}
+ {\itshape Warning The all\+\_\+tester is not fully automatized because I\textquotesingle{}m new to catch library of tests and don\textquotesingle{}t know how to automatize input and output on terminal tests. This happens only with tests\+\_\+game\+\_\+interface.\+cpp}
 
 \subsubsection*{Running other tests}
 
@@ -58,7 +58,43 @@ If you want to test too the game engine\+:
 \begin{DoxyCode}
 1 make game\_engine\_tester
 \end{DoxyCode}
- \subsection*{More information}
+
+
+\subsubsection*{Gcov Test}
+
+If you have gcov and gcovr installed, you can generate the test coverture of the binary tree by typing\+: 
+\begin{DoxyCode}
+1 make gcov\_btree
+\end{DoxyCode}
+ And then\+: 
+\begin{DoxyCode}
+1 ./gcov\_btree
+\end{DoxyCode}
+ After this you can type\+: 
+\begin{DoxyCode}
+1 make gcovr\_html
+\end{DoxyCode}
+
+
+You can additionally check game statements and game engine by changing {\itshape gcov\+\_\+btree} for {\itshape gcov\+\_\+statement} or {\itshape gcov\+\_\+engine} respectively on the previous list of instruction. You can also just genereate for all tests by doing\+: 
+\begin{DoxyCode}
+1 make gcov\_tester
+\end{DoxyCode}
+ And then\+: 
+\begin{DoxyCode}
+1 ./gcov\_tester
+\end{DoxyCode}
+ After this you can type\+: 
+\begin{DoxyCode}
+1 make gcovr\_html
+\end{DoxyCode}
+ To generate a graphical representantion of how much the code is abranged by the tests.
+
+{\itshape I must warn that Gcov is not associating all my tests to the code its protect. I\textquotesingle{}m not sure why. But when I found I\textquotesingle{}ll fix it.}
+
+{\itshape Warning The gcov\+\_\+tester is not fully automatized because I\textquotesingle{}m new to catch library of tests and don\textquotesingle{}t know how to automatize input and output on terminal tests. This happens only with tests\+\_\+game\+\_\+interface.\+cpp}
+
+\subsection*{More information}
 
 There\textquotesingle{}s a folder created with doxygen that contains an interactive way to see the classes and methods useds in the game. Also there\textquotesingle{}s an pdf on the main folder named\+: 
 \begin{DoxyCode}
@@ -75,15 +111,16 @@ There\textquotesingle{}s a folder created with doxygen that contains an interact
 
 
 \begin{DoxyItemize}
-\item {\bfseries Thiago Luis Rodrigue Pinho} -\/ {\itshape Game of 20 Questions} -\/ \href{https://github.com/thiagolrpinho}{\tt Thiago Luis}
+\item {\bfseries Thiago Luis Rodrigue Pinho} -\/ {\itshape Game of 20 Questions} -\/ \href{https://github.com/thiagolrpinho/MP-Trabalho-1-20perguntas}{\tt Thiago Luis}
 \end{DoxyItemize}
 
 \subsection*{Acknowledgments}
 
 
 \begin{DoxyItemize}
-\item It was my first time developing using T\+TD method. I learned a lot and am grateful for the experience.
+\item It was my first time developing using T\+TD method. I learned a lot and I am grateful for the experience.
 \item It think this was a bit too complex for a two weeks project.
-\item I wish I could have organized more my code. Thanks for reading until here.
+\item I wish I could have organized my code more.
+\item Thanks for reading until here.
 \item Sorry for English and programation mistakes. Please correct me and I\textquotesingle{}ll fix it. 
 \end{DoxyItemize}

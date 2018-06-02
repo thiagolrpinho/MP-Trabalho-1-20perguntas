@@ -3,51 +3,282 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-P\+Game\+Engine {\bfseries get\+Engine} (void)\hypertarget{classGameInterface_a0d60098b2f94bb20efb20196904dc30b}{}\label{classGameInterface_a0d60098b2f94bb20efb20196904dc30b}
+\hyperlink{classGameInterface_ad0748386476db5289c6965ac34cb93e5}{Game\+Interface} (void)
+\begin{DoxyCompactList}\small\item\em A constructor that creates a game interface with an empty game engine. \end{DoxyCompactList}\item 
+P\+Game\+Engine \hyperlink{classGameInterface_a0d60098b2f94bb20efb20196904dc30b}{get\+Engine} (void)
+\begin{DoxyCompactList}\small\item\em A method that returns a pointer to the game engine. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_a19dc01c2f82f5140e56980f5c02a8f55}{open\+Menu} (void)
+\begin{DoxyCompactList}\small\item\em A method that calls a Menu. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_a8a65a71277e660b053441c6bccdd21b9}{start\+New\+Game} (void)
+\begin{DoxyCompactList}\small\item\em A method that starts a new game. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_a1fe1e9abc88b994338f22202dae74a29}{load\+Saved\+Game} (void)
+\begin{DoxyCompactList}\small\item\em A method that can load last game or load another game of the user\textquotesingle{}s choice. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_ae069b22415177addad2bd7999b9eb2d9}{save\+Actual\+Game} (void)
+\begin{DoxyCompactList}\small\item\em This method can save the actual game as the last\+\_\+game in a txt file of the users choice. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_ac64abd0ec216c442a4cae4d09f94ab0a}{playing\+Routine} (void)
+\begin{DoxyCompactList}\small\item\em This method starts the playing routine. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_a72f37e45597b372fdbe895c9f8f61fe3}{edit\+Routine} (void)
+\begin{DoxyCompactList}\small\item\em This method starts the edit routine. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_ab0ded12c364ac64a8362959608201b98}{exit\+Game} (void)
+\begin{DoxyCompactList}\small\item\em This method starts the exit game. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_a34f3d7f2ba56662cc0108b54b19fc162}{do\+Round} (void)
+\begin{DoxyCompactList}\small\item\em This is a recursive method that plays each round. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_ad254aa8d489bc420592eae3ed3bc008d}{do\+Edit\+Round} (void)
+\begin{DoxyCompactList}\small\item\em This is a recursive method that plays each edition round. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_a0a7e8e6ca668c755e8ccc94ff091dd5b}{got\+Answer} (void)
+\begin{DoxyCompactList}\small\item\em This method that deals with answer nodes while in the playing routine. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_afb911f0c555e8c3ba0f4be8974a49a58}{got\+Question} (void)
+\begin{DoxyCompactList}\small\item\em This method that deals with question nodes while in the playing routine. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_a1a06b1226a86254b6540ec08d0745009}{valid\+Yes\+Input} (string user\+\_\+input)
+\begin{DoxyCompactList}\small\item\em This method verifies if the string is a valid yes and return a Success if so. \end{DoxyCompactList}\item 
+int \hyperlink{classGameInterface_a7899bb55a3697443174908d0893eeb7a}{finish\+Game} (void)
+\begin{DoxyCompactList}\small\item\em This method saves the game in last\+\_\+game filename and prints a farewell. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\item 
-int {\bfseries open\+Menu} (void)\hypertarget{classGameInterface_a19dc01c2f82f5140e56980f5c02a8f55}{}\label{classGameInterface_a19dc01c2f82f5140e56980f5c02a8f55}
 
-\item 
-int {\bfseries start\+New\+Game} (void)\hypertarget{classGameInterface_a8a65a71277e660b053441c6bccdd21b9}{}\label{classGameInterface_a8a65a71277e660b053441c6bccdd21b9}
+\subsection{Constructor \& Destructor Documentation}
+\index{Game\+Interface@{Game\+Interface}!Game\+Interface@{Game\+Interface}}
+\index{Game\+Interface@{Game\+Interface}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{Game\+Interface(void)}{GameInterface(void)}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Interface\+::\+Game\+Interface (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_ad0748386476db5289c6965ac34cb93e5}{}\label{classGameInterface_ad0748386476db5289c6965ac34cb93e5}
 
-\item 
-int {\bfseries load\+Saved\+Game} (void)\hypertarget{classGameInterface_a1fe1e9abc88b994338f22202dae74a29}{}\label{classGameInterface_a1fe1e9abc88b994338f22202dae74a29}
 
-\item 
-int {\bfseries save\+Actual\+Game} (void)\hypertarget{classGameInterface_ae069b22415177addad2bd7999b9eb2d9}{}\label{classGameInterface_ae069b22415177addad2bd7999b9eb2d9}
+A constructor that creates a game interface with an empty game engine. 
 
-\item 
-int {\bfseries playing\+Routine} (void)\hypertarget{classGameInterface_ac64abd0ec216c442a4cae4d09f94ab0a}{}\label{classGameInterface_ac64abd0ec216c442a4cae4d09f94ab0a}
+Creates a game interface and creates a new game engine with an empty tree of statements. 
 
-\item 
-int {\bfseries edit\+Routine} (void)\hypertarget{classGameInterface_a72f37e45597b372fdbe895c9f8f61fe3}{}\label{classGameInterface_a72f37e45597b372fdbe895c9f8f61fe3}
+\subsection{Member Function Documentation}
+\index{Game\+Interface@{Game\+Interface}!do\+Edit\+Round@{do\+Edit\+Round}}
+\index{do\+Edit\+Round@{do\+Edit\+Round}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{do\+Edit\+Round(void)}{doEditRound(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::do\+Edit\+Round (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_ad254aa8d489bc420592eae3ed3bc008d}{}\label{classGameInterface_ad254aa8d489bc420592eae3ed3bc008d}
 
-\item 
-int {\bfseries exit\+Game} (void)\hypertarget{classGameInterface_ab0ded12c364ac64a8362959608201b98}{}\label{classGameInterface_ab0ded12c364ac64a8362959608201b98}
 
-\item 
-int {\bfseries do\+Round} (void)\hypertarget{classGameInterface_a34f3d7f2ba56662cc0108b54b19fc162}{}\label{classGameInterface_a34f3d7f2ba56662cc0108b54b19fc162}
+This is a recursive method that plays each edition round. 
 
-\item 
-int {\bfseries do\+Edit\+Round} (void)\hypertarget{classGameInterface_ad254aa8d489bc420592eae3ed3bc008d}{}\label{classGameInterface_ad254aa8d489bc420592eae3ed3bc008d}
+First show the user what is the value of the actual node. Then asks if the user wants to erase this node and those bellow it. Reads the input and calls \hyperlink{classGameInterface_a1a06b1226a86254b6540ec08d0745009}{valid\+Yes\+Input()} passing the read input as param. If it returns a Success(\+Integer 1)\+: The remove\+Actual\+Node() method is called. If there is an Error(\+Integer 0) then the method returns an Error(\+Integer 0). If none happens. Another recursion of edit\+Round() is called and whatever it returns the actual method also returns. Else\+: The method asks if the user wants to just edit the actual node value. Then reads the input and calls valid\+Yes\+Method() and pass the input as param. If it return a Success(\+Integer 0)\+: It reads an input and tries to write on the actual node. If there\textquotesingle{}s an Error(\+Integer 0), it reads another input and tries again until a Success(\+Integer 1) is returned. Else, if the user didn\textquotesingle{}t want to edit the actual node\+: It asks if the user wants to edit the Yes Branch(\+Left) if so, it verifies if there is a valid left branch and go to it if it exists and calls another recursion of \hyperlink{classGameInterface_ad254aa8d489bc420592eae3ed3bc008d}{do\+Edit\+Round()}. If not the \hyperlink{classGameInterface_ad254aa8d489bc420592eae3ed3bc008d}{do\+Edit\+Round()} is called again. The same is done for right branch and if the user don\textquotesingle{}t want to edit the right branch. The method asks if the user wants to do edit again the last node visited. If there\textquotesingle{}s a previous node, the same behavior is done. \begin{DoxyReturn}{Returns}
+Success(integer 1) or an Error(\+Integer 0). 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!do\+Round@{do\+Round}}
+\index{do\+Round@{do\+Round}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{do\+Round(void)}{doRound(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::do\+Round (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_a34f3d7f2ba56662cc0108b54b19fc162}{}\label{classGameInterface_a34f3d7f2ba56662cc0108b54b19fc162}
 
-\item 
-int {\bfseries got\+Answer} (void)\hypertarget{classGameInterface_a0a7e8e6ca668c755e8ccc94ff091dd5b}{}\label{classGameInterface_a0a7e8e6ca668c755e8ccc94ff091dd5b}
 
-\item 
-int {\bfseries got\+Question} (void)\hypertarget{classGameInterface_afb911f0c555e8c3ba0f4be8974a49a58}{}\label{classGameInterface_afb911f0c555e8c3ba0f4be8974a49a58}
+This is a recursive method that plays each round. 
 
-\item 
-int {\bfseries valid\+Yes\+Input} (string user\+\_\+input)\hypertarget{classGameInterface_a1a06b1226a86254b6540ec08d0745009}{}\label{classGameInterface_a1a06b1226a86254b6540ec08d0745009}
+Each round should consist of\+: 1)Read the statement. 2) If it\textquotesingle{}s an answer, show it an wait to know if it\textquotesingle{}s right. In case it\textquotesingle{}s right, just finish the game. Case not, ask the user for a question that would lead to the right answer and the right answer on the Yes branch. If it\textquotesingle{}s a question, ask it and wait for an answer. Verify if the answer statement is a \char`\"{}don\textquotesingle{}t know\char`\"{}. If it is, then ask the user what should be the right answer and write it there. If not, follow to step 3. \subsubsection*{3)Repeat until answer or a \char`\"{}don\textquotesingle{}t know\char`\"{}. }
 
-\item 
-int {\bfseries finish\+Game} (void)\hypertarget{classGameInterface_a7899bb55a3697443174908d0893eeb7a}{}\label{classGameInterface_a7899bb55a3697443174908d0893eeb7a}
+The method check\+Guess() is called. If it returns an Error(\+Integer 0), calls \hyperlink{classGameInterface_afb911f0c555e8c3ba0f4be8974a49a58}{got\+Question()} and returns what it returns. Else it calls \hyperlink{classGameInterface_a0a7e8e6ca668c755e8ccc94ff091dd5b}{got\+Answer()} and also will return what the method returns. If none is called, return an Error(\+Integer 0).
 
-\end{DoxyCompactItemize}
+\begin{DoxyReturn}{Returns}
+Success(integer 1) or an Error(\+Integer 0). 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!edit\+Routine@{edit\+Routine}}
+\index{edit\+Routine@{edit\+Routine}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{edit\+Routine(void)}{editRoutine(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::edit\+Routine (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_a72f37e45597b372fdbe895c9f8f61fe3}{}\label{classGameInterface_a72f37e45597b372fdbe895c9f8f61fe3}
+
+
+This method starts the edit routine. 
+
+Prints some instructions to the user and the calls the recursive method \hyperlink{classGameInterface_ad254aa8d489bc420592eae3ed3bc008d}{do\+Edit\+Round()}. If it returns an Error(\+Integer 0) the \hyperlink{classGameInterface_a72f37e45597b372fdbe895c9f8f61fe3}{edit\+Routine()} also returns an Error(\+Integer 0). Else it calls \hyperlink{classGameInterface_a7899bb55a3697443174908d0893eeb7a}{finish\+Game()} method and returns what it returns. \begin{DoxyReturn}{Returns}
+An integer 0 for Error or 1 for Success. 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!exit\+Game@{exit\+Game}}
+\index{exit\+Game@{exit\+Game}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{exit\+Game(void)}{exitGame(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::exit\+Game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_ab0ded12c364ac64a8362959608201b98}{}\label{classGameInterface_ab0ded12c364ac64a8362959608201b98}
+
+
+This method starts the exit game. 
+
+asks the user if he or she really wants to leave the game. Then reads the input, if it\textquotesingle{}s a valid yes(See \hyperlink{classGameInterface_a1a06b1226a86254b6540ec08d0745009}{valid\+Yes\+Input()} method for more information) it returns the k\+End\+Game\+Code which is a constant integer value that ends the game. If not, the method returns a Success(\+Integer 0). \begin{DoxyReturn}{Returns}
+a constant integer k\+End\+Game\+Code; 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!finish\+Game@{finish\+Game}}
+\index{finish\+Game@{finish\+Game}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{finish\+Game(void)}{finishGame(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::finish\+Game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_a7899bb55a3697443174908d0893eeb7a}{}\label{classGameInterface_a7899bb55a3697443174908d0893eeb7a}
+
+
+This method saves the game in last\+\_\+game filename and prints a farewell. 
+
+\begin{DoxyReturn}{Returns}
+Success(integer 1) or an Error(\+Integer 0). 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!get\+Engine@{get\+Engine}}
+\index{get\+Engine@{get\+Engine}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{get\+Engine(void)}{getEngine(void)}}]{\setlength{\rightskip}{0pt plus 5cm}P\+Game\+Engine Game\+Interface\+::get\+Engine (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_a0d60098b2f94bb20efb20196904dc30b}{}\label{classGameInterface_a0d60098b2f94bb20efb20196904dc30b}
+
+
+A method that returns a pointer to the game engine. 
+
+\begin{DoxyReturn}{Returns}
+A shared pointer for the game engine of the game interface 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!got\+Answer@{got\+Answer}}
+\index{got\+Answer@{got\+Answer}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{got\+Answer(void)}{gotAnswer(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::got\+Answer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_a0a7e8e6ca668c755e8ccc94ff091dd5b}{}\label{classGameInterface_a0a7e8e6ca668c755e8ccc94ff091dd5b}
+
+
+This method that deals with answer nodes while in the playing routine. 
+
+If it\textquotesingle{}s an answer, show it an wait to know if it\textquotesingle{}s right. In case it\textquotesingle{}s right, just finish the game. Case not, ask the user for a question that would lead to the right answer and \subsubsection*{the right answer on the yes branch. }
+
+Read the actual node and asks if it is the right answer. Read the input and then calls the valid\+Yes\+Method() with the read param as input. If it return a Success(\+Integer 1), the \hyperlink{classGameInterface_a7899bb55a3697443174908d0893eeb7a}{finish\+Game()} method is called and return what it returns. Else it asks the user what questions answering yes would take to the right answer. Then read the input and write it in the actual node. If it fails, the method returns an Error(\+Intger 0). Note that whatever string is considered valid. It is a responsability of the user to keep it\textquotesingle{}s game making sense. Then asks the user what is the right answer. Reads the input and calls new\+Yes\+Answer() method passing as param the read input. If this returns an Error(\+Integer 0) the method returns an Error (Integer 0) too. Else it calls \hyperlink{classGameInterface_a7899bb55a3697443174908d0893eeb7a}{finish\+Game()} method and returns what it returns. \begin{DoxyReturn}{Returns}
+Success(integer 1) or an Error(\+Integer 0). 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!got\+Question@{got\+Question}}
+\index{got\+Question@{got\+Question}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{got\+Question(void)}{gotQuestion(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::got\+Question (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_afb911f0c555e8c3ba0f4be8974a49a58}{}\label{classGameInterface_afb911f0c555e8c3ba0f4be8974a49a58}
+
+
+This method that deals with question nodes while in the playing routine. 
+
+If it\textquotesingle{}s a question, ask it and wait for an answer. Verify if the answer statement is a \char`\"{}don\textquotesingle{}t know\char`\"{}. If it is, then ask the user what should be the right answer and write it \subsubsection*{there. If not, follow to step 3. }
+
+Read the actual node and asks it as a question of yes or no. Read the input and then calls the valid\+Yes\+Method() with the read param as input. If it return a Success(\+Integer 1)\+: It tries to move to the left branch(yes branch). If it succeeds calls another recursion of \hyperlink{classGameInterface_a34f3d7f2ba56662cc0108b54b19fc162}{do\+Round()}. If there\textquotesingle{}s no left branch, the game doesn\textquotesingle{}t know what the answer is and asks the user for it. It reads the input and creates a new left branch with the input read as param. If it returns an Error (Integer 0) this methods also returns one. Else it calls \hyperlink{classGameInterface_a7899bb55a3697443174908d0893eeb7a}{finish\+Game()} and returns what it returns. If it returns an Error(\+Integer 0)\+: It does the same for the right branch.
+
+\begin{DoxyReturn}{Returns}
+Success(integer 1) or an Error(\+Integer 0). 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!load\+Saved\+Game@{load\+Saved\+Game}}
+\index{load\+Saved\+Game@{load\+Saved\+Game}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{load\+Saved\+Game(void)}{loadSavedGame(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::load\+Saved\+Game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_a1fe1e9abc88b994338f22202dae74a29}{}\label{classGameInterface_a1fe1e9abc88b994338f22202dae74a29}
+
+
+A method that can load last game or load another game of the user\textquotesingle{}s choice. 
+
+The method asks the user if he or she would like to load the last game by writing a valid yes input(See method validyes\+Input method for more information). If yes method load\+Game() is called with the standard param \char`\"{}last\+\_\+game\char`\"{}. A valid last\+\_\+game.\+txt file must have been created already inside the save\+\_\+games folder. For example, by calling the save\+Game() method. If load\+\_\+game is not a valid file, the method returns an Error(\+Integer 0). If not the user is asked to write a valid txt filename and the input is read. Then the load\+Game() method is called using the input read as param. While it\textquotesingle{}s not a valid file this procedure to ask, read and load is repeated. Then it return as Success(\+Integer 0). \begin{DoxyReturn}{Returns}
+An integer 0 for Error or 1 for Success. 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!open\+Menu@{open\+Menu}}
+\index{open\+Menu@{open\+Menu}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{open\+Menu(void)}{openMenu(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::open\+Menu (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_a19dc01c2f82f5140e56980f5c02a8f55}{}\label{classGameInterface_a19dc01c2f82f5140e56980f5c02a8f55}
+
+
+A method that calls a Menu. 
+
+M\+E\+NU will be able to start a new game, load a saved game, save the actual game, exit the game or call the playing routine.
+
+First it shows to the user a brief description of the game. Then it enters in a loop\+: Shows a menu of options and then capture the input of the user keyboard. Then it switches between the options.
+
+1 -\/ Start New game Calls \hyperlink{classGameInterface_a8a65a71277e660b053441c6bccdd21b9}{start\+New\+Game()} and verifies if there was an Error(\+Integer 0). Then it calls \hyperlink{classGameInterface_ac64abd0ec216c442a4cae4d09f94ab0a}{playing\+Routine()} and verifies if there was an Error(\+Integer 0). If any Error is verified, the method stops and returns an Error.
+
+2 -\/ Load game or continue last game Calls \hyperlink{classGameInterface_a1fe1e9abc88b994338f22202dae74a29}{load\+Saved\+Game()} method and verifies if there was an Error(\+Integer 0) then it calls \hyperlink{classGameInterface_ac64abd0ec216c442a4cae4d09f94ab0a}{playing\+Routine()} and verifies too. If there was an Error(\+Integer 0) the method stops and returns an Error.
+
+3 -\/ Save the actual game Calls \hyperlink{classGameInterface_ae069b22415177addad2bd7999b9eb2d9}{save\+Actual\+Game()} and verifies if there was an Error(\+Integer 0) if so the method stops and return an Error(\+Integer 0).
+
+4 -\/ Edit actual Calls \hyperlink{classGameInterface_a72f37e45597b372fdbe895c9f8f61fe3}{edit\+Routine()} and verifies if there was an Error(\+Integer 0) if so the method stops and return an Error(\+Integer 0).
+
+5 -\/ Exit game Calls \hyperlink{classGameInterface_ab0ded12c364ac64a8362959608201b98}{exit\+Game()} and verifies if it is equal to the code to end the game. If so the method return a Success(\+Integer 1).
+
+default -\/ Just ask the user to write \begin{DoxyReturn}{Returns}
+An integer 0 for Error or 1 for Success. 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!playing\+Routine@{playing\+Routine}}
+\index{playing\+Routine@{playing\+Routine}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{playing\+Routine(void)}{playingRoutine(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::playing\+Routine (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_ac64abd0ec216c442a4cae4d09f94ab0a}{}\label{classGameInterface_ac64abd0ec216c442a4cae4d09f94ab0a}
+
+
+This method starts the playing routine. 
+
+Adds a empty line on the terminal screen and calls the recursive method \hyperlink{classGameInterface_a34f3d7f2ba56662cc0108b54b19fc162}{do\+Round()}. It returns whatever the first \hyperlink{classGameInterface_a34f3d7f2ba56662cc0108b54b19fc162}{do\+Round()} returns. \begin{DoxyReturn}{Returns}
+An integer 0 for Error or 1 for Success. 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!save\+Actual\+Game@{save\+Actual\+Game}}
+\index{save\+Actual\+Game@{save\+Actual\+Game}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{save\+Actual\+Game(void)}{saveActualGame(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::save\+Actual\+Game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_ae069b22415177addad2bd7999b9eb2d9}{}\label{classGameInterface_ae069b22415177addad2bd7999b9eb2d9}
+
+
+This method can save the actual game as the last\+\_\+game in a txt file of the users choice. 
+
+The method asks the user to write a valid filename to be saved inside save\+\_\+games folder. Then it reads an input and tries to save the actual tree of statements on the folder. While the save\+Game() method fails, the procedure to ask, read and save is repeated. \begin{DoxyReturn}{Returns}
+An integer 0 for Error or 1 for Success. 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!start\+New\+Game@{start\+New\+Game}}
+\index{start\+New\+Game@{start\+New\+Game}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{start\+New\+Game(void)}{startNewGame(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::start\+New\+Game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_a8a65a71277e660b053441c6bccdd21b9}{}\label{classGameInterface_a8a65a71277e660b053441c6bccdd21b9}
+
+
+A method that starts a new game. 
+
+The method asks the user for an input from keyboard that should be the first initial answer of the tree of statements. Then it calls restart() and verifies if there was an Error(\+Integer 0) if so the method returns an Error(\+Integer 0). If not, it calls write\+In\+Actual\+Node() and returns what it returns. An Error(\+Integer 0) or a Success(\+Integer 1). \begin{DoxyReturn}{Returns}
+An integer 0 for Error or 1 for Success. 
+\end{DoxyReturn}
+\index{Game\+Interface@{Game\+Interface}!valid\+Yes\+Input@{valid\+Yes\+Input}}
+\index{valid\+Yes\+Input@{valid\+Yes\+Input}!Game\+Interface@{Game\+Interface}}
+\subsubsection[{\texorpdfstring{valid\+Yes\+Input(string user\+\_\+input)}{validYesInput(string user_input)}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Interface\+::valid\+Yes\+Input (
+\begin{DoxyParamCaption}
+\item[{string}]{user\+\_\+input}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameInterface_a1a06b1226a86254b6540ec08d0745009}{}\label{classGameInterface_a1a06b1226a86254b6540ec08d0745009}
+
+
+This method verifies if the string is a valid yes and return a Success if so. 
+
+If the string passed as param is a \char`\"{}\+Yes, y\+Es, y\+Es, y, Y
+\+Sim, sim or a S\char`\"{} it return a Success(\+Integer 1). If not, returns an Error(\+Integer 0). 
+\begin{DoxyParams}{Parameters}
+{\em (\+The} & only explicit interface) A valid and already allocated string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Success(integer 1) or an Error(\+Integer 0). 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/game\+\_\+interface.\+hpp\item 
-src/game\+\_\+interface.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{game__interface_8cpp}{game\+\_\+interface.\+cpp}\end{DoxyCompactItemize}
