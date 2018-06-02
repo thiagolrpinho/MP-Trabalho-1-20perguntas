@@ -39,7 +39,7 @@ TEST_CASE( "Round ", "[20_QUESTION_GAME_INTERFACE]" )
     SECTION("It can perform a final round with answer")
     { 
       p_new_interface->getEngine()->loadGame("test_final_answer");
-      CHECK( p_new_interface->doRound( ) == Sucess );
+      CHECK( p_new_interface->doRound( ) == Success );
     }
 
 
@@ -53,7 +53,7 @@ TEST_CASE( "Round ", "[20_QUESTION_GAME_INTERFACE]" )
     SECTION("It can perform a final round with don't know")
     {
       p_new_interface->getEngine()->loadGame("test_final_dont_know");
-      CHECK( p_new_interface->doRound( ) == Sucess );
+      CHECK( p_new_interface->doRound( ) == Success );
     }
 
 
@@ -69,7 +69,7 @@ TEST_CASE( "Round ", "[20_QUESTION_GAME_INTERFACE]" )
     {
       p_new_interface->getEngine()->loadGame("test_multiple_rounds");
       
-      CHECK( p_new_interface->doRound( ) == Sucess );
+      CHECK( p_new_interface->doRound( ) == Success );
     }
 
 }//TEST CASE EXISTS
@@ -80,17 +80,17 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
     PGameInterface p_interface_with_menu( new GameInterface());
     SECTION("can start new game")
     {
-        REQUIRE( p_interface_with_menu->startNewGame() == Sucess );
+        REQUIRE( p_interface_with_menu->startNewGame() == Success );
     }
 
     SECTION("can load a saved game")
     {
-        REQUIRE( p_interface_with_menu->loadSavedGame() == Sucess );
+        REQUIRE( p_interface_with_menu->loadSavedGame() == Success );
     }
 
     SECTION("can save the actual game")
     {
-        REQUIRE( p_interface_with_menu->saveActualGame() == Sucess );
+        REQUIRE( p_interface_with_menu->saveActualGame() == Success );
     }
 
     SECTION("can exit the game")
@@ -100,17 +100,17 @@ TEST_CASE( "Menu", "[20_QUESTION_GAME_INTERFACE]" )
 
     SECTION("has a playing routine")
     {
-        REQUIRE(p_interface_with_menu->playingRoutine() == Sucess );
+        REQUIRE(p_interface_with_menu->playingRoutine() == Success );
     }
 
     SECTION("has a edit routine")
     {
         p_interface_with_menu->getEngine()->loadGame("test_multiple_rounds");
-        REQUIRE(p_interface_with_menu->editRoutine() == Sucess );
+        REQUIRE(p_interface_with_menu->editRoutine() == Success );
     }
 
     SECTION("Has a menu")
     {
-        REQUIRE( p_interface_with_menu->openMenu() == Sucess );
+        REQUIRE( p_interface_with_menu->openMenu() == Success );
     }
 } //TEST CASE MENU

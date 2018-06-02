@@ -31,14 +31,14 @@ TEST_CASE( "Move to Yes or No", "[20_QUESTION_GAME_ENGINE]" )
     {
         p_new_game->newYesAnswer("É o céu?");
         REQUIRE_FALSE( p_new_game->getYes() == nullptr );
-        REQUIRE( p_new_game->moveToYes() == Sucess );
+        REQUIRE( p_new_game->moveToYes() == Success );
     }
 
     SECTION( "move to No if there's an statement on No" )
     {
         p_new_game->newNoAnswer("É o céu?");
         REQUIRE_FALSE( p_new_game->getNo() == nullptr );
-        REQUIRE( p_new_game->moveToNo() == Sucess );
+        REQUIRE( p_new_game->moveToNo() == Success );
     }
 } //TEST CASE MOVE TO YES OR NO
 
@@ -51,14 +51,14 @@ TEST_CASE( "GUESSING", "[20_QUESTION_GAME_ENGINE]" )
     {
         //The actual statement is a leaft, so it should be
         //a guess
-        REQUIRE( p_new_game->checkGuess() == Sucess );
+        REQUIRE( p_new_game->checkGuess() == Success );
 
         p_new_game->newYesAnswer( "É um peixe?" );
         //Now, the actual statement is not a leaf, 
         //so it's a question
         REQUIRE( p_new_game->checkGuess() == Error );
         p_new_game->moveToYes();
-        REQUIRE( p_new_game->checkGuess() == Sucess );
+        REQUIRE( p_new_game->checkGuess() == Success );
     }
 } //TEST CASE GUESSING
 
@@ -68,7 +68,7 @@ TEST_CASE( "Restart", "[20_QUESTION_GAME_ENGINE]" )
 
     SECTION( "a game can be restarted" )
     {
-        REQUIRE( p_new_game->restart() == Sucess);
+        REQUIRE( p_new_game->restart() == Success);
     }
     
 };
@@ -86,14 +86,14 @@ TEST_CASE( "Game can be saved on a file", "[20_QUESTION_GAME_ENGINE]")
         fstream p_file_to_write;
         p_file_to_write.open("./saved_games/test_write.txt", std::fstream::out);
         REQUIRE( p_file_to_write.is_open() );
-        REQUIRE( p_new_game->writeInFile( p_file_to_write ) == Sucess);
+        REQUIRE( p_new_game->writeInFile( p_file_to_write ) == Success);
         p_file_to_write.close();
     }
 
     
     SECTION( "Game engine can open files to write" )
     {
-        REQUIRE( p_new_game->saveGame() == Sucess );
+        REQUIRE( p_new_game->saveGame() == Success );
     }
 
 }//TEST_CASE GAME SAVE
@@ -115,21 +115,21 @@ TEST_CASE( "Game load", "[20_QUESTION_GAME_ENGINE]")
         fstream p_file_to_read;
         p_file_to_read.open("./saved_games/test_load", std::fstream::in);
         REQUIRE( p_file_to_read.is_open() );
-        REQUIRE( p_new_game->readFile( p_file_to_read ) == Sucess);
+        REQUIRE( p_new_game->readFile( p_file_to_read ) == Success);
         p_file_to_read.close();
 
         CHECK( p_new_game->getActualNode() == p_new_game->getStart() );
         REQUIRE( p_new_game->readActualNode().compare("É verde?") == Equals );
         REQUIRE( p_new_game->moveToYes() == Error );
-        REQUIRE( p_new_game->moveToNo() == Sucess );
+        REQUIRE( p_new_game->moveToNo() == Success );
         CHECK( p_new_game->readActualNode().compare( "É Azul?" ) == Equals );
         REQUIRE( p_new_game->moveToNo() == Error );
-        REQUIRE( p_new_game->moveToYes() == Sucess );
+        REQUIRE( p_new_game->moveToYes() == Success );
         CHECK( p_new_game->readActualNode().compare( "É o céu!" ) == Equals );
     }
 
     SECTION( "Game engine can load games" )
     {
-        REQUIRE( p_new_game->loadGame() == Sucess );
+        REQUIRE( p_new_game->loadGame() == Success );
     }
 }

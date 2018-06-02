@@ -44,10 +44,10 @@ Or just run it using
 ./all_tester 
 ```
 *Warning
-    The all_tester is not fully automatized because I'm new to catch library and don't know how to automatize input and output on terminal tests.
+    The all_tester is not fully automatized because I'm new to catch library of tests and don't know how to automatize input and output on terminal tests.
     This happens only with tests_game_interface.cpp*
 
-### Running other tests
+###Running other tests
 To run other tests just go to the main folder of the project:
 To test only the Binary Tree used on the game.
 ```
@@ -94,15 +94,16 @@ With each method used, what it does(in portuguese) and a list of the tests used 
 
 ## Author
 
-* **Thiago Luis Rodrigue Pinho** - *Game of 20 Questions* - [Thiago Luis](https://github.com/thiagolrpinho)
+* **Thiago Luis Rodrigue Pinho** - *Game of 20 Questions* - [Thiago Luis](https://github.com/thiagolrpinho/MP-Trabalho-1-20perguntas)
 
 
 
 ## Acknowledgments
 
-* It was my first time developing using TTD method. I learned a lot and am grateful for 
+* It was my first time developing using TTD method. I learned a lot and I am grateful for 
 the experience. 
 * It think this was a bit too complex for a two weeks project. 
-* I wish I could have organized more my code. Thanks for reading until here.
+* I wish I could have organized my code more. 
+* Thanks for reading until here.
 * Sorry for English and programation mistakes. Please correct me and I'll fix it.
 
