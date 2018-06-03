@@ -12,7 +12,7 @@ First clone this repository.
 
 ### Prerequisites
 
-You need g++ installed which is native from ubuntu. 
+You need g++ installed which is native on ubuntu. 
 
 
 ### Installing
