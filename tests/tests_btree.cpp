@@ -43,22 +43,39 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" )
     REQUIRE( p_non_empty_test_tree->getRoot()->getText().compare("É verde?") == Equals);
   } //SECTION( "Creating a non empty tree root")
 
-  SECTION( "Inserting left branch on root")
+  SECTION( "Inserting empty left branch on root")
+  {
+    //The insertion should not raise Errors.
+    REQUIRE_FALSE( p_non_empty_test_tree->getRoot()->insertLeftNode() == Error);
+    //The inserted value should be equal be a blank text
+    REQUIRE(p_non_empty_test_tree->getRoot()->getLeftNode()->getText().compare("") == Equals);
+  } //SECTION( "Inserting empty left branch on root")
+
+  SECTION( "Inserting non empty left branch on root")
   {
     //The insertion should not raise Errors.
     REQUIRE_FALSE( p_non_empty_test_tree->getRoot()->insertLeftNode("É azul?") == Error);
     //The inserted value should be equal to the value read after the insertion
     REQUIRE(p_non_empty_test_tree->getRoot()->getLeftNode()->getText().compare("É azul?") == Equals);
-  } //SECTION( "Inserting left branch on root")
+  } //SECTION( "Inserting non empty left branch on root")
 
-  SECTION( "Inserting right branch on root")
+  SECTION( "Inserting empty right branch on root")
+  {
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+     //The insertion should not raise Errors.
+    REQUIRE_FALSE( p_root->insertRightNode() == Error);
+    //The inserted value should be equal be a blank text
+    REQUIRE(p_root->getRightNode()->getText().compare("") == Equals);
+  } //SECTION( "Inserting empty right branch on root")
+
+  SECTION( "Inserting non empty right branch on root")
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
      //The insertion should not raise Errors.
     REQUIRE_FALSE( p_root->insertRightNode("É vermelho?") == Error);
     //The inserted value should be equal to the value read after the insertion
     REQUIRE(p_root->getRightNode()->getText().compare("É vermelho?") == Equals);
-  } //SECTION( "Inserting right branch on root")
+  } //SECTION( "Inserting non empty right branch on root")
 
   SECTION( "Inserting left branch on left branch of root")
   {
@@ -83,21 +100,37 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" )
     REQUIRE( p_left_node_of_root->getRightNode()->getText().compare("É de comer?") == Equals);
   } //SECTION( "Inserting right and left branch on left branch of root" )
 
-  SECTION( "Inserting left branch on a non empty left branch results in error" ) 
+  SECTION( "Inserting left branch on an empty non null left branch results in error" ) 
+  {
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    p_root->insertLeftNode("É azul?");
+    //p_root -> first_left
+    REQUIRE( p_root->insertLeftNode() == Error );
+  } //SECTION( "Inserting left branch on an empty non null left branch results in error" ) 
+
+  SECTION( "Inserting left branch on a non empty non null left branch results in error" ) 
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
     p_root->insertLeftNode("É azul?");
     //p_root -> first_left
     REQUIRE( p_root->insertLeftNode("É manufaturado?") == Error );
-  } //SECTION( "Inserting left branch on a non empty left branch results in error" ) 
+  } //SECTION( "Inserting left branch on a non empty non null left branch results in error" ) 
 
-    SECTION( "Inserting right branch on a non empty right branch results in error" ) 
+  SECTION( "Inserting right branch on an empty non null right branch results in error" ) 
+  {
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    p_root->insertRightNode("É vermelho?");
+    //p_root -> first_right
+    REQUIRE( p_root->insertRightNode() == Error );
+  } //SECTION( "Inserting right branch on an empty non null right branch results in error" ) 
+
+  SECTION( "Inserting right branch on a non empty non null right branch results in error" ) 
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
     p_root->insertRightNode("É vermelho?");
     //p_root -> first_right
     REQUIRE( p_root->insertRightNode("É orgânico?") == Error );
-  } //SECTION( "Inserting right branch on a non empty right branch results in error" ) 
+  } //SECTION( "Inserting right branch on a non empty non null right branch results in error" )
 
   SECTION( "Inserting three levels deep of root" )
   {
@@ -192,9 +225,14 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
     p_node->getLeftNode()->insertLeftNode( "Abaixo do abaixo?" );
     //p_root -> p_node -> second_left -> third_left
 
+    p_node->insertRightNode( "Abaixo a direita?" );
+    p_node->getRightNode()->insertRightNode( "Abaixo do abaixo da direita?" );
+
     REQUIRE_FALSE( p_node == nullptr );
     REQUIRE_FALSE( p_node->getLeftNode() == nullptr );
     REQUIRE_FALSE( p_node->getLeftNode()->getLeftNode() == nullptr );
+    REQUIRE_FALSE( p_node->getRightNode() == nullptr );
+    REQUIRE_FALSE( p_node->getRightNode()->getRightNode() == nullptr );
     REQUIRE( p_node->getLeftNode()->getLeftNode()->getLeftNode() == nullptr );
     
     //Cut node should cut off recursively p_node and it's branches
