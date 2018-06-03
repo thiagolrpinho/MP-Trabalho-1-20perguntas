@@ -93,16 +93,14 @@ After this you can type:
 ```
 make gcovr_html
 ```
-To generate a graphical representantion of how much the code is abranged by the tests.
-
-*I must warn that Gcov is not associating all my tests to the code its protect. I'm not sure why. But when I found I'll fix it.*
+To generate a graphical representation of how much the code is covered by the tests. The output files are located insides the './test/gcov folders.'
 
 *Warning
     The gcov_tester is not fully automatized because I'm new to catch library of tests and don't know how to automatize input and output on terminal tests.
     This happens only with tests_game_interface.cpp*
 
 ## More information
-There's a folder created with doxygen that contains an interactive way to see the classes and methods useds in the game.
+There's a folder created with doxygen that contains an interactive way to see the classes and methods used in the game.
 Also there's an pdf on the main folder named:
 ```
 metodos.pdf
@@ -125,5 +123,5 @@ the experience.
 * It think this was a bit too complex for a two weeks project. 
 * I wish I could have organized my code more. 
 * Thanks for reading until here.
-* Sorry for English and programation mistakes. Please correct me so I can improve.
+* Sorry for english and programing mistakes. Please correct me so I can improve.
 
