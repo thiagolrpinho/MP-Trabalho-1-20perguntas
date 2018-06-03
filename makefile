@@ -1,7 +1,7 @@
 IDIR	=./include
 CC      = g++ -std=c++11
 CFLAGS  = -Wall -g -I$(IDIR) 
-GCOVFLAGS = $(CFLAGS) -ftest-coverage -fprofile-arcs -fPIC  -O0
+GCOVFLAGS = $(CFLAGS) --coverage -fPIC  -O0 
 
 ODIR	= ./src/obj
 LDIR	=./lib
@@ -20,10 +20,10 @@ _OBJ = game_interface.o game_engine.o btree.o stringnode.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
-	$(CC)	-c	-o 	$@	$<	$(CFLAGS)
+	$(CC)	-c	-o 	$@	$<	$(CFLAGS) --coverage
 
 $(ODIR)/%.o: $(TDIR)/%.cpp $(DEPS)
-	$(CC)	-c	-o 	$@	$<	$(CFLAGS)
+	$(CC)	-c	-o 	$@	$<	$(CFLAGS) --coverage
 
 play_game: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
@@ -33,7 +33,7 @@ btree_tester:$(TOBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 gcov_btree: $(TOBJ)
-	$(CC) -o $@ $^ $(GCOVFLAGS) $(LIBS)
+	$(CC) $(GCOVFLAGS) -o $@ $^ $(LIBS)
 
 _TOBJ += tests_game_statement.o 
 TOBJ = $(patsubst %,$(ODIR)/%,$(_TOBJ))
