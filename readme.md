@@ -74,10 +74,6 @@ And then:
 ```
 ./gcov_btree
 ```
-After this you can type:
-```
-make gcovr_html
-```
 
 You can additionally check game statements and game engine by changing *gcov_btree*
 for *gcov_statement* or *gcov_engine* respectively on the previous list of instruction.
@@ -89,11 +85,12 @@ And then:
 ```
 ./gcov_tester
 ```
-After this you can type:
+
+To generate a graphical representation of how much the code is covered by the tests you can type:
 ```
 make gcovr_html
 ```
-To generate a graphical representation of how much the code is covered by the tests. The output files are located insides the './test/gcov folders.'
+The output files are located insides the './test/gcov' folder.
 
 *Warning
     The gcov_tester is not fully automatized because I'm new to catch library of tests and don't know how to automatize input and output on terminal tests.
