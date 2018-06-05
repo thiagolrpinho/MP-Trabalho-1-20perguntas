@@ -264,3 +264,95 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
   } //SECTION("A node can have it's right branch deleted")
 }//TEST CASE DELETE BINARY TREE
 
+/* !
+  Special test case to verifies if cutNode() is safe.
+  Using some paths coverture logic.
+*/
+TEST_CASE( "Binary Tree CutNode", "[binary_tree]" ) 
+{
+  /* 
+  If we analyse the code of StringNode::CutNode(void)
+  and mark each boolean decision  and some keys statements
+  with a tag letter  we could trace a decision path course
+  to make easy to test possible bugs.
+
+  int StringNode::cutNode(void )
+  //The recursive call of cutNode()
+  //will be named the A statement
+  {
+    try //TRY AND CATCH WILL BE IGNORED
+    {
+      // THIS IS THE B DECISION
+        if ( this->getLeftNode() != nullptr )
+        {
+          //THIS IS THE A RECURSIVE CALL OF THE A STATEMENT
+          this->p_left_node_->cutNode();
+          this->p_left_node_.reset();
+        }
+        //If the B decision was not true
+        //I'll say it took the 
+        //E statement(even though it does nothing) to better ilustrate
+
+        //THIS IS THE C STATEMENT
+        if ( this->getRightNode() != nullptr )
+        {
+          //THIS IS THE A RECURSIVE CALL OF THE A STATEMENT
+          this->p_right_node_->cutNode();
+          this->p_right_node_.reset();
+        }
+        //If the C decision was not true
+        //I'll say it took the 
+        //F statement(even though it does nothing) to better ilustrate
+
+        //THESE ARE THE D STATEMENTS
+        this->text.clear();
+        return Success;
+    } catch (int e) {
+        return Error;
+    }
+  }
+  Following this, we can represent the behavior of 
+  this method by:
+  A = B 2(A|E) C 2(A|F) D
+  Where N() denotes a decision with cardinality choose by the N number.
+
+  So we can study:
+  The special case 0:
+    BECFD -> The node is a leaf. 
+  The cases with 1 cycles deep:
+    B BECFD C BECEF D -> The node has one leaf in each branch.
+    B BECFD CFD       -> The node has one leaf on left branch.
+    BEC BECFD D       -> The node has one leaf on right branch.
+  The cases with 3 cycles deep gets a little more complex
+  B 
+    B 
+      B 
+        BECFD C BECEF 
+      D 
+    C 
+      B 
+        BECFD C BECEF 
+      D 
+    D 
+  C 
+    B 
+      B 
+        BECFD C BECEF 
+      D 
+    C 
+      B 
+        BECFD C BECEF 
+      D 
+    D 
+  D
+  -> This case can be ilustrate as a four layers full binary tree.
+
+  By testing these four special cases, it's possible to induct the
+  other scenarios. 
+*/
+
+  SECTION("")
+  {
+  } 
+
+} //TEST_CASE( "Binary Tree CutNode", "[binary_tree]" ) 

@@ -129,45 +129,45 @@ int StringNode::setText(string newText)
 }
 
 //! A method that reset each node after cleaning the nodes below it
-    /*!
-        \Description Try to :
-        check if left node is null
-        if it's not, nothing is done. If it's not null, 
-        then call a recursion of this method for that 
-        node and then resets the left node to null.
-        Then it does the same verification and action
-        to right node.
-        After this, the value of the actual node is 
-        cleared. Then return Success(enum 1). 
-        If it fails to verify any of them, it returns 
-        an Error.(enum 0).
-        Note: The actual node it's not deallocated.
-        Just cleared of value.
-        \param (The only explicit interface)None.
-        \return An int 0 for Error or 1 for Success
-    */
+  /*!
+    \Description Try to :
+    check if left node is null
+    if it's not, nothing is done. If it's not null, 
+    then call a recursion of this method for that 
+    node and then resets the left node to null.
+    Then it does the same verification and action
+    to right node.
+    After this, the value of the actual node is 
+    cleared. Then return Success(enum 1). 
+    If it fails to verify any of them, it returns 
+    an Error.(enum 0).
+    Note: The actual node it's not deallocated.
+    Just cleared of value.
+    \param (The only explicit interface)None.
+    \return An int 0 for Error or 1 for Success
+  */
 int StringNode::cutNode(void )
 {
-    try
+  try
+  {
+    //If there's a branch, clean this branch
+    if ( this->getLeftNode() != nullptr )
     {
-        //If there's a branch, clean this branch
-        if ( this->getLeftNode() != nullptr )
-        {
-            this->p_left_node_->cutNode();
-            this->p_left_node_.reset();
-        }
-        
-        if ( this->getRightNode() != nullptr )
-        {
-            this->p_right_node_->cutNode();
-            this->p_right_node_.reset();
-        }
-
-        this->text.clear();
-        return Success;
-    } catch (int e) {
-        return Error;
+        this->p_left_node_->cutNode();
+        this->p_left_node_.reset();
     }
+    
+    if ( this->getRightNode() != nullptr )
+    {
+        this->p_right_node_->cutNode();
+        this->p_right_node_.reset();
+    }
+
+    this->text.clear();
+    return Success;
+  } catch (int e) {
+    return Error;
+  }
 }
 
 //! A method that resets the left node to null.
