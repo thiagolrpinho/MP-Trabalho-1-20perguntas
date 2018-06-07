@@ -32,7 +32,7 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" )
     REQUIRE_FALSE( p_root == nullptr );
     //A branchless root shouldn't have branches
     REQUIRE( p_root->getLeftNode() == nullptr );
-    REQUIRE( p_root->getRightNode() == nullptr);
+    REQUIRE( p_root->getRightNode() == nullptr );
     //an empty root mustn't have text.
     REQUIRE( p_root->getText().empty());
   } // SECTION( "Creating an empty branchless tree root" )
@@ -46,57 +46,57 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" )
   SECTION( "Inserting empty left branch on root")
   {
     //The insertion should not raise Errors.
-    REQUIRE_FALSE( p_non_empty_test_tree->getRoot()->insertLeftNode() == Error);
+    REQUIRE_FALSE( p_non_empty_test_tree->getRoot()->insertLeftNode() == Error );
     //The inserted value should be equal be a blank text
-    REQUIRE(p_non_empty_test_tree->getRoot()->getLeftNode()->getText().compare("") == Equals);
+    REQUIRE( p_non_empty_test_tree->getRoot()->getLeftNode()->getText().compare("") == Equals);
   } //SECTION( "Inserting empty left branch on root")
 
   SECTION( "Inserting non empty left branch on root")
   {
     //The insertion should not raise Errors.
-    REQUIRE_FALSE( p_non_empty_test_tree->getRoot()->insertLeftNode("É azul?") == Error);
+    REQUIRE_FALSE( p_non_empty_test_tree->getRoot()->insertLeftNode("É azul?") == Error );
     //The inserted value should be equal to the value read after the insertion
-    REQUIRE(p_non_empty_test_tree->getRoot()->getLeftNode()->getText().compare("É azul?") == Equals);
+    REQUIRE( p_non_empty_test_tree->getRoot()->getLeftNode()->getText().compare("É azul?") == Equals);
   } //SECTION( "Inserting non empty left branch on root")
 
   SECTION( "Inserting empty right branch on root")
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
      //The insertion should not raise Errors.
-    REQUIRE_FALSE( p_root->insertRightNode() == Error);
+    REQUIRE_FALSE( p_root->insertRightNode() == Error );
     //The inserted value should be equal be a blank text
-    REQUIRE(p_root->getRightNode()->getText().compare("") == Equals);
+    REQUIRE( p_root->getRightNode()->getText().compare("") == Equals);
   } //SECTION( "Inserting empty right branch on root")
 
   SECTION( "Inserting non empty right branch on root")
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
      //The insertion should not raise Errors.
-    REQUIRE_FALSE( p_root->insertRightNode("É vermelho?") == Error);
+    REQUIRE_FALSE( p_root->insertRightNode("É vermelho?") == Error );
     //The inserted value should be equal to the value read after the insertion
-    REQUIRE(p_root->getRightNode()->getText().compare("É vermelho?") == Equals);
+    REQUIRE( p_root->getRightNode()->getText().compare("É vermelho?") == Equals);
   } //SECTION( "Inserting non empty right branch on root")
 
   SECTION( "Inserting left branch on left branch of root")
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
-    REQUIRE_FALSE( p_root->insertLeftNode("É azul?") == Error);
+    REQUIRE_FALSE( p_root->insertLeftNode("É azul?") == Error );
     PStringNode p_left_node_of_root = p_root->getLeftNode();
 
 
-    REQUIRE_FALSE( p_left_node_of_root->insertLeftNode("É violeta?") == Error);
+    REQUIRE_FALSE( p_left_node_of_root->insertLeftNode("É violeta?") == Error );
     REQUIRE( p_left_node_of_root->getLeftNode()->getText().compare("É violeta?") == Equals);
   } //SECTION( "Inserting left branch on left branch of root")
 
    SECTION( "Inserting right and left branch on left branch of root" )
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
-    REQUIRE_FALSE( p_root->insertLeftNode("É azul?") == Error);
+    REQUIRE_FALSE( p_root->insertLeftNode("É azul?") == Error );
     PStringNode p_left_node_of_root = p_root->getLeftNode();
 
-    REQUIRE_FALSE( p_left_node_of_root->insertLeftNode("É violeta?") == Error);
+    REQUIRE_FALSE( p_left_node_of_root->insertLeftNode("É violeta?") == Error );
     REQUIRE( p_left_node_of_root->getLeftNode()->getText().compare("É violeta?") == Equals);
-    REQUIRE_FALSE( p_left_node_of_root->insertRightNode("É de comer?") == Error);
+    REQUIRE_FALSE( p_left_node_of_root->insertRightNode("É de comer?") == Error );
     REQUIRE( p_left_node_of_root->getRightNode()->getText().compare("É de comer?") == Equals);
   } //SECTION( "Inserting right and left branch on left branch of root" )
 
@@ -135,21 +135,21 @@ TEST_CASE( "Binary Tree Create and Read", "[binary_tree]" )
   SECTION( "Inserting three levels deep of root" )
   {
     PStringNode p_root = p_non_empty_test_tree->getRoot();
-    REQUIRE_FALSE( p_root->insertLeftNode("É azul?") == Error);
+    REQUIRE_FALSE( p_root->insertLeftNode("É azul?") == Error );
     // actual state of tree = root -> first_left
 
     PStringNode p_left_node_of_root = p_root->getLeftNode();
-    REQUIRE_FALSE( p_left_node_of_root->insertLeftNode("É violeta?") == Error);
+    REQUIRE_FALSE( p_left_node_of_root->insertLeftNode("É violeta?") == Error );
     REQUIRE( p_left_node_of_root->getLeftNode()->getText().compare("É violeta?") == Equals);
     // actual state of tree = root -> first_left -> second_left
     
     PStringNode pSecondFromRoot = p_left_node_of_root->getLeftNode();
-    REQUIRE_FALSE( pSecondFromRoot->insertLeftNode("É amarelo?") == Error);
+    REQUIRE_FALSE( pSecondFromRoot->insertLeftNode("É amarelo?") == Error );
     REQUIRE( pSecondFromRoot->getLeftNode()->getText().compare("É amarelo?") == Equals);
     // actual state of tree = root -> first_left -> second_left -> third_left
 
     PStringNode pThirdFromRoot = pSecondFromRoot->getLeftNode();
-    REQUIRE_FALSE( pThirdFromRoot->insertLeftNode("É dourado?") == Error);
+    REQUIRE_FALSE( pThirdFromRoot->insertLeftNode("É dourado?") == Error );
     REQUIRE( pThirdFromRoot->getLeftNode()->getText().compare("É dourado?") == Equals);
     // actual state of tree = root -> first_left -> second_left -> third_left -> forth_left
   } //SECTION( "Inserting three levels deep of root" )
@@ -210,11 +210,11 @@ TEST_CASE( "Binary Tree Delete", "[binary_tree]" ) {
   SECTION( "a right branch can be deleted and those above it are not affected" )
   {
     //The right node is not empty before the deletion.
-    REQUIRE_FALSE( p_root->getRightNode() == nullptr);
+    REQUIRE_FALSE( p_root->getRightNode() == nullptr );
     p_root->clearRight();
 
     REQUIRE_FALSE( p_root == nullptr );
-    REQUIRE(  p_root->getRightNode() == nullptr );
+    REQUIRE( p_root->getRightNode() == nullptr );
   } //SECTION( "a right branch can be deleted and those above it are not affected" )
 
   
@@ -345,14 +345,96 @@ TEST_CASE( "Binary Tree CutNode", "[binary_tree]" )
       D 
     D 
   D
-  -> This case can be ilustrate as a four layers full binary tree.
+  -> This case can be ilustrate as a four layers root included full binary tree.
 
   By testing these four special cases, it's possible to induct the
   other scenarios. 
 */
-
-  SECTION("")
+  SECTION("Case 0 - BECFD - Node is a branchless leaf")
   {
-  } 
+    PBTree p_non_empty_test_tree( new BTree("Branchless") );
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    // First we must assure everything is fine.
+    REQUIRE( p_root->getLeftNode() == nullptr );
+    REQUIRE( p_root->getRightNode() == nullptr );
+    // Require it works
+    REQUIRE( p_root->cutNode() == Success);
+  } //SECTION("Case 0 - BECFD - Node is a branchless leaf")
+
+  SECTION( "Case 1 - B BECFD C BECEF D -> The node has one leaf in each branch." )
+  {
+    PBTree p_non_empty_test_tree( new BTree("Two branches") );
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    p_root->insertLeftNode();
+    p_root->insertRightNode();
+    // First we must assure everything is fine.
+    REQUIRE_FALSE( p_root->getLeftNode() == nullptr );
+    REQUIRE_FALSE( p_root->getRightNode() == nullptr );
+    // Require it works
+    REQUIRE( p_root->cutNode() == Success);
+  } //SECTION( "Case 1 - B BECFD C BECEF D -> The node has one leaf in each branch." )
+
+  SECTION( "Case 1 - B BECFD CFD -> The node has one leaf on left branch." )
+  {
+    PBTree p_non_empty_test_tree( new BTree("Two branches") );
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    p_root->insertLeftNode();
+    // First we must assure everything is fine.
+    REQUIRE_FALSE( p_root->getLeftNode() == nullptr );
+    // Require it works
+    REQUIRE( p_root->cutNode() == Success );
+  } //SECTION( "Case 1 - B BECFD CFD -> The node has one leaf on left branch." )
+
+  SECTION( "Case 1 - BEC BECFD D -> The node has one leaf on right branch." )
+  {
+    PBTree p_non_empty_test_tree( new BTree("Two branches") );
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+    p_root->insertRightNode();
+    // First we must assure everything is fine.
+    REQUIRE_FALSE( p_root->getRightNode() == nullptr );
+    // Require it works
+    REQUIRE( p_root->cutNode() == Success);
+  } //SECTION( "Case 1 - BEC BECFD D -> The node has one leaf on right branch." )
+  
+  SECTION( "Case 3 - This case can be ilustrate as a four layers full binary tree." )
+  {
+    // Creating layer zero of binary test tree
+    PBTree p_non_empty_test_tree( new BTree("Two branches") );
+    PStringNode p_root = p_non_empty_test_tree->getRoot();
+
+    //Creating first layer of binary test tree
+    REQUIRE( p_root->insertLeftNode() == Success );
+    REQUIRE( p_root->insertRightNode() == Success );
+
+    //Creating second layer of the binary test tree
+    PStringNode p_first_layer_left = p_root->getLeftNode();
+    PStringNode p_first_layer_right = p_root->getRightNode();
+
+    REQUIRE( p_first_layer_left->insertLeftNode() == Success );
+    REQUIRE( p_first_layer_left->insertRightNode() == Success );
+    REQUIRE( p_first_layer_right->insertLeftNode() == Success );
+    REQUIRE( p_first_layer_right->insertRightNode() == Success );
+
+    //Creating third layer left half of binary test tree.
+    PStringNode p_second_layer_outer_left = p_first_layer_left->getLeftNode();
+    PStringNode p_second_layer_inner_left = p_first_layer_left->getRightNode();
+
+    REQUIRE( p_second_layer_outer_left->insertLeftNode() == Success );
+    REQUIRE( p_second_layer_outer_left->insertRightNode() == Success );
+    REQUIRE( p_second_layer_inner_left->insertLeftNode() == Success );
+    REQUIRE( p_second_layer_inner_left->insertRightNode() == Success );
+
+    //Creating third layer right half of binary test tree.
+    PStringNode p_second_layer_outer_right = p_first_layer_right->getLeftNode();
+    PStringNode p_second_layer_inner_right = p_first_layer_right->getRightNode();
+
+    REQUIRE( p_second_layer_outer_right->insertLeftNode() == Success );
+    REQUIRE( p_second_layer_outer_right->insertRightNode() == Success );
+    REQUIRE( p_second_layer_inner_right->insertLeftNode() == Success );
+    REQUIRE( p_second_layer_inner_right->insertRightNode() == Success );
+
+    //And let's see if it works
+    REQUIRE( p_root->cutNode() == Success );
+  } //SECTION( "Case 3 - This case can be ilustrate as a four layers full binary tree." )
 
 } //TEST_CASE( "Binary Tree CutNode", "[binary_tree]" ) 

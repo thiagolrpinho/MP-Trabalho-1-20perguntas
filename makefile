@@ -1,6 +1,6 @@
 IDIR	=./include
 CC      = g++ -std=c++11
-CFLAGS  = -Wall -g -I$(IDIR) 
+CFLAGS  = -Wall -g -I$(IDIR) --coverage 
 GCOVFLAGS = $(CFLAGS) --coverage -fPIC  -O0 
 
 ODIR	= ./src/obj
@@ -20,10 +20,10 @@ _OBJ = game_interface.o game_engine.o btree.o stringnode.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
-	$(CC)	-c	-o 	$@	$<	$(CFLAGS) --coverage
+	$(CC)	-c	-o 	$@	$<	$(CFLAGS)
 
 $(ODIR)/%.o: $(TDIR)/%.cpp $(DEPS)
-	$(CC)	-c	-o 	$@	$<	$(CFLAGS) --coverage
+	$(CC)	-c	-o 	$@	$<	$(CFLAGS) 
 
 play_game: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
